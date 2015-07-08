@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">android_BB</string>
+    <string name="login_label">登录界面</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_regist">RegistActivity</string>
+    <string name="login_head_desp">登录界面头像</string>
+    <string name="login_username_desp">登录界面用户名图标</string>
+    <string name="login_pwd_desp">登录界面密码图标</string>
+    <string name="login_username_hint">用户名</string>
+    <string name="login_pwd_hint">密码</string>
+    <string name="login_regist_text">注册</string>
+    <string name="login_login_text">登录</string>
+    <string name="login_forgetpwd">忘记密码？</string>
+    <string name="regist_regist">注&#160;册</string>
+    <string name="register_name">._0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLIMNOPQRSTUVWXYZ~!@#$%^*()+-=:?</string>
+    <string name="regist_head_desp">注册界面头像</string>
+    <string name="regist_cellphone_text">手机号：</string>
+    <string name="regist_pwd_text">密码：</string>
+    <string name="regist_getnum_text">获取验证码</string>
+    <string name="regist_readagreement">&#160;&#160;我已阅读《BB用户协议》</string>
+    <string name="regist_verification_text">验证码：</string>
+    <string name="regist_verification_confirm">确定</string>
+    <string name="title_activity_regist_info">RegistInfoActivity</string>
+	<string name="regist_info_nickname">昵称</string>
+	<string name="regist_info_sex">性别</string>
+	<string name="regist_info_area">地区</string>
+	<string name="regist_info_signature">个性签名</string>
+</resources>

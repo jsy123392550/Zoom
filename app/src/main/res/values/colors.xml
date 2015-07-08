@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="login_et_text_normal">#ECECFF</color>
+    <color name="login_et_normal">#F0F0F0</color>
+    <color name="login_btn_normal">#1E90FF</color>
+    <color name="login_btn_press">#1874CD</color>
+    <color name="login_stroke">#9D9D9D</color>
+    <color name="regist_info_background">#EAEAEA</color>
+    <color name="regist_info_textcolor">#8E8E8E</color>
+    <color name="regist_info_stroke">#d0d0d0</color>
+</resources>
