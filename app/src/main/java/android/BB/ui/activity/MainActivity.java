@@ -1,4 +1,4 @@
-package android.BB.ui;
+package android.BB.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;

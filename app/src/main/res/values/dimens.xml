@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="coner_radius">4.0px</dimen>
-    <dimen name="stoke_width">2.0px</dimen>
+    <dimen name="coner_radius">4dp</dimen>
+    <dimen name="stoke_width">2dp</dimen>
     <dimen name="regist_info_textsize">14sp</dimen>
+    <dimen name="dialog_wait_radius">8dp</dimen>
 </resources>

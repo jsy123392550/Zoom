@@ -8,4 +8,5 @@
     <color name="regist_info_background">#EAEAEA</color>
     <color name="regist_info_textcolor">#8E8E8E</color>
     <color name="regist_info_stroke">#d0d0d0</color>
+    <color name="dialog_wait_background">#ff333333</color>
 </resources>

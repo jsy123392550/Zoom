@@ -1,18 +1,18 @@
-package android.BB.ui;
+package android.BB.ui.activity;
 
+import android.BB.util.DialogFactory;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import android.BB.finals.MyConstants;
 import android.BB.http.user.UserHttp;
-import android.BB.http.user.UserHttp.LoginCallback;
+import android.BB.http.HttpConnect.Callback;
 import app.BB.R;
 public class LoginActivity extends Activity implements OnClickListener {
 	private EditText et_username;
@@ -20,6 +20,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private Button btn_login;
 	private Button btn_regist;
 	private UserHttp http;
+	private Dialog waitDialog;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,22 +42,24 @@ public class LoginActivity extends Activity implements OnClickListener {
 		int id = v.getId();
 		switch (id) {
 		case R.id.login_btn_login:
-			Log.d(MyConstants.APP_TAG, et_username.getText().toString()+"����"+et_pwd.getText().toString());
-			http.login(et_username.getText().toString(), et_pwd.getText().toString(), new LoginCallback() {
+			http.login(et_username.getText().toString(), et_pwd.getText().toString(), new Callback() {
 				
 				@Override
 				public void onSuccess() {
-					Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
+					waitDialog.dismiss();
 				}
 				
 				@Override
 				public void onPrepare() {
-					Toast.makeText(getApplicationContext(), "prepare", Toast.LENGTH_SHORT).show();
+					if(waitDialog==null) {
+						waitDialog = DialogFactory.createWaitDialog(LoginActivity.this, getString(R.string.login_logining));
+					}
+					waitDialog.show();
 				}
 				
 				@Override
 				public void onFailure(String errorMsg) {
-					Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_SHORT).show();
+					Toast.makeText(LoginActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
 				}
 			});
 			break;

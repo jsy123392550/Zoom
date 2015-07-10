@@ -84,7 +84,7 @@
             android:textColor="@android:color/white"/>
 
             <TextView
-                android:id="@+id/regist_verification_t"
+                android:id="@+id/regist_validate_t"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignRight="@id/regist_pwd_t"
@@ -93,34 +93,34 @@
                 android:layout_marginTop="30dip"
                 android:text="@string/regist_verification_text"
                 android:textColor="@android:color/white" 
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
 
             <EditText
-                android:id="@+id/regist_verification_et"
+                android:id="@+id/regist_validate_et"
                 android:layout_width="250dip"
                 android:layout_height="30dip"
                 android:paddingLeft="10dip"
                 android:paddingRight="10dip"
                 android:background="@drawable/login_et"
-                android:layout_toRightOf="@id/regist_verification_t"
-                android:layout_toEndOf="@id/regist_verification_t"
-                android:layout_alignBaseline="@id/regist_verification_t"
+                android:layout_toRightOf="@id/regist_validate_t"
+                android:layout_toEndOf="@id/regist_validate_t"
+                android:layout_alignBaseline="@id/regist_validate_t"
                 android:inputType="phone"
                 android:maxLength="6" 
                 android:textColor="@android:color/white"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
             <TextView 
-                android:id="@+id/regist_verification_confirm"
+                android:id="@+id/regist_validate_confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/regist_verification_et"
-                android:layout_toEndOf="@id/regist_verification_et"
-                android:layout_alignBaseline="@id/regist_verification_et"
+                android:layout_toRightOf="@id/regist_validate_et"
+                android:layout_toEndOf="@id/regist_validate_et"
+                android:layout_alignBaseline="@id/regist_validate_et"
                 android:layout_marginLeft="20dip"
                 android:layout_marginStart="20dip"
                 android:text="@string/regist_verification_confirm"
                 android:textColor="@android:color/white"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
 
     <CheckBox
         android:id="@+id/regist_checkbox"
@@ -145,6 +145,7 @@
         android:layout_marginStart="120dip"
         android:background="@drawable/regist_btn"
         android:text="@string/regist_regist"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:enabled="false"/>
 
 </RelativeLayout>

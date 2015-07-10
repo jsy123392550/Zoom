@@ -28,5 +28,25 @@ public class MyConstants {
     //以下为全局使用的字段名
 	public static final String KEY_STATE="state";
 	public static final String KEY_DATA="data";
-
+	//以下分模块使用的字段名
+	/*User类的字段名*/
+	public static final String KEY_USER_ID="bb_num";
+	public static final String KEY_USER_USERNAME="username";
+	public static final String KEY_USER_HEADPHOTO="head_photo";
+	public static final String KEY_USER_PERSIGN="personal_sign";
+	public static final String KEY_USER_LABEL="label";
+	public static final String KEY_USER_LEVEL="credit_level";
+	public static final String KEY_USER_MONEY="money";
+	public static final String KEY_USER_SESSION="session_id";
+	public static final String KEY_USER_LOCATION="location";
+	public static final String KEY_USER_SEX="sex";
+	/*Information类的字段名*/
+	public static final String KEY_INFORMATION_ID="info_id";
+	public static final String KEY_INFORMATION_CONTENT="content";
+	public static final String KEY_INFORMATION_LOCATION="location";
+	public static final String KEY_INFORMATION_TIME="time";
+	public static final String KEY_INFORMATION_MONEY="money";
+	public static final String KEY_INFORMATION_BB_ID="bb_num";
+	//以下为方法名
+	public static final String METHOD_LOGIN="login";
 }
