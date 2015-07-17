@@ -20,6 +20,7 @@ public class RegistActivity extends Activity implements OnClickListener {
     private EditText et_validate;
     private CheckBox check_regist;
     private boolean flag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

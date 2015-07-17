@@ -4,14 +4,58 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- 顶部内容，用于fragment的切换 -->
+    <RelativeLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-	<Button
-	    android:id="@+id/main_b"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="click">
-	    </Button>
+        android:layout_alignParentTop="true">
+
+    </RelativeLayout>
+
+    <!-- 底部栏 用于切换5个模块 -->
+    <LinearLayout
+        android:id="@+id/main_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#f0f4f7"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/img_bottom_nearby"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/main_bottom_nearby"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/img_bottom_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/main_bottom_news"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/img_bottom_BB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/main_bottom_bb"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/img_bottom_linkman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/main_bottom_linkman"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/img_bottom_userinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/ic_launcher"
+            android:layout_weight="1"/>
+    </LinearLayout>
 </RelativeLayout>

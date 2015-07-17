@@ -42,7 +42,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		int id = v.getId();
 		switch (id) {
 		case R.id.login_btn_login:
-			http.login(et_username.getText().toString(), et_pwd.getText().toString(), new Callback() {
+			/*http.login(et_username.getText().toString(), et_pwd.getText().toString(), new Callback() {
 				
 				@Override
 				public void onSuccess() {
@@ -61,7 +61,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 				public void onFailure(String errorMsg) {
 					Toast.makeText(LoginActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
 				}
-			});
+			});*/
+			startActivity(new Intent(this, MainActivity.class));
 			break;
 		case R.id.login_btn_regist:
 			startActivity(new Intent(this, RegistActivity.class));
