@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">android_BB</string>
-    <string name="login_label">登录界面</string>
+    <string name="login_label">BB</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_regist">RegistActivity</string>
