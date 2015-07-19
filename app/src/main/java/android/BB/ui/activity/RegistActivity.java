@@ -46,13 +46,13 @@ public class RegistActivity extends Activity implements OnClickListener {
         int id = v.getId();
         switch (id) {
             case R.id.regist_regist_btn:
-                if(check_regist.isSelected()&&flag){
+//                if(check_regist.isSelected()&&flag){
                     /*checkbox是否选中以及验证码是否正确*/
                     /**/
                     startActivity(new Intent(RegistActivity.this, RegistInfoActivity.class));
-                }else{
-
-                }
+//                }else{
+//
+//                }
                 break;
             case R.id.regist_getnum_btn:
                 /*获取验证码操作*/
@@ -65,6 +65,7 @@ public class RegistActivity extends Activity implements OnClickListener {
             case R.id.regist_validate_confirm:
                 /*对验证码进行验证*/
                 /**/
+                btn_regist.setEnabled(true);
                 flag=true;
                 break;
         }

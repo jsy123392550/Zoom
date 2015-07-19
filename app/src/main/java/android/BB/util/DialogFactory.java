@@ -12,9 +12,9 @@ import app.BB.R;
 
 public class DialogFactory {
     public static Dialog createWaitDialog(Context context,String msg){
-        Dialog dialog=new Dialog(context, R.style.ProgressDialog);
+        Dialog dialog=new Dialog(context);
         dialog.setContentView(R.layout.dialog_wait);
-        int width=DensityUtils.getScreenW(context);
+        int width=(int)(0.8*DensityUtils.getScreenW(context));
         dialog.getWindow().setLayout(width, WindowManager.LayoutParams.WRAP_CONTENT);
         TextView t_msg= (TextView) dialog.findViewById(R.id.dialog_wait_t);
         if(msg==null||msg.length()==0){

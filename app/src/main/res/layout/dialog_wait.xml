@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@drawable/dialog_wait">
+    android:alpha="0.7"
+    android:background="@null">
     <ProgressBar
         android:id="@+id/dialog_wait_progress"
         android:layout_width="30dp"

@@ -1,8 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/regist_background" >
+    android:background="@mipmap/regist_background">
 
     <ImageView
         android:id="@+id/regist_head"
@@ -14,122 +13,126 @@
         android:src="@mipmap/login_head_img" />
 
 
-        <TextView
-            android:id="@+id/regist_cellphone_t"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:layout_marginLeft="40dip"
-            android:layout_marginStart="40dip"
-            android:layout_below="@id/regist_head"
-            android:text="@string/regist_cellphone_text"
-            android:textColor="@android:color/white" />
+    <TextView
+        android:id="@+id/regist_cellphone_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/regist_head"
+        android:layout_marginLeft="40dip"
+        android:layout_marginStart="40dip"
+        android:layout_marginTop="20dip"
+        android:text="@string/regist_cellphone_text"
+        android:textColor="@android:color/white" />
 
-        <EditText
-            android:id="@+id/regist_cellphone_et"
-            android:layout_width="match_parent"
-            android:layout_height="30dip"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:layout_toRightOf="@id/regist_cellphone_t"
-            android:layout_toEndOf="@id/regist_cellphone_t"
-            android:layout_alignBaseline="@id/regist_cellphone_t"
-            android:layout_marginRight="70dip"
-            android:layout_marginEnd="70dip"
-            android:background="@drawable/login_et"
-            android:inputType="phone"
-            android:textColor="@android:color/white"
-            android:maxLength="13" />
+    <EditText
+        android:id="@+id/regist_cellphone_et"
+        android:layout_width="match_parent"
+        android:layout_height="30dip"
+        android:layout_alignBaseline="@id/regist_cellphone_t"
+        android:layout_marginEnd="70dip"
+        android:layout_marginRight="70dip"
+        android:layout_toEndOf="@id/regist_cellphone_t"
+        android:layout_toRightOf="@id/regist_cellphone_t"
+        android:background="@drawable/login_et"
+        android:inputType="phone"
+        android:maxLength="13"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:textColor="@android:color/white" />
 
-        <TextView
-            android:id="@+id/regist_pwd_t"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@id/regist_cellphone_t"
-            android:layout_alignEnd="@id/regist_cellphone_t"
-            android:layout_below="@id/regist_cellphone_t"
-            android:layout_marginTop="35dip"
-            android:text="@string/regist_pwd_text"
-            android:textColor="@android:color/white" />
+    <TextView
+        android:id="@+id/regist_pwd_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/regist_cellphone_t"
+        android:layout_alignRight="@id/regist_cellphone_t"
+        android:layout_below="@id/regist_cellphone_t"
+        android:layout_marginTop="35dip"
+        android:text="@string/regist_pwd_text"
+        android:textColor="@android:color/white" />
 
-        <EditText
-            android:id="@+id/regist_pwd_et"
-            android:layout_width="match_parent"
-            android:layout_height="30dip"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:layout_toRightOf="@id/regist_pwd_t"
-            android:layout_toEndOf="@id/regist_pwd_t"
-            android:layout_alignBaseline="@id/regist_pwd_t"
-            android:layout_marginRight="70dip"
-            android:layout_marginEnd="70dip"
-            android:background="@drawable/login_et"
-            android:inputType="textPassword"
-            android:textColor="@android:color/white"
-            android:maxLength="20" />
+    <EditText
+        android:id="@+id/regist_pwd_et"
+        android:layout_width="match_parent"
+        android:layout_height="30dip"
+        android:layout_alignBaseline="@id/regist_pwd_t"
+        android:layout_alignEnd="@id/regist_cellphone_et"
+        android:layout_alignRight="@id/regist_cellphone_et"
+        android:layout_toEndOf="@id/regist_pwd_t"
+        android:layout_toRightOf="@id/regist_pwd_t"
+        android:background="@drawable/login_et"
+        android:inputType="textPassword"
+        android:maxLength="20"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:textColor="@android:color/white" />
 
 
-        <Button
-            android:id="@+id/regist_getnum_btn"
-            android:layout_width="match_parent"
-            android:layout_height="35dip"
-            android:layout_marginTop="25dip"
-            android:layout_alignLeft="@id/regist_pwd_et"
-            android:layout_alignStart="@id/regist_pwd_et"
-            android:layout_alignRight="@id/regist_pwd_et"
-            android:layout_alignEnd="@id/regist_pwd_et"
-            android:layout_below="@id/regist_pwd_t"
-            android:background="@drawable/regist_btn"
-            android:text="@string/regist_getnum_text"
-            android:textColor="@android:color/white"/>
+    <Button
+        android:id="@+id/regist_getnum_btn"
+        android:layout_width="match_parent"
+        android:layout_height="35dip"
+        android:layout_alignEnd="@id/regist_pwd_et"
+        android:layout_alignLeft="@id/regist_pwd_et"
+        android:layout_alignRight="@id/regist_pwd_et"
+        android:layout_alignStart="@id/regist_pwd_et"
+        android:layout_below="@id/regist_pwd_t"
+        android:layout_marginTop="25dip"
+        android:background="@drawable/regist_btn"
+        android:text="@string/regist_getnum_text"
+        android:textColor="@android:color/white" />
 
-            <TextView
-                android:id="@+id/regist_validate_t"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignRight="@id/regist_pwd_t"
-                android:layout_alignEnd="@id/regist_pwd_t"
-                android:layout_below="@id/regist_pwd_t"
-                android:layout_marginTop="30dip"
-                android:text="@string/regist_verification_text"
-                android:textColor="@android:color/white" 
-                android:visibility="gone"/>
+    <TextView
+        android:id="@+id/regist_validate_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/regist_pwd_t"
+        android:layout_alignRight="@id/regist_pwd_t"
+        android:layout_below="@id/regist_pwd_t"
+        android:layout_marginTop="30dip"
+        android:text="@string/regist_verification_text"
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
 
-            <EditText
-                android:id="@+id/regist_validate_et"
-                android:layout_width="250dip"
-                android:layout_height="30dip"
-                android:paddingLeft="10dip"
-                android:paddingRight="10dip"
-                android:background="@drawable/login_et"
-                android:layout_toRightOf="@id/regist_validate_t"
-                android:layout_toEndOf="@id/regist_validate_t"
-                android:layout_alignBaseline="@id/regist_validate_t"
-                android:inputType="phone"
-                android:maxLength="6" 
-                android:textColor="@android:color/white"
-                android:visibility="gone"/>
-            <TextView 
-                android:id="@+id/regist_validate_confirm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/regist_validate_et"
-                android:layout_toEndOf="@id/regist_validate_et"
-                android:layout_alignBaseline="@id/regist_validate_et"
-                android:layout_marginLeft="20dip"
-                android:layout_marginStart="20dip"
-                android:text="@string/regist_verification_confirm"
-                android:textColor="@android:color/white"
-                android:visibility="gone"/>
+    <TextView
+        android:id="@+id/regist_validate_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/regist_validate_t"
+        android:layout_alignEnd="@id/regist_cellphone_et"
+        android:layout_alignRight="@id/regist_cellphone_et"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/regist_verification_confirm"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/regist_validate_et"
+        android:layout_width="match_parent"
+        android:layout_height="30dip"
+        android:layout_alignBaseline="@id/regist_validate_t"
+        android:layout_toEndOf="@id/regist_validate_t"
+        android:layout_toLeftOf="@id/regist_validate_confirm"
+        android:layout_toRightOf="@id/regist_validate_t"
+        android:layout_toStartOf="@id/regist_validate_confirm"
+        android:background="@drawable/login_et"
+        android:inputType="phone"
+        android:maxLength="6"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
 
     <CheckBox
         android:id="@+id/regist_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/regist_getnum_btn"
-        android:layout_marginTop="15dip"
         android:layout_alignLeft="@id/regist_getnum_btn"
         android:layout_alignStart="@id/regist_getnum_btn"
+        android:layout_below="@id/regist_getnum_btn"
+        android:layout_marginTop="15dip"
         android:button="@drawable/regist_checkbox"
         android:text="@string/regist_readagreement" />
 
@@ -138,14 +141,14 @@
         android:layout_width="match_parent"
         android:layout_height="35dip"
         android:layout_below="@id/regist_checkbox"
-        android:layout_marginTop="30dip"
         android:layout_marginEnd="120dip"
         android:layout_marginLeft="120dip"
         android:layout_marginRight="120dip"
         android:layout_marginStart="120dip"
+        android:layout_marginTop="30dip"
         android:background="@drawable/regist_btn"
+        android:enabled="false"
         android:text="@string/regist_regist"
-        android:textColor="@android:color/white"
-        android:enabled="false"/>
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

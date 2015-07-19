@@ -18,6 +18,7 @@ public class UserHttp extends HttpConnect{
 	public UserHttp(Context context) {
 		super(context);
 	}
+	/*登录请求*/
 	public void login(String username,String pwd,final Callback callback){
 		HttpParams params=new HttpParams();
 		params.put("username",username);
@@ -67,5 +68,13 @@ public class UserHttp extends HttpConnect{
 				callback.onFailure(strMsg);
 			}
 		});
+	}
+	/*获取验证码请求*/
+	public void getNum(final Callback callback){
+
+	}
+	/*注册请求*/
+	public void regist(final Callback callback){
+
 	}
 }

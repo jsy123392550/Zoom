@@ -1,10 +1,12 @@
 package android.BB.ui.activity;
 
+import android.BB.finals.MyConstants;
 import android.BB.util.DialogFactory;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -46,7 +48,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 				
 				@Override
 				public void onSuccess() {
-					waitDialog.dismiss();
+//					waitDialog.dismiss();
+					Log.i(MyConstants.APP_TAG,"login success");
 				}
 				
 				@Override
@@ -59,7 +62,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 				
 				@Override
 				public void onFailure(String errorMsg) {
-					Toast.makeText(LoginActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
+					Log.i(MyConstants.APP_TAG,errorMsg);
 				}
 			});*/
 			startActivity(new Intent(this, MainActivity.class));
