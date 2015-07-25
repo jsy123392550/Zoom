@@ -19,6 +19,7 @@ public class MyConstants {
 	public static final String TEXT_NO_NET = "当前没有网络";
 	public static final String TEXT_UNKNOWN_EXCEPTION="发生未知错误";
 	public static final String TEXT_LOGIN_PWD_WRONG="用户名或密码错误";
+	public static final String TEXT_NULL="";
     //服务器响应请求操作成功的状态码
 	public static final int RESPONSE_CODE_SUCCESS=666;
     //服务器响应请求操作失败的状态码
@@ -28,7 +29,12 @@ public class MyConstants {
     //以下为全局使用的字段名
 	public static final String KEY_STATE="state";
 	public static final String KEY_DATA="data";
-	//以下分模块使用的字段名
+	/*以下为模块名*/
+	public static final String MODULE_NEAR="附近";
+	public static final String MODULE_ME="我";
+	public static final String MODULE_LINKMAN="联系人";
+	public static final String MODULE_NEWS="消息";
+	//以下分类使用的字段名
 	/*User类的字段名*/
 	public static final String KEY_USER_ID="bb_num";
 	public static final String KEY_USER_USERNAME="username";

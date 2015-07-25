@@ -15,7 +15,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+        android:theme="@style/AppTheme" >
         <activity
             android:name="android.BB.ui.activity.LoginActivity"
             android:label="@string/login_label" >
