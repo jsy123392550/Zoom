@@ -1,12 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}" >
+    tools:context="${relativePackage}.${activityClass}">
+
     <include
         android:id="@+id/main_toolbar"
-        layout="@layout/toolbar_center_text"/>
+        layout="@layout/toolbar_center_text" />
     <!-- 顶部内容，用于fragment的切换 -->
     <RelativeLayout
         android:id="@+id/main_content"
@@ -16,49 +17,129 @@
 
     </RelativeLayout>
 
-    <!-- 底部栏 用于切换5个模块 -->
+    <!-- 底部栏 用于切换5个模块
+         目前由于图标大小不一致导致图标下的字没对齐-->
     <LinearLayout
         android:id="@+id/main_bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
         android:background="#f0f4f7"
-        android:layout_alignParentBottom="true">
+        android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/img_bottom_nearby"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/main_bottom_nearby"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"/>
-        <ImageView
-            android:id="@+id/img_bottom_news"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/main_bottom_news"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"/>
-        <ImageView
-            android:id="@+id/img_bottom_BB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/main_bottom_bb"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"/>
-        <ImageView
-            android:id="@+id/img_bottom_linkman"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/main_bottom_linkman"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"/>
-        <ImageView
-            android:id="@+id/img_bottom_userinfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/ic_launcher"
-            android:layout_weight="1"/>
+        <LinearLayout
+            android:id="@+id/main_bottom_nearby"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_bottom_nearby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/main_bottom_nearby_normal" />
+
+            <TextView
+                android:id="@+id/tv_bottom_nearby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/module_near"
+                android:textColor="@color/main_bottom_module_text_press" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_bottom_news"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_bottom_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/main_bottom_news_normal" />
+
+            <TextView
+                android:id="@+id/tv_bottom_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/module_message"
+                android:textColor="@color/main_bottom_module_text_normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_bottom_BB"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_bottom_BB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/main_bottom_bb_normal" />
+
+            <TextView
+                android:id="@+id/tv_bottom_BB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/login_label"
+                android:textColor="@color/main_bottom_module_text_normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_bottom_linkman"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_bottom_linkman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/main_bottom_linkman_normal" />
+
+            <TextView
+                android:id="@+id/tv_bottom_linkman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/module_linkman"
+                android:textColor="@color/main_bottom_module_text_normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_bottom_userinfo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_bottom_userinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_bottom_userinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/module_me"
+                android:textColor="@color/main_bottom_module_text_normal" />
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

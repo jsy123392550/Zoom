@@ -134,7 +134,8 @@
         android:layout_below="@id/regist_getnum_btn"
         android:layout_marginTop="15dip"
         android:button="@drawable/regist_checkbox"
-        android:text="@string/regist_readagreement" />
+        android:text="@string/regist_readagreement"
+        android:textColor="@android:color/white"/>
 
     <Button
         android:id="@+id/regist_regist_btn"
