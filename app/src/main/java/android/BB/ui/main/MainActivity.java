@@ -1,14 +1,14 @@
-package android.BB.ui.activity;
+package android.BB.ui.main;
 
 import android.BB.finals.MyConstants;
-import android.BB.ui.fragment.BBFragment;
-import android.BB.ui.fragment.LinkmanFragment;
-import android.BB.ui.fragment.NearbyFragment;
-import android.BB.ui.fragment.NewsFragment;
-import android.BB.ui.fragment.UserInfoFragment;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.BB.ui.BB.BBFragment;
+import android.BB.ui.linkman.LinkmanFragment;
+import android.BB.ui.nearby.NearbyFragment;
+import android.BB.ui.news.NewsFragment;
+import android.BB.ui.user.UserInfoFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 		layout_linkman.setOnClickListener(this);
 		layout_news.setOnClickListener(this);
 		layout_user.setOnClickListener(this);
-		fragmentManager = MainActivity.this.getFragmentManager();
+		fragmentManager = getSupportFragmentManager();
 		nearbyFragment = new NearbyFragment();
 		fragmentManager.beginTransaction().replace(R.id.main_content, nearbyFragment).commit();
 
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		fragmentTransaction=getFragmentManager().beginTransaction();
+		fragmentTransaction=fragmentManager.beginTransaction();
 		reset();
 		switch (v.getId()) {
 			case R.id.main_bottom_nearby:

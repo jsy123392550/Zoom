@@ -17,7 +17,7 @@
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="android.BB.ui.activity.LoginActivity"
+            android:name="android.BB.ui.user.LoginActivity"
             android:label="@string/login_label" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,9 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="android.BB.ui.activity.MainActivity" />
-        <activity android:name="android.BB.ui.activity.RegistActivity" />
-        <activity android:name="android.BB.ui.activity.RegistInfoActivity" />
+        <activity android:name="android.BB.ui.main.MainActivity" />
+        <activity android:name="android.BB.ui.user.RegistActivity" />
+        <activity android:name="android.BB.ui.user.RegistInfoActivity" />
     </application>
 
 </manifest>

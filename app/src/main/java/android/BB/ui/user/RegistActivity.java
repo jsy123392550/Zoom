@@ -1,4 +1,4 @@
-package android.BB.ui.activity;
+package android.BB.ui.user;
 
 import android.app.Activity;
 import android.content.Intent;

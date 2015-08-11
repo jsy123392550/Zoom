@@ -16,6 +16,8 @@ public class MyConstants {
 	public static final String CACHE_PATH = APP_PATH + WEB_SEPARATOR + "cache";
     // 图片存放地址
 	public static final String IMAGE_PATH = APP_PATH + WEB_SEPARATOR + "image";
+	//以下为UI中所用字段名
+	public static final String TEXT_USER="用户";
 	public static final String TEXT_NO_NET = "当前没有网络";
 	public static final String TEXT_UNKNOWN_EXCEPTION="发生未知错误";
 	public static final String TEXT_LOGIN_PWD_WRONG="用户名或密码错误";

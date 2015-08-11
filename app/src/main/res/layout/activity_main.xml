@@ -22,7 +22,7 @@
     <LinearLayout
         android:id="@+id/main_bottom"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="#f0f4f7"
         android:orientation="horizontal">
@@ -37,17 +37,18 @@
 
             <ImageView
                 android:id="@+id/img_bottom_nearby"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@mipmap/main_bottom_nearby_normal" />
 
             <TextView
                 android:id="@+id/tv_bottom_nearby"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/module_near"
-                android:textColor="@color/main_bottom_module_text_press" />
+                android:textColor="@color/main_bottom_module_text_press"
+                android:textSize="12sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -60,17 +61,18 @@
 
             <ImageView
                 android:id="@+id/img_bottom_news"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@mipmap/main_bottom_news_normal" />
 
             <TextView
                 android:id="@+id/tv_bottom_news"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/module_message"
-                android:textColor="@color/main_bottom_module_text_normal" />
+                android:textColor="@color/main_bottom_module_text_normal"
+                android:textSize="12sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -83,17 +85,18 @@
 
             <ImageView
                 android:id="@+id/img_bottom_BB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@mipmap/main_bottom_bb_normal" />
 
             <TextView
                 android:id="@+id/tv_bottom_BB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/login_label"
-                android:textColor="@color/main_bottom_module_text_normal" />
+                android:textColor="@color/main_bottom_module_text_normal"
+                android:textSize="12sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -106,17 +109,18 @@
 
             <ImageView
                 android:id="@+id/img_bottom_linkman"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@mipmap/main_bottom_linkman_normal" />
 
             <TextView
                 android:id="@+id/tv_bottom_linkman"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/module_linkman"
-                android:textColor="@color/main_bottom_module_text_normal" />
+                android:textColor="@color/main_bottom_module_text_normal"
+                android:textSize="12sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -129,17 +133,18 @@
 
             <ImageView
                 android:id="@+id/img_bottom_userinfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_bottom_userinfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/module_me"
-                android:textColor="@color/main_bottom_module_text_normal" />
+                android:textColor="@color/main_bottom_module_text_normal"
+                android:textSize="12sp"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
