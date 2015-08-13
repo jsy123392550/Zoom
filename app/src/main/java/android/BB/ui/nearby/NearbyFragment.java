@@ -1,6 +1,7 @@
 package android.BB.ui.nearby;
 
 import android.BB.finals.MyConstants;
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -21,6 +22,7 @@ import java.util.List;
 import app.BB.R;
 
 public class NearbyFragment extends Fragment {
+    private static final String CURRENT_INDEX="current_index";
     private ViewPager viewpager;
     private NearbyFragment_BB _BBFragment;
     private NearbyFragment_User _UserFragment;
@@ -32,8 +34,78 @@ public class NearbyFragment extends Fragment {
     private int screenW;
     private int currIndex=0;
     ClickListener clickListener;
+
+   /* @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i("BB","nearbyfragment create");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("BB", "nearbyfragment destroy");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i("BB", "nearbyfragment pause");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.i("BB", "nearbyfragment stop");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.i("BB", "nearbyfragment destroyview");
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        Log.i("BB", "nearbyfragment attach");
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.i("BB", "nearbyfragment activitycreated");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.i("BB", "nearbyfragment start");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("BB", "nearbyfragment resume");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.i("BB", "nearbyfragment detach");
+    }*/
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(CURRENT_INDEX,currIndex);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if(savedInstanceState!=null){
+            currIndex=savedInstanceState.getInt(CURRENT_INDEX);
+        }
         View view=inflater.inflate(R.layout.ll_nearby, container, false);
         fragmentList=new ArrayList<>();
         _BBFragment=new NearbyFragment_BB();
@@ -45,11 +117,14 @@ public class NearbyFragment extends Fragment {
         viewpager= (ViewPager) view.findViewById(R.id.viewpager_nearby);
         indicator=view.findViewById(R.id.view_nearby_indicator);
         init();
+        Log.i("BB","currIndex:"+currIndex);
         return view;
     }
     private void init() {
         screenW=DensityUtils.getScreenW(getActivity());
-        indicator.setLayoutParams(new LinearLayout.LayoutParams(screenW/2, DensityUtils.dip2px(getActivity(), 6)));
+        int width_indicator=screenW/2;
+        indicator.setLayoutParams(new LinearLayout.LayoutParams(width_indicator, DensityUtils.dip2px(getActivity(), 6)));
+        indicator.setX(currIndex*width_indicator);
         adapter=new FragAdapter(getChildFragmentManager(),fragmentList);
         viewpager.setAdapter(adapter);
         viewpager.addOnPageChangeListener(new PagerListener());

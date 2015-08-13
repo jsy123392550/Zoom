@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -21,6 +22,12 @@ import android.widget.TextView;
 import app.BB.R;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener{
+	private static final String CURRENT_INDEX="current_index";
+	private static final int NEARBY_INDEX=0;
+	private static final int NEWS_INDEX=1;
+	private static final int BB_INDEX=2;
+	private static final int LINKMAN_INDEX=3;
+	private static final int USER_INDEX=4;
 
 	private FragmentManager fragmentManager;
 	private FragmentTransaction fragmentTransaction = null;
@@ -46,12 +53,42 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 	private TextView tv_BB;
 	private TextView tv_linkman;
 	private TextView tv_user;
+	private int curIndex;
+	private Fragment curFragment;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		initView();
 		setDefaultContent();
+		if(savedInstanceState == null) {
+			curIndex=NEARBY_INDEX;
+			nearbyFragment = new NearbyFragment();
+			fragmentManager.beginTransaction().add(R.id.main_content, nearbyFragment,String.valueOf(NEARBY_INDEX)).commit();
+			setCurStatus();/*设置初始时toolbar字内容以及bottom被选中的状态*/
+		}else{
+			fragmentTransaction=fragmentManager.beginTransaction();
+			curIndex =savedInstanceState.getInt(CURRENT_INDEX);
+			nearbyFragment=fragmentManager.findFragmentByTag(String.valueOf(NEARBY_INDEX));
+			newsFragment=fragmentManager.findFragmentByTag(String.valueOf(NEWS_INDEX));
+			bbFragment=fragmentManager.findFragmentByTag(String.valueOf(BB_INDEX));
+			linkmanFragment=fragmentManager.findFragmentByTag(String.valueOf(LINKMAN_INDEX));
+			userinfoFragment=fragmentManager.findFragmentByTag(String.valueOf(USER_INDEX));
+			setCurStatus();/*将activity被回收前curFragment的状态读取*/
+			for(Fragment fragment:fragmentManager.getFragments()){
+				if(fragment==curFragment)
+					fragmentTransaction.show(fragment);
+				else
+					fragmentTransaction.hide(fragment);
+			}
+			fragmentTransaction.commit();
+		}
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt(CURRENT_INDEX, curIndex);
 	}
 
 	private void setDefaultContent() {
@@ -64,9 +101,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 		layout_news.setOnClickListener(this);
 		layout_user.setOnClickListener(this);
 		fragmentManager = getSupportFragmentManager();
-		nearbyFragment = new NearbyFragment();
-		fragmentManager.beginTransaction().replace(R.id.main_content, nearbyFragment).commit();
-
 	}
 
 	private void initView() {
@@ -91,57 +125,45 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		fragmentTransaction=fragmentManager.beginTransaction();
 		reset();
 		switch (v.getId()) {
 			case R.id.main_bottom_nearby:
 				if (nearbyFragment == null) {
 					nearbyFragment = new NearbyFragment();
 				}
-				tv_toolbar.setText(MyConstants.MODULE_NEAR);
-				tv_nearby.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
-//				img_nearby.setImageResource(R.mipmap.main_bottom_nearby_press);
-				fragmentTransaction.replace(R.id.main_content, nearbyFragment);
+				curIndex =NEARBY_INDEX;
+				switchContent(curFragment, nearbyFragment);
 				break;
 			case R.id.main_bottom_news:
 				if (newsFragment == null) {
 					newsFragment = new NewsFragment();
 				}
-				tv_toolbar.setText(MyConstants.MODULE_NEWS);
-				tv_news.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
-//				img_news.setImageResource(R.mipmap.main_bottom_news_press);
-				fragmentTransaction.replace(R.id.main_content, newsFragment);
+				curIndex =NEWS_INDEX;
+				switchContent(curFragment,newsFragment);
 				break;
 			case R.id.main_bottom_BB:
 				if (bbFragment == null) {
 					bbFragment = new BBFragment();
 				}
-				tv_toolbar.setText(MyConstants.APP_TAG);
-				tv_BB.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
-//				img_BB.setImageResource(R.mipmap.main_bottom_bb_press);
-				fragmentTransaction.replace(R.id.main_content, bbFragment);
+				curIndex =BB_INDEX;
+				switchContent(curFragment,bbFragment);
 				break;
 			case R.id.main_bottom_linkman:
 				if (linkmanFragment == null) {
 					linkmanFragment = new LinkmanFragment();
 				}
-				tv_toolbar.setText(MyConstants.MODULE_LINKMAN);
-				tv_linkman.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
-//				img_linkman.setImageResource(R.mipmap.main_bottom_linkman_press);
-				fragmentTransaction.replace(R.id.main_content, linkmanFragment);
+				curIndex =LINKMAN_INDEX;
+				switchContent(curFragment,linkmanFragment);
 				break;
 			case R.id.main_bottom_userinfo:
 				if (userinfoFragment == null) {
 					userinfoFragment = new UserInfoFragment();
 				}
-				tv_toolbar.setText(MyConstants.MODULE_ME);
-				tv_user.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
-//				img_user.setImageResource(R.mipmap.main_bottom_userinfo_press);
-				fragmentTransaction.replace(R.id.main_content, userinfoFragment);
+				curIndex =USER_INDEX;
+				switchContent(curFragment,userinfoFragment);
 				break;
 		}
-
-		fragmentTransaction.commit();
+		setCurStatus();
 	}
 	private void reset(){
 		img_nearby.setImageResource(R.mipmap.main_bottom_nearby_normal);
@@ -154,5 +176,49 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 		tv_BB.setTextColor(getResources().getColor(R.color.main_bottom_module_text_normal));
 		tv_linkman.setTextColor(getResources().getColor(R.color.main_bottom_module_text_normal));
 		tv_user.setTextColor(getResources().getColor(R.color.main_bottom_module_text_normal));
+	}
+	private void switchContent(Fragment from,Fragment to){
+		fragmentTransaction=fragmentManager.beginTransaction();
+		if(curFragment!=to){
+			if(to.isAdded()){
+				fragmentTransaction.hide(from).show(to).commit();
+			}else{
+				fragmentTransaction.hide(from).add(R.id.main_content,to,String.valueOf(curIndex)).commit();
+			}
+		}
+	}
+	private void setCurStatus(){
+		switch(curIndex){
+			case NEARBY_INDEX:
+				tv_toolbar.setText(MyConstants.MODULE_NEAR);
+				tv_nearby.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
+//				img_nearby.setImageResource(R.mipmap.main_bottom_nearby_press);
+				curFragment=nearbyFragment;
+				break;
+			case NEWS_INDEX:
+				tv_toolbar.setText(MyConstants.MODULE_NEWS);
+				tv_news.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
+//				img_news.setImageResource(R.mipmap.main_bottom_news_press);
+				curFragment=newsFragment;
+				break;
+			case BB_INDEX:
+				tv_toolbar.setText(MyConstants.APP_TAG);
+				tv_BB.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
+//				img_BB.setImageResource(R.mipmap.main_bottom_bb_press);
+				curFragment=bbFragment;
+				break;
+			case LINKMAN_INDEX:
+				tv_toolbar.setText(MyConstants.MODULE_LINKMAN);
+				tv_linkman.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
+//				img_linkman.setImageResource(R.mipmap.main_bottom_linkman_press);
+				curFragment=linkmanFragment;
+				break;
+			case USER_INDEX:
+				tv_toolbar.setText(MyConstants.MODULE_ME);
+				tv_user.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
+//				img_user.setImageResource(R.mipmap.main_bottom_userinfo_press);
+				curFragment=userinfoFragment;
+				break;
+		}
 	}
 }

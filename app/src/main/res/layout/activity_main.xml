@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:text="@string/module_near"
-                android:textColor="@color/main_bottom_module_text_press"
+                android:textColor="@color/main_bottom_module_text_normal"
                 android:textSize="12sp"/>
         </LinearLayout>
 
