@@ -4,6 +4,7 @@ import android.BB.finals.MyConstants;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,6 @@ public class NearbyFragment extends Fragment {
     private TextView tv_BB;
     private TextView tv_user;
     private int screenW;
-    private int offset=0;
     private int currIndex=0;
     ClickListener clickListener;
     @Override
@@ -49,8 +49,7 @@ public class NearbyFragment extends Fragment {
     }
     private void init() {
         screenW=DensityUtils.getScreenW(getActivity());
-        offset=screenW/2;
-        indicator.setLayoutParams(new LinearLayout.LayoutParams(offset, DensityUtils.dip2px(getActivity(), 6)));
+        indicator.setLayoutParams(new LinearLayout.LayoutParams(screenW/2, DensityUtils.dip2px(getActivity(), 6)));
         adapter=new FragAdapter(getChildFragmentManager(),fragmentList);
         viewpager.setAdapter(adapter);
         viewpager.addOnPageChangeListener(new PagerListener());
@@ -62,16 +61,14 @@ public class NearbyFragment extends Fragment {
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+            if(positionOffset>0){
+                indicator.setX(positionOffsetPixels/2);
+            }
         }
 
         @Override
         public void onPageSelected(int position) {
-            Animation animation=new TranslateAnimation(currIndex*offset,position*offset,0,0);
-            animation.setDuration(300);
-            animation.setFillAfter(true);
             currIndex=position;
-            indicator.startAnimation(animation);
         }
 
         @Override
