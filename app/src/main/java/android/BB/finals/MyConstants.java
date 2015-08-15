@@ -51,6 +51,7 @@ public class MyConstants {
 	/*Information类的字段名*/
 	public static final String KEY_INFORMATION_ID="info_id";
 	public static final String KEY_INFORMATION_CONTENT="content";
+	public static final String KEY_INFORMATION_TITLE="title";
 	public static final String KEY_INFORMATION_LOCATION="location";
 	public static final String KEY_INFORMATION_TIME="time";
 	public static final String KEY_INFORMATION_MONEY="money";

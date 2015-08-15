@@ -1,6 +1,5 @@
 package android.BB.http.user;
 
-import android.BB.bean.User;
 import android.content.Context;
 import android.util.Log;
 
