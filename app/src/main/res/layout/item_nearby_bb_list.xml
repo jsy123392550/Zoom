@@ -1,87 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="7dp"
+    android:background="@drawable/item_nearby_bb_list_bg">
+
     <ImageView
         android:id="@+id/img_nearby_bb_item_head"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@mipmap/ic_launcher"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:contentDescription="@string/nearby_bb_head_desp"/>
+        android:contentDescription="@string/nearby_bb_head_desp"
+        android:src="@mipmap/ic_launcher" />
+
     <TextView
         android:id="@+id/tv_nearby_bb_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/img_nearby_bb_item_head"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:layout_toEndOf="@id/img_nearby_bb_item_head"
-        android:layout_margin="5dp"
-        android:text="过来帮我拿书"
-        android:textColor="@color/nearby_orange"/>
+        android:layout_toRightOf="@id/img_nearby_bb_item_head"
+        android:textColor="@color/nearby_orange"
+        android:textSize="12sp"/>
+
     <TextView
         android:id="@+id/tv_nearby_bb_item_distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_nearby_bb_item_title"
-        android:layout_toRightOf="@id/img_nearby_bb_item_head"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/img_nearby_bb_item_head"
-        android:layout_margin="5dp"
-        android:text="距离："/>
+        android:layout_toRightOf="@id/img_nearby_bb_item_head"
+        android:text="@string/item_nearby_bb_distance"
+        android:textSize="12sp"/>
+
     <TextView
         android:id="@+id/tv_nearby_bb_item_distance_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_nearby_bb_item_title"
-        android:layout_toRightOf="@id/tv_nearby_bb_item_distance"
-        android:layout_toEndOf="@id/tv_nearby_bb_item_distance"
         android:layout_alignBaseline="@id/tv_nearby_bb_item_distance"
-        android:text="300m"/>
+        android:layout_below="@id/tv_nearby_bb_item_title"
+        android:layout_toEndOf="@id/tv_nearby_bb_item_distance"
+        android:layout_toRightOf="@id/tv_nearby_bb_item_distance"
+        android:textSize="12sp"/>
+
     <TextView
-    android:id="@+id/tv_nearby_bb_item_time"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/tv_nearby_bb_item_distance"
-    android:layout_toRightOf="@id/img_nearby_bb_item_head"
-    android:layout_toEndOf="@id/img_nearby_bb_item_head"
-    android:layout_margin="5dp"
-    android:text="时间："/>
+        android:id="@+id/tv_nearby_bb_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_nearby_bb_item_distance"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/img_nearby_bb_item_head"
+        android:layout_toRightOf="@id/img_nearby_bb_item_head"
+        android:text="@string/item_nearby_bb_time"
+        android:textSize="12sp"/>
+
     <TextView
         android:id="@+id/tv_nearby_bb_item_time_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_nearby_bb_item_distance"
-        android:layout_toRightOf="@id/tv_nearby_bb_item_time"
-        android:layout_toEndOf="@id/tv_nearby_bb_item_time"
         android:layout_alignBaseline="@id/tv_nearby_bb_item_time"
-        android:text="14:00"/>
+        android:layout_below="@id/tv_nearby_bb_item_distance"
+        android:layout_toEndOf="@id/tv_nearby_bb_item_time"
+        android:layout_toRightOf="@id/tv_nearby_bb_item_time"
+        android:textSize="12sp"/>
+
     <TextView
         android:id="@+id/tv_nearby_bb_item_position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_nearby_bb_item_time"
-        android:layout_toRightOf="@id/img_nearby_bb_item_head"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/img_nearby_bb_item_head"
-        android:layout_margin="5dp"
-        android:text="地点："/>
+        android:layout_toRightOf="@id/img_nearby_bb_item_head"
+        android:text="@string/item_nearby_bb_position"
+        android:textSize="12sp"/>
+
     <TextView
         android:id="@+id/tv_nearby_bb_item_position_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_nearby_bb_item_time"
-        android:layout_toRightOf="@id/tv_nearby_bb_item_position"
-        android:layout_toEndOf="@id/tv_nearby_bb_item_position"
         android:layout_alignBaseline="@id/tv_nearby_bb_item_position"
-        android:text="2教前门门口"/>
+        android:layout_below="@id/tv_nearby_bb_item_time"
+        android:layout_toEndOf="@id/tv_nearby_bb_item_position"
+        android:layout_toRightOf="@id/tv_nearby_bb_item_position"
+        android:textSize="12sp"/>
+
     <Button
         android:id="@+id/bt_nearby_bb_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:background="@drawable/nearby_btn_normal"
-        android:text="我要帮忙"
-        android:textSize="16sp"
-        android:textColor="@android:color/white"/>
+        android:text="@string/item_nearby_bb_btn"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 </RelativeLayout>

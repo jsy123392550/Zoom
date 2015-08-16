@@ -1,43 +1,43 @@
 package android.BB.finals;
 
 public class MyConstants {
-    //è¿™ä¸ªAppçš„Logçš„TAG
+    //Õâ¸öAppµÄLogµÄTAG
 	public static final String APP_TAG = "BB";
 	public static final String WEB_SEPARATOR = "/";
-    //ä¸»æœºåœ°å€
+    //Ö÷»úµØÖ·
 	public static final String HOST = "113.250.153.193:8088" + WEB_SEPARATOR
 			+ "web_1" + WEB_SEPARATOR;
 	public static final String HTTP = "http://";
-    // æœåŠ¡å™¨åœ°å€
+    // ·şÎñÆ÷µØÖ·
 	public static final String SERVER_URL = HTTP + HOST;
-    // appå­˜æ”¾åœ°å€
+    // app´æ·ÅµØÖ·
 	public static final String APP_PATH = WEB_SEPARATOR + "BB";
-    // ç¼“å­˜å­˜æ”¾åœ°å€
+    // »º´æ´æ·ÅµØÖ·
 	public static final String CACHE_PATH = APP_PATH + WEB_SEPARATOR + "cache";
-    // å›¾ç‰‡å­˜æ”¾åœ°å€
+    // Í¼Æ¬´æ·ÅµØÖ·
 	public static final String IMAGE_PATH = APP_PATH + WEB_SEPARATOR + "image";
-	//ä»¥ä¸‹ä¸ºUIä¸­æ‰€ç”¨å­—æ®µå
-	public static final String TEXT_USER="ç”¨æˆ·";
-	public static final String TEXT_NO_NET = "å½“å‰æ²¡æœ‰ç½‘ç»œ";
-	public static final String TEXT_UNKNOWN_EXCEPTION="å‘ç”ŸæœªçŸ¥é”™è¯¯";
-	public static final String TEXT_LOGIN_PWD_WRONG="ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯";
+	//ÒÔÏÂÎªUIÖĞËùÓÃ×Ö¶ÎÃû
+	public static final String TEXT_USER="ÓÃ»§";
+	public static final String TEXT_NO_NET = "µ±Ç°Ã»ÓĞÍøÂç";
+	public static final String TEXT_UNKNOWN_EXCEPTION="·¢ÉúÎ´Öª´íÎó";
+	public static final String TEXT_LOGIN_PWD_WRONG="ÓÃ»§Ãû»òÃÜÂë´íÎó";
 	public static final String TEXT_NULL="";
-    //æœåŠ¡å™¨å“åº”è¯·æ±‚æ“ä½œæˆåŠŸçš„çŠ¶æ€ç 
+    //·şÎñÆ÷ÏìÓ¦ÇëÇó²Ù×÷³É¹¦µÄ×´Ì¬Âë
 	public static final int RESPONSE_CODE_SUCCESS=666;
-    //æœåŠ¡å™¨å“åº”è¯·æ±‚æ“ä½œå¤±è´¥çš„çŠ¶æ€ç 
+    //·şÎñÆ÷ÏìÓ¦ÇëÇó²Ù×÷Ê§°ÜµÄ×´Ì¬Âë
 	public static final int RESPONSE_CODE_FAILURE=667;
-    //æœåŠ¡å™¨å“åº”è¯·æ±‚æ“ä½œæœªçŸ¥é”™è¯¯çš„çŠ¶æ€ç 
+    //·şÎñÆ÷ÏìÓ¦ÇëÇó²Ù×÷Î´Öª´íÎóµÄ×´Ì¬Âë
 	public static final int RESPONSE_CODE_UNKNOWN=668;
-    //ä»¥ä¸‹ä¸ºå…¨å±€ä½¿ç”¨çš„å­—æ®µå
+    //ÒÔÏÂÎªÈ«¾ÖÊ¹ÓÃµÄ×Ö¶ÎÃû
 	public static final String KEY_STATE="state";
 	public static final String KEY_DATA="data";
-	/*ä»¥ä¸‹ä¸ºæ¨¡å—å*/
-	public static final String MODULE_NEAR="é™„è¿‘";
-	public static final String MODULE_ME="æˆ‘";
-	public static final String MODULE_LINKMAN="è”ç³»äºº";
-	public static final String MODULE_NEWS="æ¶ˆæ¯";
-	//ä»¥ä¸‹åˆ†ç±»ä½¿ç”¨çš„å­—æ®µå
-	/*Userç±»çš„å­—æ®µå*/
+	/*ÒÔÏÂÎªÄ£¿éÃû*/
+	public static final String MODULE_NEAR="¸½½ü";
+	public static final String MODULE_ME="ÎÒ";
+	public static final String MODULE_LINKMAN="ÁªÏµÈË";
+	public static final String MODULE_NEWS="ÏûÏ¢";
+	//ÒÔÏÂ·ÖÀàÊ¹ÓÃµÄ×Ö¶ÎÃû
+	/*UserÀàµÄ×Ö¶ÎÃû*/
 	public static final String KEY_USER_ID="bb_num";
 	public static final String KEY_USER_USERNAME="username";
 	public static final String KEY_USER_HEADPHOTO="head_photo";
@@ -48,7 +48,7 @@ public class MyConstants {
 	public static final String KEY_USER_SESSION="session_id";
 	public static final String KEY_USER_LOCATION="location";
 	public static final String KEY_USER_SEX="sex";
-	/*Informationç±»çš„å­—æ®µå*/
+	/*InformationÀàµÄ×Ö¶ÎÃû*/
 	public static final String KEY_INFORMATION_ID="info_id";
 	public static final String KEY_INFORMATION_CONTENT="content";
 	public static final String KEY_INFORMATION_TITLE="title";
@@ -56,6 +56,6 @@ public class MyConstants {
 	public static final String KEY_INFORMATION_TIME="time";
 	public static final String KEY_INFORMATION_MONEY="money";
 	public static final String KEY_INFORMATION_BB_ID="bb_num";
-	//ä»¥ä¸‹ä¸ºæ–¹æ³•å
+	//ÒÔÏÂÎª·½·¨Ãû
 	public static final String METHOD_LOGIN="login";
 }

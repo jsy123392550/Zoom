@@ -1,20 +1,15 @@
 package android.BB.ui.nearby;
 
-import android.BB.finals.MyConstants;
-import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.kymjs.kjframe.utils.DensityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,13 +112,13 @@ public class NearbyFragment extends Fragment {
         viewpager= (ViewPager) view.findViewById(R.id.viewpager_nearby);
         indicator=view.findViewById(R.id.view_nearby_indicator);
         init();
-        Log.i("BB","currIndex:"+currIndex);
         return view;
     }
     private void init() {
-        screenW=DensityUtils.getScreenW(getActivity());
+        DisplayMetrics dm=getActivity().getResources().getDisplayMetrics();
+        screenW=dm.widthPixels;
         int width_indicator=screenW/2;
-        indicator.setLayoutParams(new LinearLayout.LayoutParams(width_indicator, DensityUtils.dip2px(getActivity(), 6)));
+        indicator.setLayoutParams(new LinearLayout.LayoutParams(screenW/2, (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,6,dm)));
         indicator.setX(currIndex*width_indicator);
         adapter=new FragAdapter(getChildFragmentManager(),fragmentList);
         viewpager.setAdapter(adapter);
