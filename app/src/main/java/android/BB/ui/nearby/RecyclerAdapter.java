@@ -13,6 +13,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,6 +35,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private BBInfo bbInfo;
     private Context mContext;
     private LayoutInflater layoutInflater;
+    private ItemClickListener itemClickListener;
 
     public RecyclerAdapter(Context context) {
         this.mContext = context;
@@ -70,7 +72,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }
             }
         }
-        bbInfo = new BBInfo(Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH + "/example.png", "帮忙去二教拿书", "300m", "二教前门门口", "15:56");
+        bbInfo = new BBInfo(1,Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH + "/example.png", "帮忙去二教拿书", "300m", "二教前门门口", "15:56");
         for (int i = 0; i < 10; i++) {
             mList.add(bbInfo);
         }
@@ -100,11 +102,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int pos) {
         if (viewHolder instanceof ItemViewHolder) {
-            ((ItemViewHolder) viewHolder).head.setImageBitmap(BitmapFactory.decodeFile(mList.get(pos).getUser_head()));
-            ((ItemViewHolder) viewHolder).title.setText(mList.get(pos).getTitle());
-            ((ItemViewHolder) viewHolder).distance.setText(mList.get(pos).getDistance());
-            ((ItemViewHolder) viewHolder).time.setText(mList.get(pos).getTime());
-            ((ItemViewHolder) viewHolder).position.setText(mList.get(pos).getPosition());
+            ((ItemViewHolder) viewHolder).bind(pos);
         }
     }
 
@@ -131,21 +129,27 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         for(int i=0;i<10;i++){
             mList.add(bbInfo);
         }
-        notifyItemInserted(getItemCount()-1);
+        notifyItemInserted(getItemCount());
     }
 
     /*下拉刷新*/
     public void refresh() {
 
     }
-
+    interface ItemClickListener{
+        public void click(int info_id,int pos);
+    }
+    public void setClickListener(ItemClickListener itemClickListener){
+        this.itemClickListener=itemClickListener;
+    }
     class ItemViewHolder extends ViewHolder {
-        ImageView head;
-        TextView title;
-        TextView distance;
-        TextView time;
-        TextView position;
-
+        private int info_id;
+        private ImageView head;
+        private TextView title;
+        private TextView distance;
+        private TextView time;
+        private TextView position;
+        private Button btn;
         public ItemViewHolder(View itemView) {
             super(itemView);
             head = (ImageView) itemView.findViewById(R.id.img_nearby_bb_item_head);
@@ -153,6 +157,29 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             distance = (TextView) itemView.findViewById(R.id.tv_nearby_bb_item_distance_content);
             time = (TextView) itemView.findViewById(R.id.tv_nearby_bb_item_time_content);
             position = (TextView) itemView.findViewById(R.id.tv_nearby_bb_item_position_content);
+            btn= (Button) itemView.findViewById(R.id.btn_nearby_bb_item);
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(itemClickListener!=null)
+                        itemClickListener.click(info_id,getAdapterPosition());
+                }
+            });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(itemClickListener!=null)
+                        itemClickListener.click(info_id,getAdapterPosition());
+                }
+            });
+        }
+        public void bind(int pos){
+            info_id=mList.get(pos).getInfo_id();
+            head.setImageBitmap(BitmapFactory.decodeFile(mList.get(pos).getUser_head()));
+            title.setText(mList.get(pos).getTitle());
+            distance.setText(mList.get(pos).getDistance());
+            time.setText(mList.get(pos).getTime());
+            position.setText(mList.get(pos).getPosition());
         }
     }
 

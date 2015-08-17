@@ -24,7 +24,7 @@
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@id/img_nearby_bb_item_head"
         android:layout_toRightOf="@id/img_nearby_bb_item_head"
-        android:textColor="@color/nearby_orange"
+        android:textColor="@color/nearby_orange_normal"
         android:textSize="12sp"/>
 
     <TextView
@@ -97,13 +97,14 @@
         android:textSize="12sp"/>
 
     <Button
-        android:id="@+id/bt_nearby_bb_item"
+        android:id="@+id/btn_nearby_bb_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/nearby_btn_normal"
+        android:background="@drawable/nearby_btn"
+        android:focusable="false"
         android:text="@string/item_nearby_bb_btn"
         android:textColor="@android:color/white"
         android:textSize="16sp" />

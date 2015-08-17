@@ -52,6 +52,12 @@ public class NearbyFragment_BB extends Fragment{
                 }
             }
         };
+        adapter.setClickListener(new RecyclerAdapter.ItemClickListener() {
+            @Override
+            public void click(int info_id, int pos) {
+                Toast.makeText(getActivity(),"id:"+info_id+"  pos:"+pos,Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
     }
     private void init(){
