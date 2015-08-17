@@ -19,8 +19,8 @@ import app.BB.R;
 public class NearbyFragment extends Fragment {
     private static final String CURRENT_INDEX="current_index";
     private ViewPager viewpager;
-    private NearbyFragment_BB _BBFragment;
-    private NearbyFragment_User _UserFragment;
+    private NearbyBBFragment _BBFragment;
+    private NearbyUserFragment _UserFragment;
     private List<Fragment> fragmentList;
     private FragAdapter adapter;
     private View indicator;
@@ -103,8 +103,8 @@ public class NearbyFragment extends Fragment {
         }
         View view=inflater.inflate(R.layout.ll_nearby, container, false);
         fragmentList=new ArrayList<>();
-        _BBFragment=new NearbyFragment_BB();
-        _UserFragment=new NearbyFragment_User();
+        _BBFragment=new NearbyBBFragment();
+        _UserFragment=new NearbyUserFragment();
         fragmentList.add(_BBFragment);
         fragmentList.add(_UserFragment);
         tv_BB= (TextView) view.findViewById(R.id.tv_nearby_BB);
@@ -118,7 +118,7 @@ public class NearbyFragment extends Fragment {
         DisplayMetrics dm=getActivity().getResources().getDisplayMetrics();
         screenW=dm.widthPixels;
         int width_indicator=screenW/2;
-        indicator.setLayoutParams(new LinearLayout.LayoutParams(screenW/2, (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,6,dm)));
+        indicator.setLayoutParams(new LinearLayout.LayoutParams(screenW / 2, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 6, dm)));
         indicator.setX(currIndex*width_indicator);
         adapter=new FragAdapter(getChildFragmentManager(),fragmentList);
         viewpager.setAdapter(adapter);

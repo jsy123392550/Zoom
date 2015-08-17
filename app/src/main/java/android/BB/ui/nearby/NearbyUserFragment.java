@@ -16,24 +16,26 @@ import android.widget.Toast;
 
 import app.BB.R;
 
-public class NearbyFragment_BB extends Fragment{
+public class NearbyUserFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private RecyclerAdapter adapter;
+    private UserListAdapter adapter;
     private LinearLayoutManager layoutManager;
     private int lastVisibleItem;
     private Handler handler;
-    public NearbyFragment_BB() {
+    public NearbyUserFragment() {
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_nearby_bb, container, false);
-        recyclerView= (RecyclerView) view.findViewById(R.id.recyclerview_fragment_nearby_bb);
-        swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.swipe_fragment_nearby_bb);
-        adapter=new RecyclerAdapter(getActivity());
+        Log.e("BB","user oncreate");
+        View view=inflater.inflate(R.layout.fragment_nearby_user, container, false);
+        recyclerView= (RecyclerView) view.findViewById(R.id.recyclerview_fragment_nearby_user);
+        swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.swipe_fragment_nearby_user);
+        adapter=new UserListAdapter(getActivity());
         init();
         recyclerView.setAdapter(adapter);
         layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
@@ -45,14 +47,14 @@ public class NearbyFragment_BB extends Fragment{
                 if(msg.what==0){
                     adapter.refresh();
                     swipeRefreshLayout.setRefreshing(false);
-                    Toast.makeText(getActivity(),"下拉刷新成功！",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "下拉刷新成功！", Toast.LENGTH_SHORT).show();
                 }else if(msg.what==1){
                     adapter.loadMore();
                     Toast.makeText(getActivity(),"上拉加载成功！",Toast.LENGTH_SHORT).show();
                 }
             }
         };
-        adapter.setClickListener(new RecyclerAdapter.ItemClickListener() {
+        adapter.setClickListener(new UserListAdapter.ItemClickListener() {
             @Override
             public void click(int info_id, int pos) {
                 Toast.makeText(getActivity(),"id:"+info_id+"  pos:"+pos,Toast.LENGTH_SHORT).show();
@@ -60,8 +62,10 @@ public class NearbyFragment_BB extends Fragment{
         });
         return view;
     }
+
     private void init(){
         recyclerView.addOnScrollListener(new MyScrollListener());
+        recyclerView.setHasFixedSize(true);
         swipeRefreshLayout.setOnRefreshListener(new MyRefreshListener());
     }
     class MyRefreshListener implements SwipeRefreshLayout.OnRefreshListener{
@@ -85,4 +89,5 @@ public class NearbyFragment_BB extends Fragment{
             }
         }
     }
+
 }

@@ -35,8 +35,11 @@
     <string name="module_me">我</string>
     <string name="nearby_user">用户</string>
     <string name="nearby_bb_head_desp">BB用户的头像</string>
-    <string name="item_nearby_bb_distance">距离：</string>
+    <string name="item_nearby_distance">距离：</string>
     <string name="item_nearby_bb_time">时间：</string>
     <string name="item_nearby_bb_position">地点：</string>
     <string name="item_nearby_bb_btn">我要帮忙</string>
+    <string name="item_nearby_user_nickname">昵称：</string>
+    <string name="item_nearby_user_credit">信用指数：</string>
+    <string name="item_nearby_user_btn">添加关注</string>
 </resources>

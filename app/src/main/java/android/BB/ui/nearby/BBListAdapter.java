@@ -2,15 +2,13 @@ package android.BB.ui.nearby;
 
 import android.BB.bean.nearby.BBInfo;
 import android.BB.finals.MyConstants;
+import android.BB.util.AbsRecyclerAdapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.Log;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -27,20 +25,12 @@ import java.util.List;
 
 import app.BB.R;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    public static final int VIEWTYPE_ITEM = 0;
-    public static final int VIEWTYPE_FOOT = 1;
-    public static final int VIEWTYPE_DESC_SECOND=2;
-    private List<BBInfo> mList;
+public class BBListAdapter extends AbsRecyclerAdapter {
     private BBInfo bbInfo;
-    private Context mContext;
-    private LayoutInflater layoutInflater;
-    private ItemClickListener itemClickListener;
-
-    public RecyclerAdapter(Context context) {
-        this.mContext = context;
-        layoutInflater = LayoutInflater.from(mContext);
-        mList = new ArrayList<>();
+    private List<BBInfo> mList;
+    public BBListAdapter(Context context) {
+        super(context);
+        mList=new ArrayList<>();
         File file1 = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH);
         File file2 = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH + "/example.png");
         FileOutputStream fout = null;
@@ -79,6 +69,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     @Override
+    public int getItemCount() {
+        return mList.size()+1;
+    }
+
+    @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         switch(viewType){
             case VIEWTYPE_ITEM:
@@ -99,30 +94,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int pos) {
-        if (viewHolder instanceof ItemViewHolder) {
-            ((ItemViewHolder) viewHolder).bind(pos);
-        }
-    }
 
-    @Override
-    public int getItemViewType(int position) {
-        int viewType=0;
-        if(position+1==getItemCount())
-            viewType=VIEWTYPE_FOOT;
-        else if(position+2==getItemCount())
-            viewType=VIEWTYPE_DESC_SECOND;
-        else
-            viewType=VIEWTYPE_ITEM;
-        return viewType;
-//        return position + 1 == getItemCount() ? VIEWTYPE_FOOT : VIEWTYPE_ITEM;
-    }
-
-    @Override
-    public int getItemCount() {
-        return mList.size() + 1;
-    }
 
     /*上拉加载更多*/
     public void loadMore() {
@@ -136,13 +108,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void refresh() {
 
     }
-    interface ItemClickListener{
-        public void click(int info_id,int pos);
-    }
-    public void setClickListener(ItemClickListener itemClickListener){
-        this.itemClickListener=itemClickListener;
-    }
-    class ItemViewHolder extends ViewHolder {
+    class ItemViewHolder extends AbsRecyclerAdapter.ItemViewHolder {
         private int info_id;
         private ImageView head;
         private TextView title;
@@ -158,6 +124,18 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             time = (TextView) itemView.findViewById(R.id.tv_nearby_bb_item_time_content);
             position = (TextView) itemView.findViewById(R.id.tv_nearby_bb_item_position_content);
             btn= (Button) itemView.findViewById(R.id.btn_nearby_bb_item);
+            initClickListener();
+        }
+        public void bind(int pos){
+            info_id=mList.get(pos).getInfo_id();
+            head.setImageBitmap(BitmapFactory.decodeFile(mList.get(pos).getUser_head()));
+            title.setText(mList.get(pos).getTitle());
+            distance.setText(mList.get(pos).getDistance());
+            time.setText(mList.get(pos).getTime());
+            position.setText(mList.get(pos).getPosition());
+        }
+
+        public void initClickListener() {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -172,14 +150,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         itemClickListener.click(info_id,getAdapterPosition());
                 }
             });
-        }
-        public void bind(int pos){
-            info_id=mList.get(pos).getInfo_id();
-            head.setImageBitmap(BitmapFactory.decodeFile(mList.get(pos).getUser_head()));
-            title.setText(mList.get(pos).getTitle());
-            distance.setText(mList.get(pos).getDistance());
-            time.setText(mList.get(pos).getTime());
-            position.setText(mList.get(pos).getPosition());
         }
     }
 

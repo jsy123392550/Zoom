@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="7dp"
+    android:background="@drawable/item_nearby_list_bg">
+
+    <ImageView
+        android:id="@+id/img_nearby_user_item_head"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@null"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_nearby_user_item_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/img_nearby_user_item_head"
+        android:layout_toRightOf="@id/img_nearby_user_item_head"
+        android:text="@string/item_nearby_user_nickname"
+        android:textSize="12sp"/>
+    <TextView
+        android:id="@+id/tv_nearby_user_item_nickname_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_nearby_user_item_nickname"
+        android:layout_toEndOf="@id/tv_nearby_user_item_nickname"
+        android:layout_toRightOf="@id/tv_nearby_user_item_nickname"
+        android:textSize="12sp"/>
+    <TextView
+        android:id="@+id/tv_nearby_user_item_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_nearby_user_item_nickname"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/img_nearby_user_item_head"
+        android:layout_toRightOf="@id/img_nearby_user_item_head"
+        android:text="@string/item_nearby_distance"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/tv_nearby_user_item_distance_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_nearby_user_item_distance"
+        android:layout_below="@id/tv_nearby_user_item_nickname"
+        android:layout_toEndOf="@id/tv_nearby_user_item_distance"
+        android:layout_toRightOf="@id/tv_nearby_user_item_distance"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/tv_nearby_user_item_credit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_nearby_user_item_distance"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/img_nearby_user_item_head"
+        android:layout_toRightOf="@id/img_nearby_user_item_head"
+        android:text="@string/item_nearby_user_credit"
+        android:textSize="12sp"/>
+
+    <RatingBar
+        android:id="@+id/ratingbar_nearby_user_item_credit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/MyRatingBar"
+        android:layout_alignTop="@id/tv_nearby_user_item_credit"
+        android:layout_toRightOf="@id/tv_nearby_user_item_credit"
+        android:layout_toEndOf="@id/tv_nearby_user_item_credit"
+        android:numStars="5"
+        android:isIndicator="true"/>
+    <Button
+        android:id="@+id/btn_nearby_user_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/nearby_btn"
+        android:focusable="false"
+        android:text="@string/item_nearby_user_btn"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+</RelativeLayout>

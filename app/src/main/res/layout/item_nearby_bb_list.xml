@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="7dp"
-    android:background="@drawable/item_nearby_bb_list_bg">
+    android:background="@drawable/item_nearby_list_bg">
 
     <ImageView
         android:id="@+id/img_nearby_bb_item_head"
@@ -24,7 +24,7 @@
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@id/img_nearby_bb_item_head"
         android:layout_toRightOf="@id/img_nearby_bb_item_head"
-        android:textColor="@color/nearby_orange_normal"
+        android:textColor="@color/orange_normal"
         android:textSize="12sp"/>
 
     <TextView
@@ -37,7 +37,7 @@
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/img_nearby_bb_item_head"
         android:layout_toRightOf="@id/img_nearby_bb_item_head"
-        android:text="@string/item_nearby_bb_distance"
+        android:text="@string/item_nearby_distance"
         android:textSize="12sp"/>
 
     <TextView
