@@ -16,6 +16,8 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.kymjs.kjframe.KJBitmap;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +26,10 @@ import app.BB.R;
 public class UserListAdapter extends AbsRecyclerAdapter {
     private List<UserInfo> mList;
     private UserInfo userInfo;
+    private KJBitmap kjBitmap;
     public UserListAdapter(Context context) {
         super(context);
+        kjBitmap=new KJBitmap();
         mList = new ArrayList<>();
         userInfo = new UserInfo("我是一个大帅逼","400m",1,Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH + "/example.png",3);
         for (int i = 0; i < 10; i++) {
@@ -90,7 +94,8 @@ public class UserListAdapter extends AbsRecyclerAdapter {
         }
         public void bind(int pos){
             user_id=mList.get(pos).getUser_id();
-            head.setImageBitmap(BitmapFactory.decodeFile(mList.get(pos).getUser_head()));
+            kjBitmap.display(head,mList.get(pos).getUser_head());
+//            head.setImageBitmap(BitmapFactory.decodeFile(mList.get(pos).getUser_head()));
             nickname.setText(mList.get(pos).getNickname());
             distance.setText(mList.get(pos).getDistance());
             ratingBar.setRating(mList.get(pos).getCredit());

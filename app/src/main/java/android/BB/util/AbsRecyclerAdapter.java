@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 
+
 public abstract class AbsRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
     public static final int VIEWTYPE_ITEM = 0;
     public static final int VIEWTYPE_FOOT = 1;

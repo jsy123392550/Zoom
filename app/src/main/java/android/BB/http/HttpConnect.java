@@ -15,7 +15,6 @@ public abstract class HttpConnect {
 	protected HttpConnect(Context context) {
 		mContext = context;
 		mConfig = new HttpConfig();
-		mConfig.CACHEPATH = MyConstants.CACHE_PATH;
 		mHttp = new KJHttp(mConfig);
 	}
 

@@ -66,6 +66,7 @@ public class NearbyUserFragment extends Fragment {
     private void init(){
         recyclerView.addOnScrollListener(new MyScrollListener());
         recyclerView.setHasFixedSize(true);
+        swipeRefreshLayout.setColorSchemeColors(getActivity().getResources().getColor(R.color.orange_normal), getActivity().getResources().getColor(R.color.orange_press));
         swipeRefreshLayout.setOnRefreshListener(new MyRefreshListener());
     }
     class MyRefreshListener implements SwipeRefreshLayout.OnRefreshListener{

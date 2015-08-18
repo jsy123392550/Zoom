@@ -42,4 +42,6 @@
     <string name="item_nearby_user_nickname">昵称：</string>
     <string name="item_nearby_user_credit">信用指数：</string>
     <string name="item_nearby_user_btn">添加关注</string>
+    <string name="title_activity_bbdetail">BBDetailActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>
