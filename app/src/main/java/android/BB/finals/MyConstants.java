@@ -58,4 +58,6 @@ public class MyConstants {
 	public static final String KEY_INFORMATION_BB_ID="bb_num";
 	//以下为方法名
 	public static final String METHOD_LOGIN="login";
+	/*以下为toolbar中的标题字段*/
+	public static final String KEY_TOOLBAR_BBDETAIL="BB详细信息";
 }

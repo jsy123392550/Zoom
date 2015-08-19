@@ -48,9 +48,6 @@ public class BBListAdapter extends AbsRecyclerAdapter {
                 Log.e("BB", "file:" + file2.getAbsolutePath());
                 fout.flush();
                 fout.close();
-                FileOutputStream fff=new FileOutputStream(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH,"888.txt"));
-                fff.write(new byte[]{1,1,3,4,2,1,5,41,3,4,2},0,10);
-                fff.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -147,12 +144,6 @@ public class BBListAdapter extends AbsRecyclerAdapter {
                         itemClickListener.click(info_id, getAdapterPosition());
                 }
             });
-        }
-    }
-
-    class FootViewHolder extends ViewHolder {
-        public FootViewHolder(View view) {
-            super(view);
         }
     }
 }

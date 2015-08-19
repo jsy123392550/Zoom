@@ -1,6 +1,7 @@
 package android.BB.ui.nearby;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -56,7 +57,7 @@ public class NearbyBBFragment extends Fragment{
         adapter.setClickListener(new BBListAdapter.ItemClickListener() {
             @Override
             public void click(int info_id, int pos) {
-                Toast.makeText(getActivity(),"id:"+info_id+"  pos:"+pos,Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(),BBDetailActivity.class));
             }
         });
         return view;

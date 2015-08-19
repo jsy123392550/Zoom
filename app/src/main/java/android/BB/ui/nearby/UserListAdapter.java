@@ -118,11 +118,5 @@ public class UserListAdapter extends AbsRecyclerAdapter {
             });
         }
     }
-
-    class FootViewHolder extends ViewHolder {
-        public FootViewHolder(View view) {
-            super(view);
-        }
-    }
 }
 

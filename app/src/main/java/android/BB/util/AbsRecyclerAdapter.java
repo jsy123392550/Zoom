@@ -30,7 +30,7 @@ public abstract class AbsRecyclerAdapter extends RecyclerView.Adapter<ViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        int viewType=0;
+        int viewType;
         if(position+1==getItemCount())
             viewType=VIEWTYPE_FOOT;
         else if(position+2==getItemCount())
@@ -53,6 +53,11 @@ public abstract class AbsRecyclerAdapter extends RecyclerView.Adapter<ViewHolder
             super(itemView);
         }
         public abstract void bind(int pos);
+    }
+    protected class FootViewHolder extends ViewHolder {
+        public FootViewHolder(View view) {
+            super(view);
+        }
     }
 }
 
