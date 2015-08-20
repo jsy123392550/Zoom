@@ -12,7 +12,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview_fragment_nearby_user"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
 
         </android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_bbdetail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/img_bbdetail_host_head"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:contentDescription="@null"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_bbdetail_host_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/img_bbdetail_host_head"
+        android:layout_marginLeft="8dp"
+        android:layout_toEndOf="@id/img_bbdetail_host_head"
+        android:layout_toRightOf="@id/img_bbdetail_host_head"
+        android:textColor="@color/toolbar"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_bbdetail_host_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_bbdetail_host_nickname"
+        android:layout_alignStart="@id/tv_bbdetail_host_nickname"
+        android:layout_below="@id/tv_bbdetail_host_nickname"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/main_bottom_module_text_normal"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btn_bbdetail_host"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/nearby_btn"
+        android:text="@string/item_nearby_bb_btn"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/tv_bbdetail_host_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_bbdetail_host_nickname"
+        android:layout_alignStart="@id/tv_bbdetail_host_nickname"
+        android:layout_below="@id/tv_bbdetail_host_time"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tv_bbdetail_host_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_bbdetail_host_nickname"
+        android:layout_alignStart="@id/tv_bbdetail_host_nickname"
+        android:layout_below="@id/tv_bbdetail_host_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/orange_press" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_bbdetail_host_img"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignLeft="@id/tv_bbdetail_host_nickname"
+        android:layout_alignStart="@id/tv_bbdetail_host_nickname"
+        android:layout_below="@id/tv_bbdetail_host_money"
+        android:layout_marginTop="8dp"></android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/layout_bbdetail_interact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_bbdetail_host_nickname"
+        android:layout_alignStart="@id/tv_bbdetail_host_nickname"
+        android:layout_below="@id/recyclerview_bbdetail_host_img"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_bbdetail_host_praise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@mipmap/praise" />
+
+        <TextView
+            android:id="@+id/tv_bbdetail_host_praise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/main_bottom_module_text_normal"
+            android:textSize="10sp" />
+
+        <ImageView
+            android:id="@+id/img_bbdetail_host_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:contentDescription="@null"
+            android:src="@mipmap/comment" />
+
+        <TextView
+            android:id="@+id/tv_bbdetail_host_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/main_bottom_module_text_normal"
+            android:textSize="10sp" />
+
+        <ImageView
+            android:id="@+id/img_bbdetail_host_forward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@null"
+            android:src="@mipmap/forward" />
+
+        <TextView
+            android:id="@+id/tv_bbdetail_host_forward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/main_bottom_module_text_normal"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+</RelativeLayout>
