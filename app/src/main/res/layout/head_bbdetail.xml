@@ -63,23 +63,23 @@
         android:layout_below="@id/tv_bbdetail_host_content"
         android:layout_marginTop="8dp"
         android:textColor="@color/orange_press" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_bbdetail_host_img"
+    <android.BB.ui.nearby.NoScrollGridView
+        android:id="@+id/gridview_bbdetail_host_img"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@id/tv_bbdetail_host_nickname"
         android:layout_alignStart="@id/tv_bbdetail_host_nickname"
         android:layout_below="@id/tv_bbdetail_host_money"
-        android:layout_marginTop="8dp"></android.support.v7.widget.RecyclerView>
-
+        android:layout_marginTop="8dp"
+        android:numColumns="3">
+    </android.BB.ui.nearby.NoScrollGridView>
     <LinearLayout
         android:id="@+id/layout_bbdetail_interact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/tv_bbdetail_host_nickname"
         android:layout_alignStart="@id/tv_bbdetail_host_nickname"
-        android:layout_below="@id/recyclerview_bbdetail_host_img"
+        android:layout_below="@id/gridview_bbdetail_host_img"
         android:layout_marginTop="8dp"
         android:orientation="horizontal">
 

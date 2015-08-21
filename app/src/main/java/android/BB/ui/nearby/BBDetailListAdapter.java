@@ -6,10 +6,13 @@ import android.BB.finals.MyConstants;
 import android.BB.util.AbsRecyclerAdapter;
 import android.content.Context;
 import android.os.Environment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,6 +29,7 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
     private List<Comment> list;
     private Comment comment;
     private HostInfo hostInfo;
+    private ImageGridAdapter imageGridAdapter;
     public BBDetailListAdapter(Context context) {
         super(context);
         kjBitmap=new KJBitmap();
@@ -101,7 +105,8 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
         private TextView comment;
         private TextView forward;
         private Button btn;
-        private RecyclerView recyclerView_host_img;
+        private NoScrollGridView gridView;
+        private final String PATH=Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/example.png";
         public HeadViewHolder(View itemView) {
             super(itemView);
             btn= (Button) itemView.findViewById(R.id.btn_bbdetail_host);
@@ -113,17 +118,21 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
             praise= (TextView) itemView.findViewById(R.id.tv_bbdetail_host_praise);
             comment= (TextView) itemView.findViewById(R.id.tv_bbdetail_host_comment);
             forward= (TextView) itemView.findViewById(R.id.tv_bbdetail_host_forward);
+            gridView= (NoScrollGridView) itemView.findViewById(R.id.gridview_bbdetail_host_img);
         }
 
         public void bind() {
-            kjBitmap.display(host_head,hostInfo.getUser_head());
+            kjBitmap.display(host_head, hostInfo.getUser_head());
             nickname.setText(hostInfo.getNickname());
             time.setText(hostInfo.getTime());
             content.setText(hostInfo.getContent());
-            money.setText("价钱："+hostInfo.getMoney()+"元");
+            money.setText("价钱：" + hostInfo.getMoney() + "元");
             praise.setText(String.valueOf(hostInfo.getPraise()));
             comment.setText(String.valueOf(hostInfo.getComment()));
             forward.setText(String.valueOf(hostInfo.getForward()));
+            imageGridAdapter=new ImageGridAdapter(mContext,new String[]{PATH, PATH, PATH, PATH, PATH, PATH});
+            gridView.setAdapter(imageGridAdapter);
+            Log.e("BB", "img bind");
         }
     }
     class ItemViewHolder extends AbsRecyclerAdapter.ItemViewHolder{

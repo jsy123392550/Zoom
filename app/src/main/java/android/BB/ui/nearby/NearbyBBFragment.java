@@ -1,8 +1,10 @@
 package android.BB.ui.nearby;
 
 
+import android.BB.finals.MyConstants;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -18,13 +20,13 @@ import android.widget.Toast;
 import app.BB.R;
 
 public class NearbyBBFragment extends Fragment{
-
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
     private BBListAdapter adapter;
     private LinearLayoutManager layoutManager;
     private int lastVisibleItem;
     private Handler handler;
+    private boolean isLoad;
     public NearbyBBFragment() {
     }
 
@@ -50,6 +52,7 @@ public class NearbyBBFragment extends Fragment{
                     Toast.makeText(getActivity(),"下拉刷新成功！",Toast.LENGTH_SHORT).show();
                 }else if(msg.what==1){
                     adapter.loadMore();
+                    isLoad=false;
                     Toast.makeText(getActivity(),"上拉加载成功！",Toast.LENGTH_SHORT).show();
                 }
             }
@@ -64,6 +67,7 @@ public class NearbyBBFragment extends Fragment{
     }
 
     private void init(){
+        isLoad=false;
         recyclerView.addOnScrollListener(new MyScrollListener());
         recyclerView.setHasFixedSize(true);
         swipeRefreshLayout.setColorSchemeColors(getActivity().getResources().getColor(R.color.orange_normal),getActivity().getResources().getColor(R.color.orange_press));
@@ -86,7 +90,10 @@ public class NearbyBBFragment extends Fragment{
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             super.onScrollStateChanged(recyclerView, newState);
             if(newState==RecyclerView.SCROLL_STATE_IDLE&&lastVisibleItem+1==adapter.getItemCount()){
-                handler.sendEmptyMessageDelayed(1,3000);
+                if(!isLoad){
+                    isLoad=true;
+                    handler.sendEmptyMessageDelayed(1,3000);
+                }
             }
         }
     }

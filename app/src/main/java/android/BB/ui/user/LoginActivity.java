@@ -63,6 +63,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 				}
 			});*/
 			startActivity(new Intent(this, MainActivity.class));
+			finish();
 			break;
 		case R.id.login_btn_regist:
 			startActivity(new Intent(this, RegistActivity.class));

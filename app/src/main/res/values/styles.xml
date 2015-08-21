@@ -4,6 +4,7 @@
         <item name="colorPrimaryDark">@color/toolbar</item>
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:listDivider">@drawable/item_decoration_bbdetail</item>
     </style>
     <style name="WaitDialog" parent="Theme.AppCompat.Dialog">
         <item name="android:windowBackground">@drawable/dialog_wait</item>
