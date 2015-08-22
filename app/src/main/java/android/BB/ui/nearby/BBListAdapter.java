@@ -38,13 +38,13 @@ public class BBListAdapter extends AbsRecyclerAdapter {
         mList = new ArrayList<>();
         File file1 = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH);
         file1.mkdir();
-        File file2 = new File(file1,"example.png");
+        File file2 = new File(file1,"qop.png");
         if (!file2.exists()) {
             try {
                 file2.createNewFile();
                 FileOutputStream fout = new FileOutputStream(file2);
-                Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fout);
+                Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.qop);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 70, fout);
                 Log.e("BB", "file:" + file2.getAbsolutePath());
                 fout.flush();
                 fout.close();

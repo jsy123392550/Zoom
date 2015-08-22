@@ -4,17 +4,18 @@ import android.BB.bean.nearby.Comment;
 import android.BB.bean.nearby.HostInfo;
 import android.BB.finals.MyConstants;
 import android.BB.util.AbsRecyclerAdapter;
+import android.BB.widget.NoScrollGridView;
 import android.content.Context;
 import android.os.Environment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.kymjs.kjframe.KJBitmap;
 
@@ -34,11 +35,11 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
         super(context);
         kjBitmap=new KJBitmap();
         list=new ArrayList<>();
-        comment=new Comment(2,"大骚逼一枚", Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/example.png","3分钟前","我今天没吃药，感觉自己萌萌哒！");
+        comment=new Comment(2,"大骚逼一枚", Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png","3分钟前","我今天没吃药，感觉自己萌萌哒！");
         for(int i=0;i<10;i++){
             list.add(comment);
         }
-        hostInfo=new HostInfo(1,null,"1个小时前","我在二教2217教室上课的时候忘拿雨伞了，有顺路的同学能帮我带到11栋吗？",Environment.getExternalStorageDirectory().getAbsolutePath()+MyConstants.IMAGE_PATH+"/example.png","我是一个大帅逼",5,11,3,6);
+        hostInfo=new HostInfo(1,null,"1个小时前","我在二教2217教室上课的时候忘拿雨伞了，有顺路的同学能帮我带到11栋吗？",Environment.getExternalStorageDirectory().getAbsolutePath()+MyConstants.IMAGE_PATH+"/qop.png","我是一个大帅逼",5,11,3,6);
     }
 
     @Override
@@ -106,7 +107,7 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
         private TextView forward;
         private Button btn;
         private NoScrollGridView gridView;
-        private final String PATH=Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/example.png";
+        private final String PATH=Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png";
         public HeadViewHolder(View itemView) {
             super(itemView);
             btn= (Button) itemView.findViewById(R.id.btn_bbdetail_host);
@@ -131,6 +132,12 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
             comment.setText(String.valueOf(hostInfo.getComment()));
             forward.setText(String.valueOf(hostInfo.getForward()));
             imageGridAdapter=new ImageGridAdapter(mContext,new String[]{PATH, PATH, PATH, PATH, PATH, PATH});
+//            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                }
+//            });
             gridView.setAdapter(imageGridAdapter);
             Log.e("BB", "img bind");
         }

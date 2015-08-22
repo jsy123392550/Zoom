@@ -10,7 +10,8 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:contentDescription="@null"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="fitXY"/>
 
     <TextView
         android:id="@+id/tv_bbdetail_host_nickname"
@@ -63,7 +64,7 @@
         android:layout_below="@id/tv_bbdetail_host_content"
         android:layout_marginTop="8dp"
         android:textColor="@color/orange_press" />
-    <android.BB.ui.nearby.NoScrollGridView
+    <android.BB.widget.NoScrollGridView
         android:id="@+id/gridview_bbdetail_host_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,8 +72,11 @@
         android:layout_alignStart="@id/tv_bbdetail_host_nickname"
         android:layout_below="@id/tv_bbdetail_host_money"
         android:layout_marginTop="8dp"
-        android:numColumns="3">
-    </android.BB.ui.nearby.NoScrollGridView>
+        android:horizontalSpacing="2dp"
+        android:verticalSpacing="2dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth">
+    </android.BB.widget.NoScrollGridView>
     <LinearLayout
         android:id="@+id/layout_bbdetail_interact"
         android:layout_width="match_parent"

@@ -13,7 +13,8 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:contentDescription="@string/nearby_bb_head_desp"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="fitXY"/>
 
     <TextView
         android:id="@+id/tv_nearby_bb_item_title"
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_alignTop="@id/img_nearby_bb_item_head"
         android:layout_toEndOf="@id/img_nearby_bb_item_head"
         android:layout_toRightOf="@id/img_nearby_bb_item_head"
         android:textColor="@color/orange_normal"

@@ -1,4 +1,4 @@
-package android.BB.ui.nearby;
+package android.BB.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

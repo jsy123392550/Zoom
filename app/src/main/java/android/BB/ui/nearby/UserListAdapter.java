@@ -31,7 +31,7 @@ public class UserListAdapter extends AbsRecyclerAdapter {
         super(context);
         kjBitmap=new KJBitmap();
         mList = new ArrayList<>();
-        userInfo = new UserInfo("我是一个大帅逼","400m",1,Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH + "/example.png",3);
+        userInfo = new UserInfo("我是一个大帅逼","400m",1,Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH + "/qop.png",3);
         for (int i = 0; i < 10; i++) {
             mList.add(userInfo);
         }

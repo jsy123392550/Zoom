@@ -13,7 +13,8 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:contentDescription="@null"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="fitXY"/>
 
     <TextView
         android:id="@+id/tv_nearby_user_item_nickname"
