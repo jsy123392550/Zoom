@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
-    android {compileOptions.encoding="GBK"}
+    android {compileOptions.encoding="UTF-8"}
     defaultConfig {
         applicationId "android.BB"
         minSdkVersion 11
@@ -18,7 +18,6 @@ android {
         }
     }
 }
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/KJFrameForAndroid_v2.227.jar')
