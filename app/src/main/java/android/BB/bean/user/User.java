@@ -20,7 +20,6 @@ public class User extends BaseBean {
     private String location;
     private char sex;
 
-
     public String getLocation() {
         return location;
     }
