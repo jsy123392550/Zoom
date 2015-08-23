@@ -46,6 +46,7 @@ public class ImageGridAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.e("BB","get"+position);
         ViewHolder viewHolder;
         if(convertView==null){
             convertView=layoutInflater.inflate(R.layout.item_nearby_bbdetail_imgs,null);

@@ -126,7 +126,7 @@
                 android:id="@+id/img_bottom_userinfo"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@mipmap/main_bottom_userinfo_normal" />
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_bottom_userinfo"

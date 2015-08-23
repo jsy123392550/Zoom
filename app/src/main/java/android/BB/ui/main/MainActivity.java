@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 	private TextView tv_BB;
 	private TextView tv_linkman;
 	private TextView tv_user;
-	private int curIndex;//å½“å‰é€‰ä¸­é¡¹
+	private int curIndex;
 	private Fragment curFragment;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 			curIndex=NEARBY_INDEX;
 			nearbyFragment = new NearbyFragment();
 			fragmentManager.beginTransaction().add(R.id.main_content, nearbyFragment,String.valueOf(NEARBY_INDEX)).commit();
-			setCurStatus();/*è®¾ç½®åˆå§‹æ—¶toolbarå­—å†…å®¹ä»¥åŠbottomè¢«é€‰ä¸­çš„çŠ¶æ€*/
+			setCurStatus();/*ÉèÖÃ³õÊ¼Ê±toolbar×ÖÄÚÈİÒÔ¼°bottom±»Ñ¡ÖĞµÄ×´Ì¬*/
 		}else{
 			fragmentTransaction=fragmentManager.beginTransaction();
 			curIndex =savedInstanceState.getInt(CURRENT_INDEX);
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 			bbFragment=fragmentManager.findFragmentByTag(String.valueOf(BB_INDEX));
 			linkmanFragment=fragmentManager.findFragmentByTag(String.valueOf(LINKMAN_INDEX));
 			userinfoFragment=fragmentManager.findFragmentByTag(String.valueOf(USER_INDEX));
-			setCurStatus();/*å°†activityè¢«å›æ”¶å‰curFragmentçš„çŠ¶æ€è¯»å–*/
+			setCurStatus();/*½«activity±»»ØÊÕÇ°curFragmentµÄ×´Ì¬¶ÁÈ¡*/
 			for(Fragment fragment:fragmentManager.getFragments()){
 				if(fragment==curFragment)
 					fragmentTransaction.show(fragment);
@@ -162,21 +162,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 				switchContent(curFragment,userinfoFragment);
 				break;
 		}
-		setCurStatus();//è¢«ç‚¹å‡»é¡¹é«˜äº®
+		setCurStatus();
 	}
 	private void reset(){
 		img_nearby.setImageResource(R.mipmap.main_bottom_nearby_normal);
 		img_news.setImageResource(R.mipmap.main_bottom_news_normal);
 		img_BB.setImageResource(R.mipmap.main_bottom_bb_normal);
 		img_linkman.setImageResource(R.mipmap.main_bottom_linkman_normal);
-		img_user.setImageResource(R.mipmap.main_bottom_userinfo_normal);
+		img_user.setImageResource(R.mipmap.ic_launcher);
 		tv_nearby.setTextColor(getResources().getColor(R.color.main_bottom_module_text_normal));
 		tv_news.setTextColor(getResources().getColor(R.color.main_bottom_module_text_normal));
 		tv_BB.setTextColor(getResources().getColor(R.color.main_bottom_module_text_normal));
 		tv_linkman.setTextColor(getResources().getColor(R.color.main_bottom_module_text_normal));
 		tv_user.setTextColor(getResources().getColor(R.color.main_bottom_module_text_normal));
 	}
-
 	private void switchContent(Fragment from,Fragment to){
 		fragmentTransaction=fragmentManager.beginTransaction();
 		if(curFragment!=to){
@@ -192,13 +191,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 			case NEARBY_INDEX:
 				tv_toolbar.setText(MyConstants.MODULE_NEAR);
 				tv_nearby.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
-				img_nearby.setImageResource(R.mipmap.main_bottom_nearby_clicked);
+//				img_nearby.setImageResource(R.mipmap.main_bottom_nearby_press);
 				curFragment=nearbyFragment;
 				break;
 			case NEWS_INDEX:
 				tv_toolbar.setText(MyConstants.MODULE_NEWS);
 				tv_news.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
-				img_news.setImageResource(R.mipmap.main_bottom_news_clicked);
+//				img_news.setImageResource(R.mipmap.main_bottom_news_press);
 				curFragment=newsFragment;
 				break;
 			case BB_INDEX:
@@ -210,13 +209,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 			case LINKMAN_INDEX:
 				tv_toolbar.setText(MyConstants.MODULE_LINKMAN);
 				tv_linkman.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
-				img_linkman.setImageResource(R.mipmap.main_bottom_linkman_clicked);
+//				img_linkman.setImageResource(R.mipmap.main_bottom_linkman_press);
 				curFragment=linkmanFragment;
 				break;
 			case USER_INDEX:
 				tv_toolbar.setText(MyConstants.MODULE_ME);
 				tv_user.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
-				img_user.setImageResource(R.mipmap.main_bottom_userinfo_clicked);
+//				img_user.setImageResource(R.mipmap.main_bottom_userinfo_press);
 				curFragment=userinfoFragment;
 				break;
 		}
