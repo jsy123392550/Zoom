@@ -11,4 +11,12 @@
         android:layout_height="match_parent">
 
     </android.support.v4.view.ViewPager>
+    <TextView
+        android:id="@+id/tv_image_detail_pageIndex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="48dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"/>
 </FrameLayout>

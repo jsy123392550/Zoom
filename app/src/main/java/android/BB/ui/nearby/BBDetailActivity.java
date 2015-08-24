@@ -1,5 +1,7 @@
 package android.BB.ui.nearby;
 
+import android.BB.bean.nearby.Comment;
+import android.BB.bean.nearby.HostInfo;
 import android.BB.finals.MyConstants;
 import android.BB.util.AbsRecyclerAdapter;
 import android.BB.widget.MyItemDecoration;
@@ -15,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 import app.BB.R;
 
@@ -44,7 +48,7 @@ public class BBDetailActivity extends AppCompatActivity {
         tv_toolbar.setText(MyConstants.KEY_TOOLBAR_BBDETAIL);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.back_arrow);
-        adapter=new BBDetailListAdapter(this);
+        adapter=new BBDetailListAdapter(this,(List<Comment>)getIntent().getSerializableExtra(MyConstants.KEY_COMMENT_LIST),(HostInfo)getIntent().getSerializableExtra(MyConstants.KEY_HOSTINFO));
         linearLayoutManager =new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         item_recyclerView.setLayoutManager(linearLayoutManager);
         item_recyclerView.setAdapter(adapter);

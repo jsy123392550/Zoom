@@ -1,8 +1,10 @@
 package android.BB.ui.nearby;
 
+import android.BB.finals.MyConstants;
 import android.BB.util.ImageUtil;
 import android.BB.widget.NoScrollGridView;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -17,16 +19,18 @@ import android.widget.ImageView;
 
 import org.kymjs.kjframe.KJBitmap;
 
+import java.util.ArrayList;
+
 import app.BB.R;
 
 public class ImageGridAdapter extends BaseAdapter{
-    private String imgs[];
+    private ArrayList<String> imgs;
     private Context context;
     private LayoutInflater layoutInflater;
     private ViewGroup.LayoutParams layoutParams;
     private TouchDimImage touchDimImage;
     private KJBitmap kjBitmap;
-    public ImageGridAdapter(Context context,String imgs[]){
+    public ImageGridAdapter(Context context,ArrayList<String> imgs){
         this.context=context;
         this.imgs=imgs;
         layoutInflater=LayoutInflater.from(context);
@@ -36,12 +40,12 @@ public class ImageGridAdapter extends BaseAdapter{
     }
     @Override
     public int getCount() {
-        return imgs.length;
+        return imgs==null?0:imgs.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return imgs[position];
+        return imgs.get(position);
     }
 
     @Override
@@ -51,7 +55,6 @@ public class ImageGridAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Log.e("BB", "pos:" + position + "  parent:" + parent.getChildCount());
         ViewHolder viewHolder;
         if(convertView==null){
             convertView=layoutInflater.inflate(R.layout.item_nearby_bbdetail_imgs,null);
@@ -68,13 +71,13 @@ public class ImageGridAdapter extends BaseAdapter{
             return convertView;
         }
 //        kjBitmap.display(imageView, imgs[position]);
-        viewHolder.imageView.setImageBitmap(BitmapFactory.decodeFile(imgs[position]));
+        viewHolder.imageView.setImageBitmap(BitmapFactory.decodeFile(imgs.get(position)));
+        Log.e("BB", "pos:" + position + "  parent:" + parent.getChildCount());
         return convertView;
     }
     class TouchDimImage implements View.OnTouchListener{
-        private int id;
+        private int pos=0;
         public TouchDimImage(){
-
         }
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -85,6 +88,10 @@ public class ImageGridAdapter extends BaseAdapter{
                     break;
                 case MotionEvent.ACTION_UP:
                     ((ImageView)v).clearColorFilter();
+                    Intent intent=new Intent(context,ImageDetailActivity.class);
+                    intent.putStringArrayListExtra(MyConstants.KEY_IMAGE_URLS,imgs);
+                    intent.putExtra(MyConstants.KEY_IMAGE_DETAIL_POSITION,pos);
+                    context.startActivity(intent);
                     break;
                 case MotionEvent.ACTION_CANCEL:
                     ((ImageView)v).clearColorFilter();
