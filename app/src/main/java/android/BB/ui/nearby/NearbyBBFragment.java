@@ -42,18 +42,18 @@ public class NearbyBBFragment extends Fragment{
         recyclerView.setAdapter(adapter);
         layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
-        /*Ä£ÄâÍøÂçÇëÇó*/
+        /*æ¨¡æ‹Ÿç½‘ç»œè¯·æ±‚*/
         handler=new Handler(){
             @Override
             public void handleMessage(Message msg) {
                 if(msg.what==0){
                     adapter.refresh();
                     swipeRefreshLayout.setRefreshing(false);
-                    Toast.makeText(getActivity(),"ÏÂÀ­Ë¢ĞÂ³É¹¦£¡",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"ä¸‹æ‹‰åˆ·æ–°æˆåŠŸï¼",Toast.LENGTH_SHORT).show();
                 }else if(msg.what==1){
                     adapter.loadMore();
                     isLoad=false;
-                    Toast.makeText(getActivity(),"ÉÏÀ­¼ÓÔØ³É¹¦£¡",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"ä¸Šæ‹‰åŠ è½½æˆåŠŸï¼",Toast.LENGTH_SHORT).show();
                 }
             }
         };
