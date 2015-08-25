@@ -48,7 +48,7 @@ public class ImageFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_image_detail, container, false);
         imageView= (ImageView) view.findViewById(R.id.img_image_detail_fragment);
         progressBar= (ProgressBar) view.findViewById(R.id.progressbar_image_detail_fragment);
-        kjBitmap.display(imageView, IMG_URL, new BitmapCallBack() {
+        kjBitmap.display(imageView, imgUrl, new BitmapCallBack() {
             @Override
             public void onPreLoad() {
                 progressBar.setVisibility(ProgressBar.VISIBLE);

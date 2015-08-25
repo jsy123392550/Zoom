@@ -60,4 +60,9 @@ public class MyConstants {
 	public static final String METHOD_LOGIN="login";
 	/*以下为toolbar中的标题字段*/
 	public static final String KEY_TOOLBAR_BBDETAIL="BB详细信息";
+	/*Activity中Bundle的字段名*/
+	public static final String KEY_IMAGE_URLS="img_urls";
+	public static final String KEY_IMAGE_DETAIL_POSITION="img_detail_pos";
+	public static final String KEY_HOSTINFO="hostinfo";
+	public static final String KEY_COMMENT_LIST="comment_list";
 }

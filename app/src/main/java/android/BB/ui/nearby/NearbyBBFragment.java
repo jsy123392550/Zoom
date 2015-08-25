@@ -1,6 +1,8 @@
 package android.BB.ui.nearby;
 
 
+import android.BB.bean.nearby.Comment;
+import android.BB.bean.nearby.HostInfo;
 import android.BB.finals.MyConstants;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +18,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import app.BB.R;
 
@@ -60,7 +66,20 @@ public class NearbyBBFragment extends Fragment{
         adapter.setClickListener(new BBListAdapter.ItemClickListener() {
             @Override
             public void click(int info_id, int pos) {
-                startActivity(new Intent(getActivity(),BBDetailActivity.class));
+                Intent intent=new Intent(getActivity(),BBDetailActivity.class);
+                ArrayList<String> imgs=new ArrayList<>();
+                String img=Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png";
+                List<Comment> commentList=new ArrayList<Comment>();
+                Comment comment=new Comment(2,"大骚逼一枚",img ,"3分钟前","我今天没吃药，感觉自己萌萌哒！");
+                for(int i=0;i<10;i++){
+                    commentList.add(comment);
+                    if(i>=3)
+                        imgs.add(img);
+                }
+                HostInfo hostInfo=new HostInfo(1,imgs,"1个小时前","我在二教2217教室上课的时候忘拿雨伞了，有顺路的同学能帮我带到11栋吗？",img,"我是一个大帅逼",5,11,3,6);
+                intent.putExtra(MyConstants.KEY_HOSTINFO,hostInfo);
+                intent.putExtra(MyConstants.KEY_COMMENT_LIST, (Serializable) commentList);
+                startActivity(intent);
             }
         });
         return view;
@@ -70,7 +89,7 @@ public class NearbyBBFragment extends Fragment{
         isLoad=false;
         recyclerView.addOnScrollListener(new MyScrollListener());
         recyclerView.setHasFixedSize(true);
-        swipeRefreshLayout.setColorSchemeColors(getActivity().getResources().getColor(R.color.orange_normal),getActivity().getResources().getColor(R.color.orange_press));
+        swipeRefreshLayout.setColorSchemeColors(getActivity().getResources().getColor(R.color.orange_normal), getActivity().getResources().getColor(R.color.orange_press));
         swipeRefreshLayout.setOnRefreshListener(new MyRefreshListener());
     }
     class MyRefreshListener implements SwipeRefreshLayout.OnRefreshListener{

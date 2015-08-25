@@ -1,6 +1,9 @@
 package android.BB.bean.nearby;
 
-public class HostInfo {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class HostInfo implements Serializable{
     private int user_id;
     private int praise;
     private int comment;
@@ -10,9 +13,9 @@ public class HostInfo {
     private String nickname;
     private String content;
     private String time;
-    private String imgs[];
+    private ArrayList<String>imgs;
 
-    public HostInfo(int user_id, String[] imgs, String time, String content, String user_head,String nickname, float money, int praise, int comment, int forward) {
+    public HostInfo(int user_id, ArrayList<String>imgs, String time, String content, String user_head,String nickname, float money, int praise, int comment, int forward) {
         this.user_id = user_id;
         this.imgs = imgs;
         this.time = time;
@@ -90,11 +93,11 @@ public class HostInfo {
         this.time = time;
     }
 
-    public String[] getImgs() {
+    public ArrayList<String> getImgs() {
         return imgs;
     }
 
-    public void setImgs(String[] imgs) {
+    public void setImgs(ArrayList<String> imgs) {
         this.imgs = imgs;
     }
 
@@ -104,5 +107,21 @@ public class HostInfo {
 
     public void setUser_head(String user_head) {
         this.user_head = user_head;
+    }
+
+    @Override
+    public String toString() {
+        return "HostInfo{" +
+                "user_id=" + user_id +
+                ", praise=" + praise +
+                ", comment=" + comment +
+                ", forward=" + forward +
+                ", money=" + money +
+                ", user_head='" + user_head + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", content='" + content + '\'' +
+                ", time='" + time + '\'' +
+                ", imgs=" + imgs +
+                '}';
     }
 }

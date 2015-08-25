@@ -1,9 +1,8 @@
 package android.BB.bean.nearby;
 
-/**
- * Created by Administrator on 2015/8/19 0019.
- */
-public class Comment {
+import java.io.Serializable;
+
+public class Comment implements Serializable{
     private int user_id;
     private String nickname;
     private String user_head;
@@ -56,5 +55,16 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "user_id=" + user_id +
+                ", nickname='" + nickname + '\'' +
+                ", user_head='" + user_head + '\'' +
+                ", time='" + time + '\'' +
+                ", content='" + content + '\'' +
+                '}';
     }
 }

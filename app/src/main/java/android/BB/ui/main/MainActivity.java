@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 	private TextView tv_BB;
 	private TextView tv_linkman;
 	private TextView tv_user;
-	private int curIndex;//当前选中项
+	private int curIndex;
 	private Fragment curFragment;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 			curIndex=NEARBY_INDEX;
 			nearbyFragment = new NearbyFragment();
 			fragmentManager.beginTransaction().add(R.id.main_content, nearbyFragment,String.valueOf(NEARBY_INDEX)).commit();
-			setCurStatus();/*设置初始时toolbar字内容以及bottom被选中的状态*/
+			setCurStatus();
 		}else{
 			fragmentTransaction=fragmentManager.beginTransaction();
 			curIndex =savedInstanceState.getInt(CURRENT_INDEX);
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 			bbFragment=fragmentManager.findFragmentByTag(String.valueOf(BB_INDEX));
 			linkmanFragment=fragmentManager.findFragmentByTag(String.valueOf(LINKMAN_INDEX));
 			userinfoFragment=fragmentManager.findFragmentByTag(String.valueOf(USER_INDEX));
-			setCurStatus();/*将activity被回收前curFragment的状态读取*/
+			setCurStatus();
 			for(Fragment fragment:fragmentManager.getFragments()){
 				if(fragment==curFragment)
 					fragmentTransaction.show(fragment);
@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 				switchContent(curFragment,userinfoFragment);
 				break;
 		}
-		setCurStatus();//被点击项高亮
+		setCurStatus();
 	}
 	private void reset(){
 		img_nearby.setImageResource(R.mipmap.main_bottom_nearby_normal);

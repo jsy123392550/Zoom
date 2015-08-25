@@ -8,18 +8,16 @@ import android.BB.widget.NoScrollGridView;
 import android.content.Context;
 import android.os.Environment;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.kymjs.kjframe.KJBitmap;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import app.BB.R;
@@ -27,25 +25,21 @@ import app.BB.R;
 public class BBDetailListAdapter extends AbsRecyclerAdapter{
     private static final int VIEWTYPE_HEAD=3;
     private KJBitmap kjBitmap;
-    private List<Comment> list;
-    private Comment comment;
+    private List<Comment> commentList;
     private HostInfo hostInfo;
     private ImageGridAdapter imageGridAdapter;
-    public BBDetailListAdapter(Context context) {
+    public BBDetailListAdapter(Context context,List<Comment> commentList,HostInfo hostInfo) {
         super(context);
         kjBitmap=new KJBitmap();
-        list=new ArrayList<>();
-        comment=new Comment(2,"大骚逼一枚", Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png","3分钟前","我今天没吃药，感觉自己萌萌哒！");
-        for(int i=0;i<10;i++){
-            list.add(comment);
-        }
-        hostInfo=new HostInfo(1,null,"1个小时前","我在二教2217教室上课的时候忘拿雨伞了，有顺路的同学能帮我带到11栋吗？",Environment.getExternalStorageDirectory().getAbsolutePath()+MyConstants.IMAGE_PATH+"/qop.png","我是一个大帅逼",5,11,3,6);
+        this.commentList =commentList;
+        this.hostInfo=hostInfo;
     }
 
     @Override
     public void loadMore() {
+        Comment comment=new Comment(2,"大骚逼一枚",Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png" ,"3分钟前","我今天没吃药，感觉自己萌萌哒！");
         for(int i=0;i<10;i++){
-            list.add(comment);
+            commentList.add(comment);
         }
         notifyItemInserted(getItemCount());
     }
@@ -94,46 +88,63 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
 
     @Override
     public int getItemCount() {
-        return list.size()+1;
+        return commentList.size()+1;
     }
     class HeadViewHolder extends RecyclerView.ViewHolder{
+        private static final int DURATION_MILLS=500;
         private ImageView host_head;
-        private TextView nickname;
-        private TextView time;
-        private TextView content;
-        private TextView money;
-        private TextView praise;
-        private TextView comment;
-        private TextView forward;
+        private ImageView img_praise;
+        private ImageView img_comment;
+        private ImageView img_forward;
+        private TextView tv_nickname;
+        private TextView tv_time;
+        private TextView tv_content;
+        private TextView tv_money;
+        private TextView tv_praise;
+        private TextView tv_comment;
+        private TextView tv_forward;
         private Button btn;
         private NoScrollGridView gridView;
-        private final String PATH=Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png";
+        private ScaleAnimation animation;
+        private boolean isPraise;
+        private boolean isComment;
+        private boolean isForward;
+
         public HeadViewHolder(View itemView) {
             super(itemView);
+            isPraise=false;
+            isComment=false;
+            isForward=false;
             btn= (Button) itemView.findViewById(R.id.btn_bbdetail_host);
             host_head= (ImageView) itemView.findViewById(R.id.img_bbdetail_host_head);
-            nickname= (TextView) itemView.findViewById(R.id.tv_bbdetail_host_nickname);
-            time= (TextView) itemView.findViewById(R.id.tv_bbdetail_host_time);
-            content= (TextView) itemView.findViewById(R.id.tv_bbdetail_host_content);
-            money= (TextView) itemView.findViewById(R.id.tv_bbdetail_host_money);
-            praise= (TextView) itemView.findViewById(R.id.tv_bbdetail_host_praise);
-            comment= (TextView) itemView.findViewById(R.id.tv_bbdetail_host_comment);
-            forward= (TextView) itemView.findViewById(R.id.tv_bbdetail_host_forward);
+            img_praise= (ImageView) itemView.findViewById(R.id.img_bbdetail_host_praise);
+            img_comment= (ImageView) itemView.findViewById(R.id.img_bbdetail_host_comment);
+            img_forward= (ImageView) itemView.findViewById(R.id.img_bbdetail_host_forward);
+            tv_nickname = (TextView) itemView.findViewById(R.id.tv_bbdetail_host_nickname);
+            tv_time = (TextView) itemView.findViewById(R.id.tv_bbdetail_host_time);
+            tv_content = (TextView) itemView.findViewById(R.id.tv_bbdetail_host_content);
+            tv_money = (TextView) itemView.findViewById(R.id.tv_bbdetail_host_money);
+            tv_praise = (TextView) itemView.findViewById(R.id.tv_bbdetail_host_praise);
+            tv_comment = (TextView) itemView.findViewById(R.id.tv_bbdetail_host_comment);
+            tv_forward = (TextView) itemView.findViewById(R.id.tv_bbdetail_host_forward);
             gridView= (NoScrollGridView) itemView.findViewById(R.id.gridview_bbdetail_host_img);
+            animation=new ScaleAnimation(1.0f,1.3f,1.0f,1.3f, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+            animation.setDuration(DURATION_MILLS);
         }
-
+        public void scaleAnimation(View view){
+            view.startAnimation(animation);
+        }
         public void bind() {
             kjBitmap.display(host_head, hostInfo.getUser_head());
-            nickname.setText(hostInfo.getNickname());
-            time.setText(hostInfo.getTime());
-            content.setText(hostInfo.getContent());
-            money.setText("价钱：" + hostInfo.getMoney() + "元");
-            praise.setText(String.valueOf(hostInfo.getPraise()));
-            comment.setText(String.valueOf(hostInfo.getComment()));
-            forward.setText(String.valueOf(hostInfo.getForward()));
-            imageGridAdapter=new ImageGridAdapter(mContext,new String[]{PATH, PATH, PATH, PATH, PATH, PATH});
+            tv_nickname.setText(hostInfo.getNickname());
+            tv_time.setText(hostInfo.getTime());
+            tv_content.setText(hostInfo.getContent());
+            tv_money.setText("价钱：" + hostInfo.getMoney() + "元");
+            tv_praise.setText(String.valueOf(hostInfo.getPraise()));
+            tv_comment.setText(String.valueOf(hostInfo.getComment()));
+            tv_forward.setText(String.valueOf(hostInfo.getForward()));
+            imageGridAdapter=new ImageGridAdapter(mContext,hostInfo.getImgs());
             gridView.setAdapter(imageGridAdapter);
-            Log.e("BB", "img bind");
         }
     }
     class ItemViewHolder extends AbsRecyclerAdapter.ItemViewHolder{
@@ -152,11 +163,11 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
 
         @Override
         public void bind(int pos) {
-            user_id=list.get(pos).getUser_id();
-            kjBitmap.display(user_head,list.get(pos).getUser_head());
-            nickname.setText(list.get(pos).getNickname());
-            content.setText(list.get(pos).getContent());
-            time.setText(list.get(pos).getTime());
+            user_id= commentList.get(pos).getUser_id();
+            kjBitmap.display(user_head, commentList.get(pos).getUser_head());
+            nickname.setText(commentList.get(pos).getNickname());
+            content.setText(commentList.get(pos).getContent());
+            time.setText(commentList.get(pos).getTime());
         }
     }
 }
