@@ -1,19 +1,52 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/bgcolor_normal"
     tools:context="android.BB.ui.nearby.BBDetailActivity">
     <include
         android:id="@+id/toolbar_bbdetail"
         layout="@layout/toolbar_center_text"/>
     <LinearLayout
+        android:id="@+id/layout_bbdetail_comment"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/et_bbdetail_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bbdetail_et" />
+        <Button
+            android:id="@+id/btn_bbdetail_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_alignTop="@id/et_bbdetail_comment"
+            android:layout_toRightOf="@id/et_bbdetail_comment"
+            android:layout_toEndOf="@id/et_bbdetail_comment"
+            android:background="@drawable/nearby_btn"
+            android:text="@string/bbdetail_btn_comment"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_bbdetail_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/item_bg_normal"
+        android:layout_below="@id/toolbar_bbdetail"
+        android:layout_above="@id/layout_bbdetail_comment"
+        android:background="@drawable/bg_layout"
         android:layout_margin="8dp">
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_bbdetail"
@@ -27,7 +60,6 @@
 
             </android.support.v7.widget.RecyclerView>
         </android.support.v4.widget.SwipeRefreshLayout>
-
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

@@ -70,13 +70,13 @@ public class NearbyBBFragment extends Fragment{
                 ArrayList<String> imgs=new ArrayList<>();
                 String img=Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png";
                 List<Comment> commentList=new ArrayList<Comment>();
-                Comment comment=new Comment(2,"大骚逼一枚",img ,"3分钟前","我今天没吃药，感觉自己萌萌哒！");
+                Comment comment=new Comment(2,"锟斤拷骚锟斤拷一枚",img ,"3锟斤拷锟斤拷前","锟揭斤拷锟斤拷没锟斤拷药锟斤拷锟叫撅拷锟皆硷拷锟斤拷锟斤拷锟秸ｏ拷");
                 for(int i=0;i<10;i++){
                     commentList.add(comment);
                     if(i>=3)
                         imgs.add(img);
                 }
-                HostInfo hostInfo=new HostInfo(1,imgs,"1个小时前","我在二教2217教室上课的时候忘拿雨伞了，有顺路的同学能帮我带到11栋吗？",img,"我是一个大帅逼",5,11,3,6);
+                HostInfo hostInfo=new HostInfo(1,imgs,"1锟斤拷小时前","锟斤拷锟节讹拷锟斤拷2217锟斤拷锟斤拷锟较课碉拷时锟斤拷锟斤拷锟斤拷锟斤拷伞锟剿ｏ拷锟斤拷顺路锟斤拷同学锟杰帮拷锟揭达拷11锟斤拷锟斤拷",img,"锟斤拷锟斤拷一锟斤拷锟斤拷帅锟斤拷",5,11,3,6);
                 intent.putExtra(MyConstants.KEY_HOSTINFO,hostInfo);
                 intent.putExtra(MyConstants.KEY_COMMENT_LIST, (Serializable) commentList);
                 startActivity(intent);

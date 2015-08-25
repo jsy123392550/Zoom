@@ -6,6 +6,7 @@ import android.BB.finals.MyConstants;
 import android.BB.util.AbsRecyclerAdapter;
 import android.BB.widget.NoScrollGridView;
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.os.Environment;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.kymjs.kjframe.KJBitmap;
 
@@ -37,7 +39,7 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
 
     @Override
     public void loadMore() {
-        Comment comment=new Comment(2,"´óÉ§±ÆÒ»Ã¶",Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png" ,"3·ÖÖÓÇ°","ÎÒ½ñÌìÃ»³ÔÒ©£¬¸Ð¾õ×Ô¼ºÃÈÃÈßÕ£¡");
+        Comment comment=new Comment(2,"ï¿½ï¿½É§ï¿½ï¿½Ò»Ã¶",Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png" ,"3ï¿½ï¿½ï¿½ï¿½Ç°","ï¿½Ò½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ò©ï¿½ï¿½ï¿½Ð¾ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ£ï¿½");
         for(int i=0;i<10;i++){
             commentList.add(comment);
         }
@@ -106,6 +108,7 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
         private Button btn;
         private NoScrollGridView gridView;
         private ScaleAnimation animation;
+        private OnclickPraiseListener praiseListener;
         private boolean isPraise;
         private boolean isComment;
         private boolean isForward;
@@ -130,6 +133,20 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
             gridView= (NoScrollGridView) itemView.findViewById(R.id.gridview_bbdetail_host_img);
             animation=new ScaleAnimation(1.0f,1.3f,1.0f,1.3f, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
             animation.setDuration(DURATION_MILLS);
+            praiseListener=new OnclickPraiseListener();
+        }
+        class OnclickPraiseListener implements View.OnClickListener{
+            @Override
+            public void onClick(View v) {
+                if(isPraise){
+                    Toast.makeText(mContext.getApplicationContext(),"ä½ å·²ç»èµžè¿‡äº†è¿™ä¸ªBB",Toast.LENGTH_SHORT).show();
+                }else{
+                    img_praise.setColorFilter(mContext.getResources().getColor(R.color.orange_press), PorterDuff.Mode.MULTIPLY);
+                    scaleAnimation(img_praise);
+                    tv_praise.setText(String.valueOf(Integer.parseInt(tv_praise.getText().toString())+1));
+                    isPraise=true;
+                }
+            }
         }
         public void scaleAnimation(View view){
             view.startAnimation(animation);
@@ -139,12 +156,13 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
             tv_nickname.setText(hostInfo.getNickname());
             tv_time.setText(hostInfo.getTime());
             tv_content.setText(hostInfo.getContent());
-            tv_money.setText("¼ÛÇ®£º" + hostInfo.getMoney() + "Ôª");
+            tv_money.setText("ï¿½ï¿½Ç®ï¿½ï¿½" + hostInfo.getMoney() + "Ôª");
             tv_praise.setText(String.valueOf(hostInfo.getPraise()));
             tv_comment.setText(String.valueOf(hostInfo.getComment()));
             tv_forward.setText(String.valueOf(hostInfo.getForward()));
             imageGridAdapter=new ImageGridAdapter(mContext,hostInfo.getImgs());
             gridView.setAdapter(imageGridAdapter);
+            img_praise.setOnClickListener(praiseListener);
         }
     }
     class ItemViewHolder extends AbsRecyclerAdapter.ItemViewHolder{

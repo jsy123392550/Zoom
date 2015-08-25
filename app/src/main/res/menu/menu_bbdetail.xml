@@ -2,6 +2,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="android.BB.ui.nearby.BBDetailActivity">
-    <!--<item android:id="@+id/action_settings" android:title="@string/action_settings"-->
-        <!--android:orderInCategory="100" app:showAsAction="never" />-->
+    <item
+        android:id="@+id/menu_bbdetail_forward"
+        android:title="@string/bbdetail_forward"
+        android:icon="@mipmap/forward"
+        app:showAsAction="never|withText"/>
 </menu>
