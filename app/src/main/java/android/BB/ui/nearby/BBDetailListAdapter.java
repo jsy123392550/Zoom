@@ -37,7 +37,7 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
 
     @Override
     public void loadMore() {
-        Comment comment=new Comment(2,"´óÉ§±ÆÒ»Ã¶",Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png" ,"3·ÖÖÓÇ°","ÎÒ½ñÌìÃ»³ÔÒ©£¬¸Ğ¾õ×Ô¼ºÃÈÃÈßÕ£¡");
+        Comment comment=new Comment(2,"å¤§éªšé€¼ä¸€æš",Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png" ,"3åˆ†é’Ÿå‰","æˆ‘ä»Šå¤©æ²¡åƒè¯ï¼Œæ„Ÿè§‰è‡ªå·±èŒèŒå“’ï¼");
         for(int i=0;i<10;i++){
             commentList.add(comment);
         }
@@ -139,7 +139,7 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
             tv_nickname.setText(hostInfo.getNickname());
             tv_time.setText(hostInfo.getTime());
             tv_content.setText(hostInfo.getContent());
-            tv_money.setText("¼ÛÇ®£º" + hostInfo.getMoney() + "Ôª");
+            tv_money.setText("ä»·é’±ï¼š" + hostInfo.getMoney() + "å…ƒ");
             tv_praise.setText(String.valueOf(hostInfo.getPraise()));
             tv_comment.setText(String.valueOf(hostInfo.getComment()));
             tv_forward.setText(String.valueOf(hostInfo.getForward()));

@@ -31,7 +31,7 @@ public class UserListAdapter extends AbsRecyclerAdapter {
         super(context);
         kjBitmap=new KJBitmap();
         mList = new ArrayList<>();
-        userInfo = new UserInfo("ÎÒÊÇÒ»¸ö´óË§±Æ","400m",1,Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH + "/qop.png",3);
+        userInfo = new UserInfo("æˆ‘æ˜¯ä¸€ä¸ªå¤§å¸…é€¼","400m",1,Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH + "/qop.png",3);
         for (int i = 0; i < 10; i++) {
             mList.add(userInfo);
         }
@@ -64,7 +64,7 @@ public class UserListAdapter extends AbsRecyclerAdapter {
         return mList.size() + 1;
     }
 
-    /*ÉÏÀ­¼ÓÔØ¸ü¶à*/
+    /*ä¸Šæ‹‰åŠ è½½æ›´å¤š*/
     public void loadMore() {
         for(int i=0;i<10;i++){
             mList.add(userInfo);
@@ -72,7 +72,7 @@ public class UserListAdapter extends AbsRecyclerAdapter {
         notifyItemInserted(getItemCount());
     }
 
-    /*ÏÂÀ­Ë¢ÐÂ*/
+    /*ä¸‹æ‹‰åˆ·æ–°*/
     public void refresh() {
 
     }

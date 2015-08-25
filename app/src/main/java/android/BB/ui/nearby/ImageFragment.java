@@ -61,7 +61,7 @@ public class ImageFragment extends Fragment {
 
             @Override
             public void onFailure(Exception e) {
-                Toast.makeText(getActivity(),"¼ÓÔØÍ¼Æ¬Ê§°Ü",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"åŠ è½½å›¾ç‰‡å¤±è´¥",Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(ProgressBar.GONE);
             }
         });

@@ -28,16 +28,16 @@ public abstract class AbsRecyclerAdapter extends RecyclerView.Adapter<ViewHolder
         }
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        int viewType;
-        if(position+1==getItemCount())
-            viewType=VIEWTYPE_FOOT;
-        else if(position+2==getItemCount())
-            viewType=VIEWTYPE_DESC_SECOND;
-        else
-            viewType=VIEWTYPE_ITEM;
-        return viewType;
+        @Override
+        public int getItemViewType(int position) {
+            int viewType;
+            if(position+1==getItemCount())
+                viewType=VIEWTYPE_FOOT;
+            else if(position+2==getItemCount())
+                viewType=VIEWTYPE_DESC_SECOND;
+            else
+                viewType=VIEWTYPE_ITEM;
+            return viewType;
     }
 
     public abstract void loadMore();

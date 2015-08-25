@@ -27,7 +27,7 @@ import java.util.List;
 
 import app.BB.R;
 
-public class BBListAdapter extends AbsRecyclerAdapter {
+public class        BBListAdapter extends AbsRecyclerAdapter {
     private BBInfo bbInfo;
     private List<BBInfo> mList;
     private KJBitmap kjBitmap;
@@ -53,7 +53,7 @@ public class BBListAdapter extends AbsRecyclerAdapter {
             }
 
         }
-        bbInfo = new BBInfo(1, file2.getAbsolutePath(), "°ïÃ¦È¥¶ş½ÌÄÃÊé", "300m", "¶ş½ÌÇ°ÃÅÃÅ¿Ú", "15:56");
+        bbInfo = new BBInfo(1, file2.getAbsolutePath(), "å¸®å¿™å»äºŒæ•™æ‹¿ä¹¦", "300m", "äºŒæ•™å‰é—¨é—¨å£", "15:56");
         for (int i = 0; i < 10; i++) {
             mList.add(bbInfo);
         }
@@ -86,7 +86,7 @@ public class BBListAdapter extends AbsRecyclerAdapter {
     }
 
 
-    /*ÉÏÀ­¼ÓÔØ¸ü¶à*/
+    /*ä¸Šæ‹‰åŠ è½½æ›´å¤š*/
     public void loadMore() {
         for (int i = 0; i < 10; i++) {
             mList.add(bbInfo);
@@ -94,7 +94,7 @@ public class BBListAdapter extends AbsRecyclerAdapter {
         notifyItemInserted(getItemCount());
     }
 
-    /*ÏÂÀ­Ë¢ĞÂ*/
+    /*ä¸‹æ‹‰åˆ·æ–°*/
     public void refresh() {
 
     }

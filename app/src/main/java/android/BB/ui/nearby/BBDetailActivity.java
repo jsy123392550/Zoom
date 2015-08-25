@@ -63,11 +63,11 @@ public class BBDetailActivity extends AppCompatActivity {
                 if(msg.what==0){
                     adapter.refresh();
                     swipe.setRefreshing(false);
-                    Toast.makeText(BBDetailActivity.this,"ÏÂÀ­Ë¢ĞÂ³É¹¦£¡",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BBDetailActivity.this,"ä¸‹æ‹‰åˆ·æ–°æˆåŠŸï¼",Toast.LENGTH_SHORT).show();
                 }else if(msg.what==1){
                     adapter.loadMore();
                     isLoad=false;
-                    Toast.makeText(BBDetailActivity.this,"ÉÏÀ­¼ÓÔØ³É¹¦£¡",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BBDetailActivity.this,"ä¸Šæ‹‰åŠ è½½æˆåŠŸï¼",Toast.LENGTH_SHORT).show();
                 }
             }
         };
