@@ -132,12 +132,6 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
             comment.setText(String.valueOf(hostInfo.getComment()));
             forward.setText(String.valueOf(hostInfo.getForward()));
             imageGridAdapter=new ImageGridAdapter(mContext,new String[]{PATH, PATH, PATH, PATH, PATH, PATH});
-//            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                }
-//            });
             gridView.setAdapter(imageGridAdapter);
             Log.e("BB", "img bind");
         }

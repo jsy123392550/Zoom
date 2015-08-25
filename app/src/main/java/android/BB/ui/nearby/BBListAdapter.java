@@ -122,7 +122,6 @@ public class BBListAdapter extends AbsRecyclerAdapter {
         public void bind(int pos) {
             info_id = mList.get(pos).getInfo_id();
             kjBitmap.display(head,mList.get(pos).getUser_head());
-//            head.setImageBitmap(BitmapFactory.decodeFile(mList.get(pos).getUser_head()));
             title.setText(mList.get(pos).getTitle());
             distance.setText(mList.get(pos).getDistance());
             time.setText(mList.get(pos).getTime());
