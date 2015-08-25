@@ -5,6 +5,7 @@
     android:background="#f7f7f7">
 
     <LinearLayout
+        android:id="@+id/ll_user_personal_infosetting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -12,6 +13,7 @@
         android:background="#ffffff">
 
         <ImageView
+            android:id="@+id/img_user_portrait"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@mipmap/login_head_img"
@@ -25,6 +27,7 @@
             android:layout_marginLeft="20dp">
 
             <TextView
+                android:id="@+id/tv_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -36,6 +39,7 @@
                 android:background="#f7f7f7"
                 android:layout_centerVertical="true"/>
             <TextView
+                android:id="@+id/tv_user_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -52,6 +56,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_user_BB"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#ffffff"
@@ -78,6 +83,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_user_BB_coin"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#ffffff"
@@ -105,6 +111,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_user_setting"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#ffffff"

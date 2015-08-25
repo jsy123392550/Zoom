@@ -48,4 +48,11 @@
     <string name="bbdetail_btn_comment">发送</string>
     <string name="bbdetail_forward">转发</string>
     <string name="bbdetail_praise">点赞</string>
+    <string name="userinfo_detail_portrait">头像</string>
+    <string name="userinfo_detail_username">昵称</string>
+    <string name="userinfo_detail_bbnumber">BB号</string>
+    <string name="userinfo_detail_user_gender">性别</string>
+    <string name="userinfo_detail_user_district">地区</string>
+    <string name="userinfo_detail_personality_signature">个性签名</string>
+    <string name="userinfo_detail_credit">信用指数</string>
 </resources>
