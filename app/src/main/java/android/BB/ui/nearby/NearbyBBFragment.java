@@ -48,18 +48,18 @@ public class NearbyBBFragment extends Fragment{
         recyclerView.setAdapter(adapter);
         layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
-        /*模拟网络请求*/
+        /*妯℃嫙缃戠粶璇锋眰*/
         handler=new Handler(){
             @Override
             public void handleMessage(Message msg) {
                 if(msg.what==0){
                     adapter.refresh();
                     swipeRefreshLayout.setRefreshing(false);
-                    Toast.makeText(getActivity(),"下拉刷新成功！",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"下拉刷新成功！,Toast.LENGTH_SHORT).show();
                 }else if(msg.what==1){
                     adapter.loadMore();
                     isLoad=false;
-                    Toast.makeText(getActivity(),"上拉加载成功！",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"上拉加载成功！,Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -70,13 +70,13 @@ public class NearbyBBFragment extends Fragment{
                 ArrayList<String> imgs=new ArrayList<>();
                 String img=Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png";
                 List<Comment> commentList=new ArrayList<Comment>();
-                Comment comment=new Comment(2,"��ɧ��һö",img ,"3����ǰ","�ҽ���û��ҩ���о��Լ������գ�");
+                Comment comment=new Comment(2,"大骚逼一枚",img ,"3分钟前","我今天没吃药，感觉自己萌萌哒！");
                 for(int i=0;i<10;i++){
                     commentList.add(comment);
                     if(i>=3)
                         imgs.add(img);
                 }
-                HostInfo hostInfo=new HostInfo(1,imgs,"1��Сʱǰ","���ڶ���2217�����Ͽε�ʱ��������ɡ�ˣ���˳·��ͬѧ�ܰ��Ҵ�11����",img,"����һ����˧��",5,11,3,6);
+                HostInfo hostInfo=new HostInfo(1,imgs,"1个小时前","我在二教2217教室上课的时候忘拿雨伞了，有顺路的同学能帮我带到11栋吗？",img,"我是一个大帅逼",5,11,3,6);
                 intent.putExtra(MyConstants.KEY_HOSTINFO,hostInfo);
                 intent.putExtra(MyConstants.KEY_COMMENT_LIST, (Serializable) commentList);
                 startActivity(intent);
