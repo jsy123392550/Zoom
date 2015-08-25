@@ -48,7 +48,7 @@ public class NearbyBBFragment extends Fragment{
         recyclerView.setAdapter(adapter);
         layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
-        /*模拟网络请求*/
+        /*妯℃嫙缃戠粶璇锋眰*/
         handler=new Handler(){
             @Override
             public void handleMessage(Message msg) {

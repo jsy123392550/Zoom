@@ -9,14 +9,16 @@ import android.view.View;
 
 public class MyItemDecoration extends RecyclerView.ItemDecoration{
     private Drawable mDivider;
-    public MyItemDecoration(Context context,Drawable drawable){
+    private int space;
+    public MyItemDecoration(Context context,Drawable drawable,int space){
         mDivider=drawable;
+        this.space=space;
     }
 
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
-        int left=parent.getPaddingLeft();
-        int right=parent.getWidth()-parent.getPaddingRight();
+        int left=parent.getPaddingLeft()+space;
+        int right=parent.getWidth()-parent.getPaddingRight()-space;
         int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             View child = parent.getChildAt(i);

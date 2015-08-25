@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -53,7 +54,7 @@ public class BBDetailActivity extends AppCompatActivity {
         item_recyclerView.setLayoutManager(linearLayoutManager);
         item_recyclerView.setAdapter(adapter);
         item_recyclerView.setHasFixedSize(true);
-        item_recyclerView.addItemDecoration(new MyItemDecoration(this,getResources().getDrawable(R.drawable.item_decoration_bbdetail)));
+        item_recyclerView.addItemDecoration(new MyItemDecoration(this,getResources().getDrawable(R.drawable.item_decoration_bbdetail), (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,8,getResources().getDisplayMetrics())));
         swipe.setColorSchemeColors(getResources().getColor(R.color.orange_normal), getResources().getColor(R.color.orange_press));
         swipe.setOnRefreshListener(new MyRefreshListener());
         item_recyclerView.addOnScrollListener(new MyScrollListener());
@@ -72,7 +73,6 @@ public class BBDetailActivity extends AppCompatActivity {
             }
         };
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_bbdetail,menu);
@@ -81,10 +81,13 @@ public class BBDetailActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }else if(id==android.R.id.home){
-            finish();
+        switch(id){
+            case android.R.id.home:
+                finish();
+                break;
+            case R.id.menu_bbdetail_forward:
+                Toast.makeText(BBDetailActivity.this,"转发了这个BB",Toast.LENGTH_SHORT).show();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
