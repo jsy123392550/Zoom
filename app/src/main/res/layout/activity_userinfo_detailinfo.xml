@@ -11,17 +11,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="#ffffff"
+        android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
         <RelativeLayout
             android:id="@+id/rl_portrait"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/userinfo_detail_portrait"
+                android:gravity="center_vertical"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"/>
             <ImageView
@@ -38,11 +40,12 @@
         <RelativeLayout
             android:id="@+id/rl_username"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/userinfo_detail_username"
+                android:gravity="center_vertical"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"/>
             <TextView
@@ -59,11 +62,12 @@
         <RelativeLayout
             android:id="@+id/rl_bbnumber"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/userinfo_detail_bbnumber"
+                android:gravity="center_vertical"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"/>
             <TextView
@@ -80,11 +84,12 @@
         <RelativeLayout
             android:id="@+id/rl_gender"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/userinfo_detail_user_gender"
+                android:gravity="center_vertical"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"/>
             <TextView
@@ -100,11 +105,12 @@
         <RelativeLayout
             android:id="@+id/rl_district"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/userinfo_detail_user_district"
+                android:gravity="center_vertical"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"/>
             <TextView
@@ -120,11 +126,12 @@
         <RelativeLayout
             android:id="@+id/rl_personality_signature"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/userinfo_detail_personality_signature"
+                android:gravity="center_vertical"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"/>
             <TextView
@@ -140,11 +147,12 @@
         <RelativeLayout
             android:id="@+id/rl_credit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/userinfo_detail_credit"
+                android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"/>
             <LinearLayout
@@ -154,24 +162,24 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true">
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@mipmap/userinfo_detail_credit_gray"/>
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@mipmap/userinfo_detail_credit_gray"/>
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@mipmap/userinfo_detail_credit_gray"/>
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@mipmap/userinfo_detail_credit_gray"/>
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@mipmap/userinfo_detail_credit_gray"/>
             </LinearLayout>
         </RelativeLayout>
