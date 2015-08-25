@@ -48,18 +48,18 @@ public class NearbyBBFragment extends Fragment{
         recyclerView.setAdapter(adapter);
         layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
-        /*æ¨¡æ‹Ÿç½‘ç»œè¯·æ±‚*/
+        /*å¦¯â„ƒå«™ç¼ƒæˆ ç²¶ç’‡é”‹çœ°*/
         handler=new Handler(){
             @Override
             public void handleMessage(Message msg) {
                 if(msg.what==0){
                     adapter.refresh();
                     swipeRefreshLayout.setRefreshing(false);
-                    Toast.makeText(getActivity(),"ä¸‹æ‹‰åˆ·æ–°æˆåŠŸï¼",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"ä¸‹æ‹‰åˆ·æ–°æˆåŠŸï¼,Toast.LENGTH_SHORT).show();
                 }else if(msg.what==1){
                     adapter.loadMore();
                     isLoad=false;
-                    Toast.makeText(getActivity(),"ä¸Šæ‹‰åŠ è½½æˆåŠŸï¼",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"ä¸Šæ‹‰åŠ è½½æˆåŠŸï¼,Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -70,13 +70,13 @@ public class NearbyBBFragment extends Fragment{
                 ArrayList<String> imgs=new ArrayList<>();
                 String img=Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png";
                 List<Comment> commentList=new ArrayList<Comment>();
-                Comment comment=new Comment(2,"´óÉ§±ÆÒ»Ã¶",img ,"3·ÖÖÓÇ°","ÎÒ½ñÌìÃ»³ÔÒ©£¬¸Ğ¾õ×Ô¼ºÃÈÃÈßÕ£¡");
+                Comment comment=new Comment(2,"å¤§éªšé€¼ä¸€æš",img ,"3åˆ†é’Ÿå‰","æˆ‘ä»Šå¤©æ²¡åƒè¯ï¼Œæ„Ÿè§‰è‡ªå·±èŒèŒå“’ï¼");
                 for(int i=0;i<10;i++){
                     commentList.add(comment);
                     if(i>=3)
                         imgs.add(img);
                 }
-                HostInfo hostInfo=new HostInfo(1,imgs,"1¸öĞ¡Ê±Ç°","ÎÒÔÚ¶ş½Ì2217½ÌÊÒÉÏ¿ÎµÄÊ±ºòÍüÄÃÓêÉ¡ÁË£¬ÓĞË³Â·µÄÍ¬Ñ§ÄÜ°ïÎÒ´øµ½11¶°Âğ£¿",img,"ÎÒÊÇÒ»¸ö´óË§±Æ",5,11,3,6);
+                HostInfo hostInfo=new HostInfo(1,imgs,"1ä¸ªå°æ—¶å‰","æˆ‘åœ¨äºŒæ•™2217æ•™å®¤ä¸Šè¯¾çš„æ—¶å€™å¿˜æ‹¿é›¨ä¼äº†ï¼Œæœ‰é¡ºè·¯çš„åŒå­¦èƒ½å¸®æˆ‘å¸¦åˆ°11æ ‹å—ï¼Ÿ",img,"æˆ‘æ˜¯ä¸€ä¸ªå¤§å¸…é€¼",5,11,3,6);
                 intent.putExtra(MyConstants.KEY_HOSTINFO,hostInfo);
                 intent.putExtra(MyConstants.KEY_COMMENT_LIST, (Serializable) commentList);
                 startActivity(intent);
