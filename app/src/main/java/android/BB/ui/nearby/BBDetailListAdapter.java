@@ -39,11 +39,7 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
 
     @Override
     public void loadMore() {
-<<<<<<< HEAD
         Comment comment=new Comment(2,"大骚逼一枚",Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png" ,"3分钟前","我今天没吃药，感觉自己萌萌哒！");
-=======
-        Comment comment=new Comment(2,"��ɧ��һö",Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png" ,"3����ǰ","�ҽ���û��ҩ���о��Լ������գ�");
->>>>>>> 6f2f49d5c9d0dd6651d7be2b486577b39ff8e93a
         for(int i=0;i<10;i++){
             commentList.add(comment);
         }
@@ -160,11 +156,7 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
             tv_nickname.setText(hostInfo.getNickname());
             tv_time.setText(hostInfo.getTime());
             tv_content.setText(hostInfo.getContent());
-<<<<<<< HEAD
             tv_money.setText("价钱：" + hostInfo.getMoney() + "元");
-=======
-            tv_money.setText("��Ǯ��" + hostInfo.getMoney() + "Ԫ");
->>>>>>> 6f2f49d5c9d0dd6651d7be2b486577b39ff8e93a
             tv_praise.setText(String.valueOf(hostInfo.getPraise()));
             tv_comment.setText(String.valueOf(hostInfo.getComment()));
             tv_forward.setText(String.valueOf(hostInfo.getForward()));

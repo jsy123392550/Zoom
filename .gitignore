@@ -19,7 +19,6 @@ local.properties
 .idea/libraries
 .idea/gradle.xml
 .idea/misc.xml
-.idea/encodings.xml
 
 # OSX files
 .DS_Store

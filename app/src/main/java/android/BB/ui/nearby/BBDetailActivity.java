@@ -86,7 +86,7 @@ public class BBDetailActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.menu_bbdetail_forward:
-                Toast.makeText(BBDetailActivity.this,"转发了这个BB",Toast.LENGTH_SHORT).show();
+                Toast.makeText(BBDetailActivity.this,"杞彂浜嗚繖涓狟B",Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
