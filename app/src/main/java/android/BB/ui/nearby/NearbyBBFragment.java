@@ -55,11 +55,11 @@ public class NearbyBBFragment extends Fragment{
                 if(msg.what==0){
                     adapter.refresh();
                     swipeRefreshLayout.setRefreshing(false);
-                    Toast.makeText(getActivity(),"下拉刷新成功！,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"下拉刷新成功！",Toast.LENGTH_SHORT).show();
                 }else if(msg.what==1){
                     adapter.loadMore();
                     isLoad=false;
-                    Toast.makeText(getActivity(),"上拉加载成功！,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"上拉加载成功！",Toast.LENGTH_SHORT).show();
                 }
             }
         };
