@@ -108,7 +108,7 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
         private Button btn;
         private NoScrollGridView gridView;
         private ScaleAnimation animation;
-        private OnclickPraiseListener praiseListener;
+        private OnClickPraiseListener praiseListener;
         private boolean isPraise;
         private boolean isComment;
         private boolean isForward;
@@ -133,9 +133,9 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
             gridView= (NoScrollGridView) itemView.findViewById(R.id.gridview_bbdetail_host_img);
             animation=new ScaleAnimation(1.0f,1.3f,1.0f,1.3f, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
             animation.setDuration(DURATION_MILLS);
-            praiseListener=new OnclickPraiseListener();
+            praiseListener=new OnClickPraiseListener();
         }
-        class OnclickPraiseListener implements View.OnClickListener{
+        class OnClickPraiseListener implements View.OnClickListener{
             @Override
             public void onClick(View v) {
                 if(isPraise){
@@ -143,9 +143,15 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
                 }else{
                     img_praise.setColorFilter(mContext.getResources().getColor(R.color.orange_press), PorterDuff.Mode.MULTIPLY);
                     scaleAnimation(img_praise);
-                    tv_praise.setText(String.valueOf(Integer.parseInt(tv_praise.getText().toString())+1));
+                    hostInfo.setPraise(hostInfo.getPraise()+1);
+                    tv_praise.setText(String.valueOf(hostInfo.getPraise()));
                     isPraise=true;
                 }
+            }
+        }
+        class OnClickCommentListener implements View.OnClickListener{
+            @Override
+            public void onClick(View v) {
             }
         }
         public void scaleAnimation(View view){

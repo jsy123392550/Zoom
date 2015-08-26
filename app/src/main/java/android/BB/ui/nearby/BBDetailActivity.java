@@ -4,6 +4,7 @@ import android.BB.bean.nearby.Comment;
 import android.BB.bean.nearby.HostInfo;
 import android.BB.finals.MyConstants;
 import android.BB.util.AbsRecyclerAdapter;
+import android.BB.util.DialogFactory;
 import android.BB.widget.MyItemDecoration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -86,7 +88,7 @@ public class BBDetailActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.menu_bbdetail_forward:
-                Toast.makeText(BBDetailActivity.this,"转发了这个BB",Toast.LENGTH_SHORT).show();
+                DialogFactory.createEditDialog(this).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
