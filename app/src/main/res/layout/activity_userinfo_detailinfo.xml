@@ -21,11 +21,9 @@
             android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/userinfo_detail_portrait"
-                android:gravity="center_vertical"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+                style="@style/UserInfoDetail_left_tv" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,11 +41,9 @@
             android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/userinfo_detail_username"
-                android:gravity="center_vertical"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+                style="@style/UserInfoDetail_left_tv"/>
             <TextView
                 android:id="@+id/tv_userInfo_detail_name"
                 android:layout_width="wrap_content"
@@ -65,11 +61,10 @@
             android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/userinfo_detail_bbnumber"
-                android:gravity="center_vertical"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+                style="@style/UserInfoDetail_left_tv"
+                />
             <TextView
                 android:id="@+id/tv_userInfo_detail_BBNumber"
                 android:layout_width="wrap_content"
@@ -87,11 +82,9 @@
             android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/userinfo_detail_user_gender"
-                android:gravity="center_vertical"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+                style="@style/UserInfoDetail_left_tv"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -108,11 +101,9 @@
             android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/userinfo_detail_user_district"
-                android:gravity="center_vertical"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+                style="@style/UserInfoDetail_left_tv"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -129,11 +120,9 @@
             android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/userinfo_detail_personality_signature"
-                android:gravity="center_vertical"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+                style="@style/UserInfoDetail_left_tv"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -149,39 +138,23 @@
             android:layout_width="match_parent"
             android:layout_height="60dp">
             <TextView
+                android:id="@+id/tv_credit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/userinfo_detail_credit"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
-            <LinearLayout
+                style="@style/UserInfoDetail_left_tv" />
+
+            <RatingBar
+                android:id="@+id/ratingbar_credit"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="30dp"
+                android:numStars="5"
+                android:isIndicator="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true">
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@mipmap/userinfo_detail_credit_gray"/>
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@mipmap/userinfo_detail_credit_gray"/>
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@mipmap/userinfo_detail_credit_gray"/>
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@mipmap/userinfo_detail_credit_gray"/>
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@mipmap/userinfo_detail_credit_gray"/>
-            </LinearLayout>
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/tv_credit"
+                android:layout_centerVertical="true"
+                style="@style/CreditRatingBar"/>
         </RelativeLayout>
     </LinearLayout>
 

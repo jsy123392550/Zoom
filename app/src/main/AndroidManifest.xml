@@ -37,10 +37,12 @@
             android:name="android.BB.ui.nearby.ImageDetailActivity"
             android:label="@string/title_activity_image_detail" >
         </activity>
+        <!-- 模块——我 的所有 Activity -->
         <activity android:name="android.BB.ui.user.UserInfoDetailActivity" />
         <activity android:name="android.BB.ui.user.UserBBhistoryActivity" />
         <activity android:name="android.BB.ui.user.UserBBcoinActivity" />
         <activity android:name="android.BB.ui.user.UserBBSettingActivity" />
+
     </application>
 
 </manifest>

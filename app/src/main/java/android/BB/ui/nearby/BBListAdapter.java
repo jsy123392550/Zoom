@@ -27,7 +27,7 @@ import java.util.List;
 
 import app.BB.R;
 
-public class        BBListAdapter extends AbsRecyclerAdapter {
+public class BBListAdapter extends AbsRecyclerAdapter {
     private BBInfo bbInfo;
     private List<BBInfo> mList;
     private KJBitmap kjBitmap;
@@ -37,7 +37,7 @@ public class        BBListAdapter extends AbsRecyclerAdapter {
         kjBitmap = new KJBitmap();
         mList = new ArrayList<>();
         File file1 = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH);
-        file1.mkdir();
+        file1.mkdirs();
         File file2 = new File(file1,"qop.png");
         if (!file2.exists()) {
             try {
