@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +44,6 @@ public class BBListAdapter extends AbsRecyclerAdapter {
                 FileOutputStream fout = new FileOutputStream(file2);
                 Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.qop);
                 bitmap.compress(Bitmap.CompressFormat.PNG, 70, fout);
-                Log.e("BB", "file:" + file2.getAbsolutePath());
                 fout.flush();
                 fout.close();
             } catch (IOException e) {

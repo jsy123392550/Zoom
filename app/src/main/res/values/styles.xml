@@ -10,8 +10,13 @@
         <item name="android:windowBackground">@drawable/dialog_wait</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+    <style name="EditDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/dialog_edit</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
     <style name="MyRatingBar" parent="Widget.AppCompat.RatingBar">
         <!--<item name="android:numStars">5</item>-->
