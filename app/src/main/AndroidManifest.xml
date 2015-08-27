@@ -39,7 +39,10 @@
         <activity android:name="android.BB.ui.user.UserBBhistoryActivity" />
         <activity android:name="android.BB.ui.user.UserBBcoinActivity" />
         <activity android:name="android.BB.ui.user.UserBBSettingActivity" />
-
+        <activity android:name="android.BB.ui.user.UserInfoNickNameChanging" />
+        <activity android:name="android.BB.ui.user.UserInfoBBNumberChanging" />
+        <activity android:name="android.BB.ui.user.UserInfoDistrictChanging" />
+        <activity android:name="android.BB.ui.user.UserInfoPersonalSignatureChanging" />
     </application>
 
 </manifest>
