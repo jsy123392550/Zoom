@@ -30,9 +30,10 @@ public class BBListAdapter extends AbsRecyclerAdapter {
     private BBInfo bbInfo;
     private List<BBInfo> mList;
     private KJBitmap kjBitmap;
-
-    public BBListAdapter(Context context) {
+    private boolean type;
+    public BBListAdapter(Context context,boolean type) {
         super(context);
+        this.type=type;
         kjBitmap = new KJBitmap();
         mList = new ArrayList<>();
         File file1 = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH);
@@ -114,6 +115,9 @@ public class BBListAdapter extends AbsRecyclerAdapter {
             time = (TextView) itemView.findViewById(R.id.tv_nearby_bb_item_time_content);
             position = (TextView) itemView.findViewById(R.id.tv_nearby_bb_item_position_content);
             btn = (Button) itemView.findViewById(R.id.btn_nearby_bb_item);
+            if(type) {
+                btn.setBackgroundResource(R.drawable.resource_btn);
+            }
             initClickListener();
         }
 

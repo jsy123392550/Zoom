@@ -24,7 +24,7 @@ import java.util.List;
 
 import android.BB.R;
 
-public class NearbyBBFragment extends Fragment{
+public class NearbyNeedFragment extends Fragment{
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
     private BBListAdapter adapter;
@@ -32,10 +32,10 @@ public class NearbyBBFragment extends Fragment{
     private int lastVisibleItem;
     private Handler handler;
     private boolean isLoad;
-    public NearbyBBFragment() {
+    public NearbyNeedFragment() {
     }
-    public static NearbyBBFragment newInstance(){
-        NearbyBBFragment fragment=new NearbyBBFragment();
+    public static NearbyNeedFragment newInstance(){
+        NearbyNeedFragment fragment=new NearbyNeedFragment();
         return fragment;
     }
     @Override
@@ -49,7 +49,7 @@ public class NearbyBBFragment extends Fragment{
     }
 
     private void init(){
-        adapter=new BBListAdapter(getActivity());
+        adapter=new BBListAdapter(getActivity(),false);
         recyclerView.setAdapter(adapter);
         layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
@@ -83,6 +83,7 @@ public class NearbyBBFragment extends Fragment{
                 HostInfo hostInfo=new HostInfo(1,imgs,"1个小时前","我在二教2217教室上课的时候忘拿雨伞了，有顺路的同学能帮我带到11栋吗？",img,"我是一个大帅逼",5,11,3,6);
                 intent.putExtra(MyConstants.KEY_HOSTINFO,hostInfo);
                 intent.putExtra(MyConstants.KEY_COMMENT_LIST, (Serializable) commentList);
+                intent.putExtra(MyConstants.KEY_BB_TYPE,false);
                 startActivity(intent);
             }
         });

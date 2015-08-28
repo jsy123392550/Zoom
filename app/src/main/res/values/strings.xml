@@ -34,6 +34,7 @@
     <string name="module_message">消息</string>
     <string name="module_me">我</string>
     <string name="nearby_resource">资源</string>
+    <string name="nearby_need">需求</string>
     <string name="nearby_user">用户</string>
     <string name="nearby_bb_head_desp">BB用户的头像</string>
     <string name="item_nearby_distance">距离：</string>

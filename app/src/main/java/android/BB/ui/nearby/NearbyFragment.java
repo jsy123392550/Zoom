@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,8 +19,11 @@ import android.BB.R;
 
 public class NearbyFragment extends Fragment {
     private static final String CURRENT_INDEX="current_index";
+    private static final int INDEX_RESOURCE=0;
+    private static final int INDEX_NEED=1;
+    private static final int INDEX_USER=2;
     private ViewPager viewpager;
-    private NearbyBBFragment bbFragment;
+    private NearbyNeedFragment bbFragment;
     private NearbyUserFragment userFragment;
     private NearbyResourceFragment resourceFragment;
     private List<Fragment> fragmentList;
@@ -31,7 +33,7 @@ public class NearbyFragment extends Fragment {
     private TextView tv_user;
     private TextView tv_resource;
     private int screenW;
-    private int currIndex;
+    private int currIndex=INDEX_NEED;
     private int width_indicator;
     ClickListener clickListener;
 
@@ -111,13 +113,13 @@ public class NearbyFragment extends Fragment {
         }
         View view=inflater.inflate(R.layout.ll_nearby, container, false);
         fragmentList=new ArrayList<>();
-        bbFragment =NearbyBBFragment.newInstance();
+        bbFragment = NearbyNeedFragment.newInstance();
         userFragment =NearbyUserFragment.newInstance();
         resourceFragment=NearbyResourceFragment.newInstance();
+        fragmentList.add(resourceFragment);
         fragmentList.add(bbFragment);
         fragmentList.add(userFragment);
-        fragmentList.add(resourceFragment);
-        tv_BB= (TextView) view.findViewById(R.id.tv_nearby_BB);
+        tv_BB= (TextView) view.findViewById(R.id.tv_nearby_need);
         tv_user= (TextView) view.findViewById(R.id.tv_nearby_user);
         tv_resource= (TextView) view.findViewById(R.id.tv_nearby_resource);
         viewpager= (ViewPager) view.findViewById(R.id.viewpager_nearby);
@@ -133,6 +135,7 @@ public class NearbyFragment extends Fragment {
         indicator.setX(currIndex * width_indicator);
         adapter=new FragAdapter(getChildFragmentManager(),fragmentList);
         viewpager.setAdapter(adapter);
+        viewpager.setCurrentItem(INDEX_NEED);
         viewpager.addOnPageChangeListener(new PagerListener());
         clickListener=new ClickListener();
         tv_BB.setOnClickListener(clickListener);
@@ -147,7 +150,7 @@ public class NearbyFragment extends Fragment {
 
         @Override
         public void onPageSelected(int position) {
-            TranslateAnimation animation=new TranslateAnimation(currIndex*width_indicator,position*width_indicator,0,0);
+            TranslateAnimation animation=new TranslateAnimation((currIndex-1)*width_indicator,(position-1)*width_indicator,0,0);
             animation.setDuration(300);
             animation.setFillAfter(true);
             indicator.startAnimation(animation);
@@ -164,22 +167,22 @@ public class NearbyFragment extends Fragment {
         public void onClick(View v) {
             int id=v.getId();
             switch (id){
-                case R.id.tv_nearby_BB:
-                    if(currIndex!=0){
-                        viewpager.setCurrentItem(0);
-                        currIndex=0;
+                case R.id.tv_nearby_need:
+                    if(currIndex!=INDEX_NEED){
+                        viewpager.setCurrentItem(INDEX_NEED);
+                        currIndex=INDEX_NEED;
                     }
                     break;
                 case R.id.tv_nearby_user:
-                    if(currIndex!=1){
-                        viewpager.setCurrentItem(1);
-                        currIndex=1;
+                    if(currIndex!=INDEX_USER){
+                        viewpager.setCurrentItem(INDEX_USER);
+                        currIndex=INDEX_USER;
                     }
                     break;
                 case R.id.tv_nearby_resource:
-                    if(currIndex!=2){
-                        viewpager.setCurrentItem(2);
-                        currIndex=2;
+                    if(currIndex!=INDEX_RESOURCE){
+                        viewpager.setCurrentItem(INDEX_RESOURCE);
+                        currIndex=INDEX_RESOURCE;
                     }
             }
         }

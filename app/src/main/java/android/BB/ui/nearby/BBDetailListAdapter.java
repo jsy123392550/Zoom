@@ -30,11 +30,13 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
     private KJBitmap kjBitmap;
     private List<Comment> commentList;
     private HostInfo hostInfo;
-    public BBDetailListAdapter(Context context,List<Comment> commentList,HostInfo hostInfo) {
+    private boolean type;
+    public BBDetailListAdapter(Context context,List<Comment> commentList,HostInfo hostInfo,boolean type) {
         super(context);
         kjBitmap=new KJBitmap();
         this.commentList =commentList;
         this.hostInfo=hostInfo;
+        this.type=type;
     }
 
     @Override
@@ -110,7 +112,7 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
         private NoScrollGridView gridView;
         private ImageGridAdapter imageGridAdapter;
         private ScaleAnimation animation;
-        private OnClickIconListener iconListener;
+        private ClickListener clickListener;
         private boolean isPraise;
         private boolean isComment;
         private boolean isForward;
@@ -133,9 +135,12 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
             tv_comment = (TextView) itemView.findViewById(R.id.tv_bbdetail_host_comment);
             tv_forward = (TextView) itemView.findViewById(R.id.tv_bbdetail_host_forward);
             gridView= (NoScrollGridView) itemView.findViewById(R.id.gridview_bbdetail_host_img);
+            if(type){
+                btn.setBackgroundResource(R.drawable.resource_btn);
+            }
             animation=new ScaleAnimation(1.0f,1.3f,1.0f,1.3f, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
             animation.setDuration(DURATION_MILLS);
-            iconListener =new OnClickIconListener();
+            clickListener =new ClickListener();
             ((BBDetailActivity)mContext).setCallback(this);
         }
 
@@ -150,7 +155,7 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
             tv_comment.setText(String.valueOf(hostInfo.getComment()));
         }
 
-        class OnClickIconListener implements View.OnClickListener{
+        class ClickListener implements View.OnClickListener{
             @Override
             public void onClick(View v) {
                 int id=v.getId();
@@ -170,8 +175,11 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
                         ((BBDetailActivity)mContext).getEt_comment().requestFocus();
                         break;
                     case R.id.img_bbdetail_host_forward:
-                        DialogFactory.createEditDialog(mContext);
+                        DialogFactory.createEditDialog(mContext).show();
                         break;
+                    case R.id.btn_bbdetail_host:
+                        btn.setText("已经BB");
+                        btn.setEnabled(false);
                 }
 
             }
@@ -190,7 +198,10 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
             tv_forward.setText(String.valueOf(hostInfo.getForward()));
             imageGridAdapter=new ImageGridAdapter(mContext,hostInfo.getImgs());
             gridView.setAdapter(imageGridAdapter);
-            img_praise.setOnClickListener(iconListener);
+            img_praise.setOnClickListener(clickListener);
+            img_comment.setOnClickListener(clickListener);
+            img_forward.setOnClickListener(clickListener);
+            btn.setOnClickListener(clickListener);
         }
     }
     class ItemViewHolder extends AbsRecyclerAdapter.ItemViewHolder{
