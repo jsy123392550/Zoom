@@ -3,8 +3,7 @@ package android.BB.ui.user;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import app.BB.R;
-
+import android.BB.R;
 /**
  * Created by KalinaRain on 2015/8/27.
  */
