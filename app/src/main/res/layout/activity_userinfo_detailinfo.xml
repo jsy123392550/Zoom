@@ -36,7 +36,7 @@
             android:layout_height="1dp"
             android:background="#f8f8f8"/>
         <RelativeLayout
-            android:id="@+id/rl_username"
+            android:id="@+id/rl_nickname"
             android:layout_width="match_parent"
             android:layout_height="60dp">
             <TextView
