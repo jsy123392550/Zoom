@@ -5,6 +5,7 @@ import android.BB.bean.nearby.HostInfo;
 import android.BB.finals.MyConstants;
 import android.BB.util.AbsRecyclerAdapter;
 import android.BB.util.DialogFactory;
+import android.BB.util.Utils;
 import android.BB.widget.MyItemDecoration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,12 +19,15 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
-import app.BB.R;
+import android.BB.R;
 
 public class BBDetailActivity extends AppCompatActivity {
     private RecyclerView item_recyclerView;
@@ -32,9 +36,13 @@ public class BBDetailActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     private Toolbar toolbar;
     private TextView tv_toolbar;
+    private LinearLayout layout_comment;
+    private EditText et_comment;
+    private Button btn_comment;
     private int lastVisibleItem;
     private Handler handler;
     private boolean isLoad;
+    private CommentCallback callback;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +55,16 @@ public class BBDetailActivity extends AppCompatActivity {
         tv_toolbar= (TextView) toolbar.findViewById(R.id.toolbar_tv);
         swipe= (SwipeRefreshLayout) findViewById(R.id.swipe_bbdetail);
         item_recyclerView= (RecyclerView) findViewById(R.id.recyclerview_bbdetail);
+        layout_comment= (LinearLayout) findViewById(R.id.layout_bbdetail_comment);
+        et_comment= (EditText) findViewById(R.id.et_bbdetail_comment);
+        btn_comment= (Button) findViewById(R.id.btn_bbdetail_comment);
+        btn_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utils.hideSoftInput(getApplicationContext());
+                callback.change();
+            }
+        });
         toolbar.setTitle(MyConstants.TEXT_NULL);
         tv_toolbar.setText(MyConstants.KEY_TOOLBAR_BBDETAIL);
         setSupportActionBar(toolbar);
@@ -75,6 +93,15 @@ public class BBDetailActivity extends AppCompatActivity {
             }
         };
     }
+
+    public EditText getEt_comment() {
+        return et_comment;
+    }
+
+    public void setCallback(CommentCallback callback) {
+        this.callback = callback;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_bbdetail,menu);
@@ -92,6 +119,9 @@ public class BBDetailActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+    public interface CommentCallback {
+        public void change();
     }
     class MyRefreshListener implements SwipeRefreshLayout.OnRefreshListener{
         @Override

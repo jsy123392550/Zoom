@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import app.BB.R;
+import android.BB.R;
 
 public class UserInfoFragment extends Fragment implements View.OnClickListener{
 

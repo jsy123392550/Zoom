@@ -3,7 +3,7 @@ package android.BB.ui.user;
 import android.app.Activity;
 import android.os.Bundle;
 
-import app.BB.R;
+import android.BB.R;
 
 public class RegistInfoActivity extends Activity {
 

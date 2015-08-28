@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import app.BB.R;
+import android.BB.R;
 
 public class LinkmanFragment extends Fragment {
     @Override

@@ -23,7 +23,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.BB.R;
+import android.BB.R;
 
 public class NearbyBBFragment extends Fragment{
     private RecyclerView recyclerView;

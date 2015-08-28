@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import app.BB.R;
+import android.BB.R;
 
 /**
  * Created by KalinaRain on 2015/7/17.

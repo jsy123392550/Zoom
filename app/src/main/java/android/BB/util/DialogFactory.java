@@ -7,7 +7,7 @@ import android.util.TypedValue;
 import android.widget.TextView;
 
 
-import app.BB.R;
+import android.BB.R;
 
 public class DialogFactory {
     public static Dialog createWaitDialog(Context context,String msg){

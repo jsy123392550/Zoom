@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import app.BB.R;
+import android.BB.R;
 
 public class RegistActivity extends Activity implements OnClickListener {
     private Button btn_regist;

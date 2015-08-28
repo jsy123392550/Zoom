@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.BB.R;
+import android.BB.R;
 
 public class BBListAdapter extends AbsRecyclerAdapter {
     private BBInfo bbInfo;

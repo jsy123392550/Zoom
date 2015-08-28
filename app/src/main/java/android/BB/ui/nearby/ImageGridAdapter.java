@@ -21,7 +21,7 @@ import org.kymjs.kjframe.KJBitmap;
 
 import java.util.ArrayList;
 
-import app.BB.R;
+import android.BB.R;
 
 public class ImageGridAdapter extends BaseAdapter{
     private ArrayList<String> imgs;

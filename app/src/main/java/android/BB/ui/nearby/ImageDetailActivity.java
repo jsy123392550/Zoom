@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import app.BB.R;
+import android.BB.R;
 
 public class ImageDetailActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
     private ViewPager viewPager;

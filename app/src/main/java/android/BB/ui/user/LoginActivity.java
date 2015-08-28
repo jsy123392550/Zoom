@@ -1,5 +1,6 @@
 package android.BB.ui.user;
 
+import android.BB.map.LocationHelper;
 import android.BB.ui.main.MainActivity;
 import android.app.Activity;
 import android.app.Dialog;
@@ -12,7 +13,10 @@ import android.widget.EditText;
 
 import android.BB.http.user.UserHttp;
 
-import app.BB.R;
+import android.BB.R;
+
+import com.baidu.location.LocationClientOption;
+
 public class LoginActivity extends Activity implements OnClickListener {
 	private EditText et_username;
 	private EditText et_pwd;
@@ -20,6 +24,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private Button btn_regist;
 	private UserHttp http;
 	private Dialog waitDialog;
+	private LocationHelper helper;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

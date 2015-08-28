@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.BB.R;
+import android.BB.R;
 
 public class NearbyFragment extends Fragment {
     private static final String CURRENT_INDEX="current_index";

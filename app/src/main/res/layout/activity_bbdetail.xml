@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgcolor_normal"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="android.BB.ui.nearby.BBDetailActivity">
     <include
         android:id="@+id/toolbar_bbdetail"
@@ -24,7 +26,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/bbdetail_et" />
+            android:background="@drawable/bbdetail_et"
+            android:textCursorDrawable="@null"/>
         <Button
             android:id="@+id/btn_bbdetail_comment"
             android:layout_width="wrap_content"

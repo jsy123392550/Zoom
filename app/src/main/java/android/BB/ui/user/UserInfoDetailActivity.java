@@ -13,7 +13,7 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import app.BB.R;
+import android.BB.R;
 
 /**
  * Created by KalinaRain on 2015/8/25.

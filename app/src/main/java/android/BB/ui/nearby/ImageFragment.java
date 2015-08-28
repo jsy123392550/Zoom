@@ -14,7 +14,7 @@ import android.widget.Toast;
 import org.kymjs.kjframe.KJBitmap;
 import org.kymjs.kjframe.bitmap.BitmapCallBack;
 
-import app.BB.R;
+import android.BB.R;
 
 public class ImageFragment extends Fragment {
     private static final String IMG_URL = "img_url";

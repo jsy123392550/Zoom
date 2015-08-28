@@ -4,6 +4,7 @@ import android.BB.bean.nearby.Comment;
 import android.BB.bean.nearby.HostInfo;
 import android.BB.finals.MyConstants;
 import android.BB.util.AbsRecyclerAdapter;
+import android.BB.util.DialogFactory;
 import android.BB.widget.NoScrollGridView;
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -22,14 +23,13 @@ import org.kymjs.kjframe.KJBitmap;
 
 import java.util.List;
 
-import app.BB.R;
+import android.BB.R;
 
 public class BBDetailListAdapter extends AbsRecyclerAdapter{
     private static final int VIEWTYPE_HEAD=3;
     private KJBitmap kjBitmap;
     private List<Comment> commentList;
     private HostInfo hostInfo;
-    private ImageGridAdapter imageGridAdapter;
     public BBDetailListAdapter(Context context,List<Comment> commentList,HostInfo hostInfo) {
         super(context);
         kjBitmap=new KJBitmap();
@@ -92,7 +92,8 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
     public int getItemCount() {
         return commentList.size()+1;
     }
-    class HeadViewHolder extends RecyclerView.ViewHolder{
+
+    class HeadViewHolder extends RecyclerView.ViewHolder implements BBDetailActivity.CommentCallback {
         private static final int DURATION_MILLS=500;
         private ImageView host_head;
         private ImageView img_praise;
@@ -107,8 +108,9 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
         private TextView tv_forward;
         private Button btn;
         private NoScrollGridView gridView;
+        private ImageGridAdapter imageGridAdapter;
         private ScaleAnimation animation;
-        private OnClickPraiseListener praiseListener;
+        private OnClickIconListener iconListener;
         private boolean isPraise;
         private boolean isComment;
         private boolean isForward;
@@ -133,25 +135,45 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
             gridView= (NoScrollGridView) itemView.findViewById(R.id.gridview_bbdetail_host_img);
             animation=new ScaleAnimation(1.0f,1.3f,1.0f,1.3f, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
             animation.setDuration(DURATION_MILLS);
-            praiseListener=new OnClickPraiseListener();
+            iconListener =new OnClickIconListener();
+            ((BBDetailActivity)mContext).setCallback(this);
         }
-        class OnClickPraiseListener implements View.OnClickListener{
-            @Override
-            public void onClick(View v) {
-                if(isPraise){
-                    Toast.makeText(mContext.getApplicationContext(),"你已经赞过了这个BB",Toast.LENGTH_SHORT).show();
-                }else{
-                    img_praise.setColorFilter(mContext.getResources().getColor(R.color.orange_press), PorterDuff.Mode.MULTIPLY);
-                    scaleAnimation(img_praise);
-                    hostInfo.setPraise(hostInfo.getPraise()+1);
-                    tv_praise.setText(String.valueOf(hostInfo.getPraise()));
-                    isPraise=true;
-                }
+
+        @Override
+        public void change() {
+            if(!isComment){
+                img_comment.setColorFilter(mContext.getResources().getColor(R.color.orange_press), PorterDuff.Mode.MULTIPLY);
+                isComment=true;
             }
+            scaleAnimation(img_comment);
+            hostInfo.setComment(hostInfo.getComment() + 1);
+            tv_comment.setText(String.valueOf(hostInfo.getComment()));
         }
-        class OnClickCommentListener implements View.OnClickListener{
+
+        class OnClickIconListener implements View.OnClickListener{
             @Override
             public void onClick(View v) {
+                int id=v.getId();
+                switch (id){
+                    case R.id.img_bbdetail_host_praise:
+                        if(isPraise){
+                            Toast.makeText(mContext.getApplicationContext(),"你已经赞过了这个BB",Toast.LENGTH_SHORT).show();
+                        }else{
+                            img_praise.setColorFilter(mContext.getResources().getColor(R.color.orange_press), PorterDuff.Mode.MULTIPLY);
+                            scaleAnimation(img_praise);
+                            hostInfo.setPraise(hostInfo.getPraise()+1);
+                            tv_praise.setText(String.valueOf(hostInfo.getPraise()));
+                            isPraise=true;
+                        }
+                        break;
+                    case R.id.img_bbdetail_host_comment:
+                        ((BBDetailActivity)mContext).getEt_comment().requestFocus();
+                        break;
+                    case R.id.img_bbdetail_host_forward:
+                        DialogFactory.createEditDialog(mContext);
+                        break;
+                }
+
             }
         }
         public void scaleAnimation(View view){
@@ -168,7 +190,7 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
             tv_forward.setText(String.valueOf(hostInfo.getForward()));
             imageGridAdapter=new ImageGridAdapter(mContext,hostInfo.getImgs());
             gridView.setAdapter(imageGridAdapter);
-            img_praise.setOnClickListener(praiseListener);
+            img_praise.setOnClickListener(iconListener);
         }
     }
     class ItemViewHolder extends AbsRecyclerAdapter.ItemViewHolder{

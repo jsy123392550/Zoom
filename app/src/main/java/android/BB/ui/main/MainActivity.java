@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import app.BB.R;
+import android.BB.R;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 	private static final String CURRENT_INDEX="current_index";
