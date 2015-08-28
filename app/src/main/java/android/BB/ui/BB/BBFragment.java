@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 import android.BB.R;
 
 public class BBFragment extends Fragment {
+    public static BBFragment newInstance(){
+        BBFragment fragment=new BBFragment();
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.ll_bb, container, false);

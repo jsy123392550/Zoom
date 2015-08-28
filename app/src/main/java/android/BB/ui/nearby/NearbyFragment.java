@@ -4,10 +4,12 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,15 +21,18 @@ import android.BB.R;
 public class NearbyFragment extends Fragment {
     private static final String CURRENT_INDEX="current_index";
     private ViewPager viewpager;
-    private NearbyBBFragment _BBFragment;
-    private NearbyUserFragment _UserFragment;
+    private NearbyBBFragment bbFragment;
+    private NearbyUserFragment userFragment;
+    private NearbyResourceFragment resourceFragment;
     private List<Fragment> fragmentList;
     private FragAdapter adapter;
     private View indicator;
     private TextView tv_BB;
     private TextView tv_user;
+    private TextView tv_resource;
     private int screenW;
-    private int currIndex=0;
+    private int currIndex;
+    private int width_indicator;
     ClickListener clickListener;
 
    /* @Override
@@ -89,7 +94,10 @@ public class NearbyFragment extends Fragment {
         super.onDetach();
         Log.i("BB", "nearbyfragment detach");
     }*/
-
+    public static NearbyFragment newInstance() {
+        NearbyFragment fragment = new NearbyFragment();
+        return fragment;
+    }
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -103,12 +111,15 @@ public class NearbyFragment extends Fragment {
         }
         View view=inflater.inflate(R.layout.ll_nearby, container, false);
         fragmentList=new ArrayList<>();
-        _BBFragment=new NearbyBBFragment();
-        _UserFragment=new NearbyUserFragment();
-        fragmentList.add(_BBFragment);
-        fragmentList.add(_UserFragment);
+        bbFragment =NearbyBBFragment.newInstance();
+        userFragment =NearbyUserFragment.newInstance();
+        resourceFragment=NearbyResourceFragment.newInstance();
+        fragmentList.add(bbFragment);
+        fragmentList.add(userFragment);
+        fragmentList.add(resourceFragment);
         tv_BB= (TextView) view.findViewById(R.id.tv_nearby_BB);
         tv_user= (TextView) view.findViewById(R.id.tv_nearby_user);
+        tv_resource= (TextView) view.findViewById(R.id.tv_nearby_resource);
         viewpager= (ViewPager) view.findViewById(R.id.viewpager_nearby);
         indicator=view.findViewById(R.id.view_nearby_indicator);
         init();
@@ -117,33 +128,34 @@ public class NearbyFragment extends Fragment {
     private void init() {
         DisplayMetrics dm=getActivity().getResources().getDisplayMetrics();
         screenW=dm.widthPixels;
-        int width_indicator=screenW/2;
-        indicator.setLayoutParams(new LinearLayout.LayoutParams(screenW / 2, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 6, dm)));
-        indicator.setX(currIndex*width_indicator);
+        width_indicator=screenW/3;
+        indicator.setLayoutParams(new LinearLayout.LayoutParams(screenW / 3, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 6, dm)));
+        indicator.setX(currIndex * width_indicator);
         adapter=new FragAdapter(getChildFragmentManager(),fragmentList);
         viewpager.setAdapter(adapter);
         viewpager.addOnPageChangeListener(new PagerListener());
         clickListener=new ClickListener();
         tv_BB.setOnClickListener(clickListener);
         tv_user.setOnClickListener(clickListener);
+        tv_resource.setOnClickListener(clickListener);
     }
     private class PagerListener implements ViewPager.OnPageChangeListener{
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            if(positionOffset>0){
-                indicator.setX(positionOffsetPixels/2);
-            }
         }
 
         @Override
         public void onPageSelected(int position) {
+            TranslateAnimation animation=new TranslateAnimation(currIndex*width_indicator,position*width_indicator,0,0);
+            animation.setDuration(300);
+            animation.setFillAfter(true);
+            indicator.startAnimation(animation);
             currIndex=position;
         }
 
         @Override
         public void onPageScrollStateChanged(int state) {
-
         }
     }
     private class ClickListener implements View.OnClickListener{
@@ -153,15 +165,21 @@ public class NearbyFragment extends Fragment {
             int id=v.getId();
             switch (id){
                 case R.id.tv_nearby_BB:
-                    if(currIndex==1){
+                    if(currIndex!=0){
                         viewpager.setCurrentItem(0);
                         currIndex=0;
                     }
                     break;
                 case R.id.tv_nearby_user:
-                    if(currIndex==0){
+                    if(currIndex!=1){
                         viewpager.setCurrentItem(1);
                         currIndex=1;
+                    }
+                    break;
+                case R.id.tv_nearby_resource:
+                    if(currIndex!=2){
+                        viewpager.setCurrentItem(2);
+                        currIndex=2;
                     }
             }
         }

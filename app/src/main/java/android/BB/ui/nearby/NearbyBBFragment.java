@@ -13,7 +13,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,16 +34,22 @@ public class NearbyBBFragment extends Fragment{
     private boolean isLoad;
     public NearbyBBFragment() {
     }
-
+    public static NearbyBBFragment newInstance(){
+        NearbyBBFragment fragment=new NearbyBBFragment();
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.e("BB","BB oncreate");
-        View view=inflater.inflate(R.layout.fragment_nearby_bb, container, false);
-        recyclerView= (RecyclerView) view.findViewById(R.id.recyclerview_fragment_nearby_bb);
-        swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.swipe_fragment_nearby_bb);
-        adapter=new BBListAdapter(getActivity());
+        View view=inflater.inflate(R.layout.fragment_nearby_pager, container, false);
+        recyclerView= (RecyclerView) view.findViewById(R.id.recyclerview_fragment_nearby_pager);
+        swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.swipe_fragment_nearby_pager);
         init();
+        return view;
+    }
+
+    private void init(){
+        adapter=new BBListAdapter(getActivity());
         recyclerView.setAdapter(adapter);
         layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
@@ -81,10 +86,6 @@ public class NearbyBBFragment extends Fragment{
                 startActivity(intent);
             }
         });
-        return view;
-    }
-
-    private void init(){
         isLoad=false;
         recyclerView.addOnScrollListener(new MyScrollListener());
         recyclerView.setHasFixedSize(true);

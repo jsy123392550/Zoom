@@ -24,6 +24,10 @@ public class UserInfoFragment extends Fragment implements View.OnClickListener{
     private LinearLayout ll_user_BB_coin;
     private LinearLayout ll_user_setting;
 
+    public static UserInfoFragment newInstance(){
+        UserInfoFragment fragment=new UserInfoFragment();
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i("userinfofragment", "oncreateview");

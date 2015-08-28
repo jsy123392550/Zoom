@@ -1,6 +1,5 @@
 package android.BB.ui.nearby;
 
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -8,46 +7,44 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import android.BB.R;
-public class NearbyUserFragment extends Fragment {
+import android.widget.Toast;
 
+public class NearbyResourceFragment extends Fragment {
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private UserListAdapter adapter;
     private LinearLayoutManager layoutManager;
+    private BBListAdapter adapter;
     private int lastVisibleItem;
     private Handler handler;
     private boolean isLoad;
-    public NearbyUserFragment() {
-    }
-    public static NearbyUserFragment newInstance(){
-        NearbyUserFragment fragment=new NearbyUserFragment();
+    public static NearbyResourceFragment newInstance() {
+        NearbyResourceFragment fragment = new NearbyResourceFragment();
         return fragment;
     }
+
+    public NearbyResourceFragment() {
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.e("BB", "user oncreate");
-        View view=inflater.inflate(R.layout.fragment_nearby_pager, container, false);
+        View view =inflater.inflate(R.layout.fragment_nearby_pager, container, false);
         recyclerView= (RecyclerView) view.findViewById(R.id.recyclerview_fragment_nearby_pager);
         swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.swipe_fragment_nearby_pager);
         init();
         return view;
     }
-
     private void init(){
-        adapter=new UserListAdapter(getActivity());
+        adapter=new BBListAdapter(getActivity());
         recyclerView.setAdapter(adapter);
         layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
-        /*模拟网络请求*/
         handler=new Handler(){
             @Override
             public void handleMessage(Message msg) {
@@ -62,12 +59,6 @@ public class NearbyUserFragment extends Fragment {
                 }
             }
         };
-        adapter.setClickListener(new UserListAdapter.ItemClickListener() {
-            @Override
-            public void click(int info_id, int pos) {
-                Toast.makeText(getActivity(),"id:"+info_id+"  pos:"+pos,Toast.LENGTH_SHORT).show();
-            }
-        });
         isLoad=false;
         recyclerView.addOnScrollListener(new MyScrollListener());
         recyclerView.setHasFixedSize(true);
@@ -98,5 +89,4 @@ public class NearbyUserFragment extends Fragment {
             }
         }
     }
-
 }
