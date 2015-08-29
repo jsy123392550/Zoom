@@ -17,8 +17,6 @@
     <color name="orange_press">#fff48214</color>
     <color name="bgcolor_normal">#91eef0f6</color>
     <color name="item_shadow">#ffd5d7dd</color>
-    <color name="need_normal">#eded462f</color>
-    <color name="need_press">#ede21722</color>
-    <color name="resource_normal">#76f024</color>
-    <color name="resource_press">#6cd700</color>
+    <color name="resource_normal">#0bd5a2</color>
+    <color name="resource_press">#0c8465</color>
 </resources>

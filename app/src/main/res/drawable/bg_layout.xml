@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="@color/item_shadow" />
-            <corners android:radius="@dimen/coner_radius" />
-        </shape>
-    </item>
-    <item
-        android:bottom="2px"
-        android:right="2px">
-        <shape android:shape="rectangle">
-            <corners android:radius="@dimen/coner_radius" />
-            <solid android:color="@android:color/white" />
-        </shape>
-    </item>
-
-</layer-list>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/coner_radius" />
+    <solid android:color="@android:color/white" />
+</shape>
