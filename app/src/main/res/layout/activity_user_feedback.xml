@@ -3,12 +3,14 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/ed_feedback"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="当前还有。。。B币"/>
+        android:hint="不超过100"/>
     <Button
+        android:id="@+id/bt_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="支付"/>
+        android:text="提交"/>
 </LinearLayout>

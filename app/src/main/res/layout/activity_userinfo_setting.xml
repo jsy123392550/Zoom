@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#f7f7f7">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/whether_accept_news"
+            android:gravity="center_vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"/>
+        <TextView
+            android:id="@+id/whether_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="是否接受"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="#ffffff">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/app_version"
+            android:gravity="center_vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"
+            android:text="v1.0"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_check_for_update"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/check_update"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="3dp"
+        android:background="#ffffff"/>
+    <TextView
+        android:id="@+id/tv_user_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/user_feedback"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="3dp"
+        android:background="#ffffff"/>
+    <TextView
+        android:id="@+id/tv_about_us"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/about_us"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="3dp"
+        android:background="#ffffff"/>
 </LinearLayout>
