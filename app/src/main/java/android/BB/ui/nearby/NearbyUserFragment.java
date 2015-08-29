@@ -1,7 +1,11 @@
 package android.BB.ui.nearby;
 
 
+import android.BB.bean.nearby.UserDetail;
+import android.BB.finals.MyConstants;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -65,7 +69,10 @@ public class NearbyUserFragment extends Fragment {
         adapter.setClickListener(new UserListAdapter.ItemClickListener() {
             @Override
             public void click(int info_id, int pos) {
-                Toast.makeText(getActivity(),"id:"+info_id+"  pos:"+pos,Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getActivity(),UserDetailActivity.class);
+                UserDetail userDetail=new UserDetail("18883283971","我是一个大帅逼","男","重庆","今天是个好日子~~~", Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png",4);
+                intent.putExtra(MyConstants.KEY_USER_DETAIL,userDetail);
+                startActivity(intent);
             }
         });
         isLoad=false;

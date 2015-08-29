@@ -23,7 +23,6 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -57,6 +56,7 @@
         <activity android:name=".ui.user.RegistInfoActivity" />
         <activity android:name=".ui.nearby.BBDetailActivity" />
         <activity android:name=".ui.nearby.ImageDetailActivity" />
+        <activity android:name=".ui.nearby.UserDetailActivity" />
         <!-- 模块——我 的所有 Activity -->
         <activity android:name=".ui.user.UserInfoDetailActivity" />
         <activity android:name=".ui.user.UserBBhistoryActivity" />
@@ -66,10 +66,6 @@
         <activity android:name=".ui.user.UserInfoBBNumberChanging" />
         <activity android:name=".ui.user.UserInfoDistrictChanging" />
         <activity android:name=".ui.user.UserInfoPersonalSignatureChanging" />
-        <activity
-            android:name=".ui.nearby.UserDetailActivity"
-            android:label="@string/title_activity_user_detail" >
-        </activity>
     </application>
 
 </manifest>
