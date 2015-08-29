@@ -43,7 +43,7 @@ public class BBListAdapter extends AbsRecyclerAdapter {
             try {
                 file2.createNewFile();
                 FileOutputStream fout = new FileOutputStream(file2);
-                Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.qop);
+                Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
                 bitmap.compress(Bitmap.CompressFormat.PNG, 70, fout);
                 fout.flush();
                 fout.close();

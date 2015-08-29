@@ -70,10 +70,6 @@
         <activity android:name=".ui.user.UserInfoPersonalSignatureChanging" />
         <activity android:name=".ui.user.UserFeedback" />
         <activity android:name=".ui.user.UserPortraitSetting" />
-        <activity
-            android:name=".ui.nearby.UserDetailActivity"
-            android:label="@string/title_activity_user_detail" >
-        </activity>
     </application>
 
 </manifest>

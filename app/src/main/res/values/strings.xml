@@ -51,6 +51,8 @@
     <string name="bbdetail_btn_comment">发送</string>
     <string name="bbdetail_forward">转发</string>
     <string name="bbdetail_praise">点赞</string>
+    <string name="userinfo_account">帐号</string>
+    <string name="userinfo_nickname">昵称</string>
     <string name="userinfo_detail_portrait">头像</string>
     <string name="userinfo_detail_username">昵称</string>
     <string name="userinfo_detail_bbnumber">BB号</string>
@@ -70,14 +72,11 @@
     <string name="tv_set_bbnumber">设置BB号</string>
     <string name="tv_set_district">修改地区</string>
     <string name="tv_set_psignature">设置个性签名</string>
-
+    <string name="sure">确定</string>
+    <string name="cancel">取消</string>
     <string name="whether_accept_news">接受推送</string>
     <string name="app_version">版本号</string>
     <string name="check_update">检查更新</string>
     <string name="user_feedback">用户反馈</string>
     <string name="about_us">关于我们</string>
-
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_user_detail">UserDetailActivity</string>
 </resources>
