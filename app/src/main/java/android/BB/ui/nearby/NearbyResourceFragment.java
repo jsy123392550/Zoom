@@ -1,6 +1,5 @@
 package android.BB.ui.nearby;
 
-
 import android.BB.bean.nearby.Comment;
 import android.BB.bean.nearby.HostInfo;
 import android.BB.finals.MyConstants;
@@ -13,38 +12,45 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.BB.R;
 import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.BB.R;
-
-public class NearbyBBFragment extends Fragment{
+public class NearbyResourceFragment extends Fragment {
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private BBListAdapter adapter;
     private LinearLayoutManager layoutManager;
+    private BBListAdapter adapter;
     private int lastVisibleItem;
     private Handler handler;
     private boolean isLoad;
-    public NearbyBBFragment() {
+    public static NearbyResourceFragment newInstance() {
+        NearbyResourceFragment fragment = new NearbyResourceFragment();
+        return fragment;
     }
+
+    public NearbyResourceFragment() {
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.e("BB","BB oncreate");
-        View view=inflater.inflate(R.layout.fragment_nearby_bb, container, false);
-        recyclerView= (RecyclerView) view.findViewById(R.id.recyclerview_fragment_nearby_bb);
-        swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.swipe_fragment_nearby_bb);
-        adapter=new BBListAdapter(getActivity());
+        View view =inflater.inflate(R.layout.fragment_nearby_pager, container, false);
+        recyclerView= (RecyclerView) view.findViewById(R.id.recyclerview_fragment_nearby_pager);
+        swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.swipe_fragment_nearby_pager);
         init();
+        return view;
+    }
+    private void init(){
+        adapter=new BBListAdapter(getActivity(),true);
         recyclerView.setAdapter(adapter);
         layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
@@ -54,7 +60,7 @@ public class NearbyBBFragment extends Fragment{
                 if(msg.what==0){
                     adapter.refresh();
                     swipeRefreshLayout.setRefreshing(false);
-                    Toast.makeText(getActivity(),"下拉刷新成功！",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "下拉刷新成功！", Toast.LENGTH_SHORT).show();
                 }else if(msg.what==1){
                     adapter.loadMore();
                     isLoad=false;
@@ -67,7 +73,7 @@ public class NearbyBBFragment extends Fragment{
             public void click(int info_id, int pos) {
                 Intent intent=new Intent(getActivity(),BBDetailActivity.class);
                 ArrayList<String> imgs=new ArrayList<>();
-                String img=Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png";
+                String img= Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png";
                 List<Comment> commentList=new ArrayList<Comment>();
                 Comment comment=new Comment(2,"大骚逼一枚",img ,"3分钟前","我今天没吃药，感觉自己萌萌哒！");
                 for(int i=0;i<10;i++){
@@ -78,13 +84,10 @@ public class NearbyBBFragment extends Fragment{
                 HostInfo hostInfo=new HostInfo(1,imgs,"1个小时前","我在二教2217教室上课的时候忘拿雨伞了，有顺路的同学能帮我带到11栋吗？",img,"我是一个大帅逼",5,11,3,6);
                 intent.putExtra(MyConstants.KEY_HOSTINFO,hostInfo);
                 intent.putExtra(MyConstants.KEY_COMMENT_LIST, (Serializable) commentList);
+                intent.putExtra(MyConstants.KEY_BB_TYPE,true);
                 startActivity(intent);
             }
         });
-        return view;
-    }
-
-    private void init(){
         isLoad=false;
         recyclerView.addOnScrollListener(new MyScrollListener());
         recyclerView.setHasFixedSize(true);

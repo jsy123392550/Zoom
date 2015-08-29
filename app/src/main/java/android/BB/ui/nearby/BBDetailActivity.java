@@ -69,7 +69,7 @@ public class BBDetailActivity extends AppCompatActivity {
         tv_toolbar.setText(MyConstants.KEY_TOOLBAR_BBDETAIL);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.back_arrow);
-        adapter=new BBDetailListAdapter(this,(List<Comment>)getIntent().getSerializableExtra(MyConstants.KEY_COMMENT_LIST),(HostInfo)getIntent().getSerializableExtra(MyConstants.KEY_HOSTINFO));
+        adapter=new BBDetailListAdapter(this,(List<Comment>)getIntent().getSerializableExtra(MyConstants.KEY_COMMENT_LIST),(HostInfo)getIntent().getSerializableExtra(MyConstants.KEY_HOSTINFO),getIntent().getBooleanExtra(MyConstants.KEY_BB_TYPE,false));
         linearLayoutManager =new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         item_recyclerView.setLayoutManager(linearLayoutManager);
         item_recyclerView.setAdapter(adapter);
@@ -113,9 +113,6 @@ public class BBDetailActivity extends AppCompatActivity {
         switch(id){
             case android.R.id.home:
                 finish();
-                break;
-            case R.id.menu_bbdetail_forward:
-                DialogFactory.createEditDialog(this).show();
                 break;
         }
         return super.onOptionsItemSelected(item);

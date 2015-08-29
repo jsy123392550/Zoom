@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 		setDefaultContent();
 		if(savedInstanceState == null) {
 			curIndex=NEARBY_INDEX;
-			nearbyFragment = new NearbyFragment();
+			nearbyFragment = NearbyFragment.newInstance();
 			fragmentManager.beginTransaction().add(R.id.main_content, nearbyFragment,String.valueOf(NEARBY_INDEX)).commit();
 			setCurStatus();
 		}else{
@@ -128,35 +128,35 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 		switch (v.getId()) {
 			case R.id.main_bottom_nearby:
 				if (nearbyFragment == null) {
-					nearbyFragment = new NearbyFragment();
+					nearbyFragment = NearbyFragment.newInstance();
 				}
 				curIndex =NEARBY_INDEX;
 				switchContent(curFragment, nearbyFragment);
 				break;
 			case R.id.main_bottom_news:
 				if (newsFragment == null) {
-					newsFragment = new NewsFragment();
+					newsFragment = NewsFragment.newInstance();
 				}
 				curIndex =NEWS_INDEX;
 				switchContent(curFragment,newsFragment);
 				break;
 			case R.id.main_bottom_BB:
 				if (bbFragment == null) {
-					bbFragment = new BBFragment();
+					bbFragment = BBFragment.newInstance();
 				}
 				curIndex =BB_INDEX;
 				switchContent(curFragment,bbFragment);
 				break;
 			case R.id.main_bottom_linkman:
 				if (linkmanFragment == null) {
-					linkmanFragment = new LinkmanFragment();
+					linkmanFragment = LinkmanFragment.newInstance();
 				}
 				curIndex =LINKMAN_INDEX;
 				switchContent(curFragment,linkmanFragment);
 				break;
 			case R.id.main_bottom_userinfo:
 				if (userinfoFragment == null) {
-					userinfoFragment = new UserInfoFragment();
+					userinfoFragment = UserInfoFragment.newInstance();
 				}
 				curIndex =USER_INDEX;
 				switchContent(curFragment,userinfoFragment);

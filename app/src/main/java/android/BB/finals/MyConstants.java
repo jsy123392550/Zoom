@@ -66,4 +66,5 @@ public class MyConstants {
 	public static final String KEY_IMAGE_DETAIL_POSITION="img_detail_pos";
 	public static final String KEY_HOSTINFO="hostinfo";
 	public static final String KEY_COMMENT_LIST="comment_list";
+	public static final String KEY_BB_TYPE="bb_type";
 }

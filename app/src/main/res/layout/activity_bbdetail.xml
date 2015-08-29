@@ -39,7 +39,7 @@
             android:layout_alignTop="@id/et_bbdetail_comment"
             android:layout_toRightOf="@id/et_bbdetail_comment"
             android:layout_toEndOf="@id/et_bbdetail_comment"
-            android:background="@drawable/nearby_btn"
+            android:background="@drawable/orange_btn"
             android:text="@string/bbdetail_btn_comment"
             android:textColor="@android:color/white"/>
     </LinearLayout>
