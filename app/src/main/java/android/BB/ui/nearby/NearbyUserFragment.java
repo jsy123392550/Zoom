@@ -3,6 +3,9 @@ package android.BB.ui.nearby;
 
 import android.BB.bean.nearby.UserDetail;
 import android.BB.finals.MyConstants;
+import android.BB.util.AbsRecyclerAdapter;
+import android.BB.util.DialogFactory;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -16,6 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import android.BB.R;
@@ -69,17 +73,20 @@ public class NearbyUserFragment extends Fragment {
         adapter.setClickListener(new UserListAdapter.ItemClickListener() {
             @Override
             public void click(int info_id, int pos) {
-                Intent intent=new Intent(getActivity(),UserDetailActivity.class);
-                UserDetail userDetail=new UserDetail("18883283971","我是一个大帅逼","男","重庆","今天是个好日子~~~", Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png",4);
-                intent.putExtra(MyConstants.KEY_USER_DETAIL,userDetail);
+                Intent intent = new Intent(getActivity(), UserDetailActivity.class);
+                UserDetail userDetail = new UserDetail("18883283971", "我是一个大帅逼", "男", "重庆", "今天是个好日子~~~", Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH + "/qop.png", 4);
+                intent.putExtra(MyConstants.KEY_USER_DETAIL, userDetail);
                 startActivity(intent);
             }
-        });
+        }, null);
         isLoad=false;
         recyclerView.addOnScrollListener(new MyScrollListener());
         recyclerView.setHasFixedSize(true);
         swipeRefreshLayout.setColorSchemeColors(getActivity().getResources().getColor(R.color.orange_normal), getActivity().getResources().getColor(R.color.orange_press));
         swipeRefreshLayout.setOnRefreshListener(new MyRefreshListener());
+    }
+    public interface BtnCallback{
+        public void callback();
     }
     class MyRefreshListener implements SwipeRefreshLayout.OnRefreshListener{
         @Override

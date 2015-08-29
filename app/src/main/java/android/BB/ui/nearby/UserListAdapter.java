@@ -3,8 +3,9 @@ package android.BB.ui.nearby;
 import android.BB.bean.nearby.UserInfo;
 import android.BB.finals.MyConstants;
 import android.BB.util.AbsRecyclerAdapter;
+import android.BB.util.DialogFactory;
+import android.app.Dialog;
 import android.content.Context;
-import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.TypedValue;
@@ -36,7 +37,6 @@ public class UserListAdapter extends AbsRecyclerAdapter {
             mList.add(userInfo);
         }
     }
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         switch(viewType){
@@ -76,6 +76,7 @@ public class UserListAdapter extends AbsRecyclerAdapter {
     public void refresh() {
 
     }
+
     class ItemViewHolder extends AbsRecyclerAdapter.ItemViewHolder {
         private int user_id;
         private ImageView head;
@@ -83,6 +84,7 @@ public class UserListAdapter extends AbsRecyclerAdapter {
         private TextView distance;
         private RatingBar ratingBar;
         private Button btn;
+
         public ItemViewHolder(View itemView) {
             super(itemView);
             head = (ImageView) itemView.findViewById(R.id.img_nearby_user_item_head);
@@ -95,7 +97,6 @@ public class UserListAdapter extends AbsRecyclerAdapter {
         public void bind(int pos){
             user_id=mList.get(pos).getUser_id();
             kjBitmap.display(head,mList.get(pos).getUser_head());
-//            head.setImageBitmap(BitmapFactory.decodeFile(mList.get(pos).getUser_head()));
             nickname.setText(mList.get(pos).getNickname());
             distance.setText(mList.get(pos).getDistance());
             ratingBar.setRating(mList.get(pos).getCredit());
@@ -105,8 +106,17 @@ public class UserListAdapter extends AbsRecyclerAdapter {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(itemClickListener!=null)
-                        itemClickListener.click(user_id,getAdapterPosition());
+                    final Dialog dialog= DialogFactory.createEditDialog(mContext, MyConstants.KEY_DIALOG_ADD_FRIEND);
+                    final Button btn_sure= (Button) dialog.findViewById(R.id.btn_dialog_edit);
+                    btn_sure.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                            btn.setText(MyConstants.TEXT_ADDED_FRIEND);
+                            btn.setEnabled(false);
+                        }
+                    });
+                    dialog.show();
                 }
             });
             itemView.setOnClickListener(new View.OnClickListener() {

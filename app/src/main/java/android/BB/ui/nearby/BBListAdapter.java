@@ -134,8 +134,11 @@ public class BBListAdapter extends AbsRecyclerAdapter {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (itemClickListener != null)
-                        itemClickListener.click(info_id, getAdapterPosition());
+                    if (btnClickListener != null) {
+                        btn.setText(MyConstants.TEXT_BB_PRESSED);
+                        btn.setEnabled(false);
+                        btnClickListener.click(info_id, getAdapterPosition());
+                    }
                 }
             });
             itemView.setOnClickListener(new View.OnClickListener() {

@@ -4,7 +4,6 @@ import android.BB.bean.nearby.Comment;
 import android.BB.bean.nearby.HostInfo;
 import android.BB.finals.MyConstants;
 import android.BB.util.AbsRecyclerAdapter;
-import android.BB.util.DialogFactory;
 import android.BB.util.Utils;
 import android.BB.widget.MyItemDecoration;
 import android.os.Bundle;
