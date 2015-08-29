@@ -16,6 +16,10 @@ public class MyConstants {
 	public static final String CACHE_PATH = APP_PATH + WEB_SEPARATOR + "cache";
     // 图片存放地址
 	public static final String IMAGE_PATH = APP_PATH + WEB_SEPARATOR + "image";
+	// 上传头像的地址
+	public static final String UPLOADIMAGE_PATH = "";
+	// app检查更新的地址
+	public static final String CHECK_UPDATE = "";
 	//以下为UI中所用字段名
 	public static final String TEXT_USER="用户";
 	public static final String TEXT_NO_NET = "当前没有网络";

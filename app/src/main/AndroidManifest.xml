@@ -22,6 +22,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 
     <application
@@ -66,6 +68,12 @@
         <activity android:name=".ui.user.UserInfoBBNumberChanging" />
         <activity android:name=".ui.user.UserInfoDistrictChanging" />
         <activity android:name=".ui.user.UserInfoPersonalSignatureChanging" />
+        <activity android:name=".ui.user.UserFeedback" />
+        <activity android:name=".ui.user.UserPortraitSetting" />
+        <activity
+            android:name=".ui.nearby.UserDetailActivity"
+            android:label="@string/title_activity_user_detail" >
+        </activity>
     </application>
 
 </manifest>

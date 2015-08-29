@@ -58,9 +58,6 @@
     <string name="userinfo_detail_user_district">地区</string>
     <string name="userinfo_detail_personality_signature">个性签名</string>
     <string name="userinfo_detail_credit">信用指数</string>
-    <string name="sure">确定</string>
-    <string name="cancel">取消</string>
-    <string name="title_activity_map">MapActivity</string>
     <string name="user_gender_man">男</string>
     <string name="user_gender_woman">女</string>
     <string name="user_nickname_default">未填写</string>
@@ -73,4 +70,14 @@
     <string name="tv_set_bbnumber">设置BB号</string>
     <string name="tv_set_district">修改地区</string>
     <string name="tv_set_psignature">设置个性签名</string>
+
+    <string name="whether_accept_news">接受推送</string>
+    <string name="app_version">版本号</string>
+    <string name="check_update">检查更新</string>
+    <string name="user_feedback">用户反馈</string>
+    <string name="about_us">关于我们</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_user_detail">UserDetailActivity</string>
 </resources>

@@ -29,9 +29,9 @@ public class UserInfoNickNameChanging extends AppCompatActivity implements View.
     }
 
     private void init() {
-        img_back = (ImageView) findViewById(R.id.img_back_setbbnumber);
-        edt_nickname = (EditText) findViewById(R.id.ed_bbnumber);
-        save = (TextView) findViewById(R.id.tv_save_bbnumber);
+        img_back = (ImageView) findViewById(R.id.img_back_setnickname);
+        edt_nickname = (EditText) findViewById(R.id.ed_nickname);
+        save = (TextView) findViewById(R.id.tv_save_nickname);
         img_back.setOnClickListener(this);
         save.setOnClickListener(this);
     }
@@ -44,8 +44,8 @@ public class UserInfoNickNameChanging extends AppCompatActivity implements View.
                 finish();
                 break;
             case R.id.tv_save_nickname:
-                String content_nickname = edt_nickname.getText().toString();
-                if (content_nickname == null||"".equals(content_nickname)) {
+                nickname = edt_nickname.getText().toString();
+                if (nickname == null||"".equals(nickname)) {
                     Toast.makeText(UserInfoNickNameChanging.this, "内容不能为空！", Toast.LENGTH_LONG).show();
                 } else {
                     //向服务器发送
