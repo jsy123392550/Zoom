@@ -9,7 +9,7 @@
     <color name="regist_info_textcolor">#8E8E8E</color>
     <color name="regist_info_stroke">#d0d0d0</color>
     <color name="dialog_wait_background">#93000000</color>
-    <color name="toolbar">#ff688af3</color>
+    <color name="toolbar">#2793d1</color>
     <color name="main_bottom_module_text_normal">#ff8f9197</color>
     <color name="main_bottom_module_text_press">#cdff8433</color>
     <color name="nearby_fragment_indicator">#ff7ad2ff</color>

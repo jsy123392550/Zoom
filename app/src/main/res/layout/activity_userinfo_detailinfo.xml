@@ -45,11 +45,11 @@
                 android:text="@string/userinfo_detail_username"
                 style="@style/UserInfoDetail_left_tv"/>
             <TextView
-                android:id="@+id/tv_userInfo_detail_name"
+                android:id="@+id/tv_userInfo_detail_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"/>
+                android:text="@string/user_nickname_default"
+                style="@style/UserInfoDetail_right_tv"/>
         </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
@@ -69,8 +69,8 @@
                 android:id="@+id/tv_userInfo_detail_BBNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"/>
+                android:text="@string/user_bbnumber_default"
+                style="@style/UserInfoDetail_right_tv"/>
         </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
@@ -86,10 +86,11 @@
                 android:text="@string/userinfo_detail_user_gender"
                 style="@style/UserInfoDetail_left_tv"/>
             <TextView
+                android:id="@+id/tv_userInfo_detail_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"/>
+                android:text="@string/user_gender_man"
+                style="@style/UserInfoDetail_right_tv"/>
         </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
@@ -105,10 +106,11 @@
                 android:text="@string/userinfo_detail_user_district"
                 style="@style/UserInfoDetail_left_tv"/>
             <TextView
+                android:id="@+id/tv_userInfo_detail_district"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"/>
+                android:text="@string/user_district_default"
+                style="@style/UserInfoDetail_right_tv"/>
         </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
@@ -124,10 +126,11 @@
                 android:text="@string/userinfo_detail_personality_signature"
                 style="@style/UserInfoDetail_left_tv"/>
             <TextView
+                android:id="@+id/tv_userInfo_detail_psignature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"/>
+                android:text="@string/user_psignature_default"
+                style="@style/UserInfoDetail_right_tv"/>
         </RelativeLayout>
         <TextView
             android:layout_width="match_parent"

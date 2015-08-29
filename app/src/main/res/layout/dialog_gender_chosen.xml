@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp" android:paddingRight="20dp"
+    android:id="@+id/dialog_gender_chosen"
+    android:background="#ffffff">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="@string/user_gender"
+        android:textColor="#3cb5f6"
+        android:gravity="center_vertical"
+        android:textSize="20sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cccccc"/>
+    <RelativeLayout
+        android:id="@+id/rl_changetowoman"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:text="@string/user_gender_man"/>
+        <ImageView
+            android:id="@+id/img_confirm_man"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/gou_confirm_blue"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e6e6e6"/>
+    <RelativeLayout
+        android:id="@+id/rl_changetoman"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:textSize="18sp"
+            android:text="@string/user_gender_woman"/>
+        <ImageView
+            android:id="@+id/img_confirm_woman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/gou_confirm_blue"/>
+    </RelativeLayout>
+</LinearLayout>
