@@ -19,4 +19,6 @@
     <color name="item_shadow">#ffd5d7dd</color>
     <color name="resource_normal">#0bd5a2</color>
     <color name="resource_press">#0c8465</color>
+    <color name="layout_normal">#fafafa</color>
+    <color name="layout_press">#bfe8eaf0</color>
 </resources>

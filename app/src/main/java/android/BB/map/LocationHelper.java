@@ -32,6 +32,9 @@ public class LocationHelper {
     public void start(){
         client.start();
     }
+    public void stop(){
+        client.stop();
+    }
     class MyLocationListener implements BDLocationListener{
         @Override
         public void onReceiveLocation(BDLocation bdLocation) {
