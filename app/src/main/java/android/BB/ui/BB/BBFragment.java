@@ -1,6 +1,7 @@
 package android.BB.ui.BB;
 
 import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class BBFragment extends Fragment implements View.OnClickListener{
+    private static int CAMERA_REQUEST_CODE=1;
     private LinearLayout layout_location;
     private RelativeLayout layout_price;
     private TextView tv_location;
@@ -49,7 +51,13 @@ public class BBFragment extends Fragment implements View.OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.layout_bb_price:
+                
                 break;
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
