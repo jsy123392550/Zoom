@@ -1,6 +1,5 @@
 package android.BB.ui.user;
 
-import android.BB.bean.nearby.UserInfo;
 import android.BB.finals.MyConstants;
 import android.app.Dialog;
 import android.content.Intent;
@@ -26,12 +25,14 @@ public class UserInfoDetailActivity extends AppCompatActivity implements View.On
 
     private Toolbar toolbar;
     private TextView tv_toolbar_center;
+    private RelativeLayout rl_portrait;
     private RelativeLayout rl_nickname;
     private RelativeLayout rl_bbnumber;
     private RelativeLayout rl_gender;
     private RelativeLayout rl_district;
     private RelativeLayout rl_personality_signature;
-    private RatingBar ratingBar_credit;
+    private ImageView img_user_portrait;
+    private RatingBar ratingBar_credit;//信用等级
     private int gender = 1;//0代表女，1代表男，默认为1——男
     private ImageView img_man_confirm;
     private ImageView img_woman_confirm;
@@ -52,6 +53,7 @@ public class UserInfoDetailActivity extends AppCompatActivity implements View.On
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.userinfo_detail_toolbar);
         tv_toolbar_center = (TextView) toolbar.findViewById(R.id.toolbar_tv);
+        rl_portrait = (RelativeLayout) findViewById(R.id.rl_portrait);
         rl_nickname = (RelativeLayout) findViewById(R.id.rl_nickname);
         rl_bbnumber = (RelativeLayout) findViewById(R.id.rl_bbnumber);
         rl_gender = (RelativeLayout) findViewById(R.id.rl_gender);
@@ -59,12 +61,14 @@ public class UserInfoDetailActivity extends AppCompatActivity implements View.On
         rl_personality_signature = (RelativeLayout) findViewById(R.id.rl_personality_signature);
         ratingBar_credit = (RatingBar) findViewById(R.id.ratingbar_credit);
 
+        img_user_portrait = (ImageView) findViewById(R.id.img_userinfo_detail_portrait);
         tv_nickname = (TextView) findViewById(R.id.tv_userInfo_detail_nickname);
         tv_bbnumber = (TextView) findViewById(R.id.tv_userInfo_detail_BBNumber);
         tv_gender = (TextView) findViewById(R.id.tv_userInfo_detail_gender);
         tv_district = (TextView) findViewById(R.id.tv_userInfo_detail_district);
         tv_psignature = (TextView) findViewById(R.id.tv_userInfo_detail_psignature);
 
+        rl_portrait.setOnClickListener(this);
         rl_nickname.setOnClickListener(this);
         rl_bbnumber.setOnClickListener(this);
         rl_gender.setOnClickListener(this);
@@ -76,13 +80,17 @@ public class UserInfoDetailActivity extends AppCompatActivity implements View.On
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.back_arrow);
 //        ratingBar_credit.setRating(new UserInfo().getCredit());
-        ratingBar_credit.setRating(3.0f);//设置信用指数为3
+        ratingBar_credit.setRating(3.0f);//设置信用指数为3——测试
     }
 
     @Override
     public void onClick(View v) {
         Intent intent = null;
         switch (v.getId()) {
+            case R.id.rl_portrait:
+                intent = new Intent(UserInfoDetailActivity.this, UserPortraitChosen.class);
+                startActivity(intent);
+                break;
             case R.id.rl_nickname:
                 intent = new Intent(UserInfoDetailActivity.this, UserInfoNickNameChanging.class);
                 startActivity(intent);

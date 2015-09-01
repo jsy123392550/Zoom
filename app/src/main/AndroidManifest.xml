@@ -69,7 +69,8 @@
         <activity android:name=".ui.user.UserInfoDistrictChanging" />
         <activity android:name=".ui.user.UserInfoPersonalSignatureChanging" />
         <activity android:name=".ui.user.UserFeedback" />
-        <activity android:name=".ui.user.UserPortraitSetting" />
+        <activity android:name=".ui.user.UserPortraitChosen" />
+        <activity android:name=".ui.user.PortraitCut" />
     </application>
 
 </manifest>

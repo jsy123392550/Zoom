@@ -17,10 +17,10 @@ import android.BB.R;
 
 public class UserInfoFragment extends Fragment implements View.OnClickListener{
 
-    private ImageView user_portrait;//由缓存中获取
+//    private ImageView user_portrait;//由缓存中获取
     private TextView tv_username;
     private TextView tv_account;
-    private ImageView img_todetail;
+    private RelativeLayout rl_todetail;
     private LinearLayout ll_user_BB;
     private LinearLayout ll_user_BB_coin;
     private LinearLayout ll_user_setting;
@@ -33,15 +33,14 @@ public class UserInfoFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i("userinfofragment", "oncreateview");
         View view = inflater.inflate(R.layout.ll_userinfo, container, false);
-        user_portrait = (ImageView) view.findViewById(R.id.img_user_portrait);
+//        user_portrait = (ImageView) view.findViewById(R.id.img_user_portrait);
         tv_username = (TextView) view.findViewById(R.id.tv_userinfo_main_nickname);
         tv_account = (TextView) view.findViewById(R.id.tv_userinfo_main_account);
-        img_todetail = (ImageView) view.findViewById(R.id.img_to_detail);
+        rl_todetail = (RelativeLayout) view.findViewById(R.id.rl_todetailinfo);
         ll_user_BB = (LinearLayout) view.findViewById(R.id.ll_user_BB);
         ll_user_BB_coin = (LinearLayout) view.findViewById(R.id.ll_user_BB_coin);
         ll_user_setting = (LinearLayout) view.findViewById(R.id.ll_user_setting);
-        user_portrait.setOnClickListener(this);
-        img_todetail.setOnClickListener(this);
+        rl_todetail.setOnClickListener(this);
         ll_user_BB.setOnClickListener(this);
         ll_user_BB_coin.setOnClickListener(this);
         ll_user_setting.setOnClickListener(this);
@@ -54,10 +53,7 @@ public class UserInfoFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         Intent intent = null;
         switch (v.getId()) {
-            case R.id.img_user_portrait://跳转到设置头像
-                intent = new Intent(getActivity(), UserPortraitSetting.class);
-                break;
-            case R.id.img_to_detail:
+            case R.id.rl_todetailinfo:
                 intent = new Intent(getActivity(), UserInfoDetailActivity.class);
                 break;
             case R.id.ll_user_BB:

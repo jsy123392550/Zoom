@@ -5,6 +5,7 @@
     android:background="#f7f7f7">
 
     <RelativeLayout
+        android:id="@+id/rl_todetailinfo"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
@@ -49,15 +50,6 @@
                 android:text="@string/userinfo_account"/>
         </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/img_to_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/user_arrow"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-            android:layout_gravity="center_vertical"/>
     </RelativeLayout>
 
     <LinearLayout
