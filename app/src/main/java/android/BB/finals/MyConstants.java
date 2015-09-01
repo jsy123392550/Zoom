@@ -26,6 +26,8 @@ public class MyConstants {
 	public static final String TEXT_UNKNOWN_EXCEPTION="发生未知错误";
 	public static final String TEXT_LOGIN_PWD_WRONG="用户名或密码错误";
 	public static final String TEXT_NULL="";
+	public static final String TEXT_BB_PRESSED="已经BB";
+	public static final String TEXT_ADDED_FRIEND="等待回复";
     //服务器响应请求操作成功的状态码
 	public static final int RESPONSE_CODE_SUCCESS=666;
     //服务器响应请求操作失败的状态码
@@ -73,4 +75,8 @@ public class MyConstants {
 	public static final String KEY_COMMENT_LIST="comment_list";
 	public static final String KEY_BB_TYPE="bb_type";
 	public static final String KEY_USER_DETAIL="user_detail";
+	/*以下为dialog中用到的字段名*/
+	public static final String KEY_DIALOG_FORWARD="转发：";
+	public static final String KEY_DIALOG_ADD_FRIEND="请求内容：";
+
 }

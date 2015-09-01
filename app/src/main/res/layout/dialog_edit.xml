@@ -9,13 +9,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:text="转发：" />
+        android:layout_marginStart="8dp"/>
 
 
 
     <Button
-        android:id="@+id/btn_bbdetail_forward_dialog"
+        android:id="@+id/btn_dialog_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_dialog_edit"
@@ -28,12 +27,12 @@
         android:text="@string/sure"
         android:textColor="@color/toolbar" />
     <EditText
-        android:id="@+id/et_bbdetail_forward_dialog"
+        android:id="@+id/et_dialog_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/tv_dialog_edit"
         android:layout_alignBaseline="@id/tv_dialog_edit"
-        android:layout_alignRight="@id/btn_bbdetail_forward_dialog"
+        android:layout_alignRight="@id/btn_dialog_edit"
         android:background="@drawable/bbdetail_et"
         android:padding="8dp" />
 </RelativeLayout>

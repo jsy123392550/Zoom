@@ -14,7 +14,7 @@ public abstract class AbsRecyclerAdapter extends RecyclerView.Adapter<ViewHolder
     protected Context mContext;
     protected LayoutInflater layoutInflater;
     public ItemClickListener itemClickListener;
-
+    public BtnClickListener btnClickListener;
 
     public AbsRecyclerAdapter(Context context) {
         this.mContext = context;
@@ -43,10 +43,14 @@ public abstract class AbsRecyclerAdapter extends RecyclerView.Adapter<ViewHolder
     public abstract void loadMore();
     public abstract void refresh();
     public interface ItemClickListener{
-        public void click(int info_id, int pos);
+        public void click(int id, int pos);
     }
-    public void setClickListener(ItemClickListener itemClickListener){
+    public interface BtnClickListener{
+        public void click(int id, int pos);
+    }
+    public void setClickListener(ItemClickListener itemClickListener,BtnClickListener btnClickListener){
         this.itemClickListener=itemClickListener;
+        this.btnClickListener=btnClickListener;
     }
     protected abstract class ItemViewHolder extends ViewHolder {
         public ItemViewHolder(View itemView) {

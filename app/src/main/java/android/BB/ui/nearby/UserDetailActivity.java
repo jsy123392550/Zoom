@@ -2,12 +2,15 @@ package android.BB.ui.nearby;
 
 import android.BB.bean.nearby.UserDetail;
 import android.BB.finals.MyConstants;
+import android.BB.util.DialogFactory;
+import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.BB.R;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -61,6 +64,20 @@ public class UserDetailActivity extends AppCompatActivity {
             img_sex.setImageResource(R.mipmap.man);
         else
             img_sex.setImageResource(R.mipmap.woman);
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog=DialogFactory.createEditDialog(UserDetailActivity.this, MyConstants.KEY_DIALOG_ADD_FRIEND);
+                Button btn= (Button) dialog.findViewById(R.id.btn_dialog_edit);
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

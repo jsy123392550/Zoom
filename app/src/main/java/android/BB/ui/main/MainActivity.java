@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 	private Fragment bbFragment;
 	private Fragment linkmanFragment;
 	private Fragment userinfoFragment;
-	private Toolbar toolbar;
+	private Toolbar toolbar_center;
 	private TextView tv_toolbar;
 	private TextView tv_nearby;
 	private TextView tv_news;
@@ -91,9 +91,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 	}
 
 	private void setDefaultContent() {
-		toolbar.setTitle(MyConstants.TEXT_NULL);
+		toolbar_center.setTitle(MyConstants.TEXT_NULL);
 		tv_toolbar.setText(MyConstants.MODULE_NEAR);
-		setSupportActionBar(toolbar);
+		setSupportActionBar(toolbar_center);
 		layout_nearby.setOnClickListener(this);
 		layout_BB.setOnClickListener(this);
 		layout_linkman.setOnClickListener(this);
@@ -103,8 +103,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 	}
 
 	private void initView() {
-		toolbar= (Toolbar) findViewById(R.id.main_toolbar);
-		tv_toolbar= (TextView) toolbar.findViewById(R.id.toolbar_tv);
+		toolbar_center = (Toolbar) findViewById(R.id.main_toolbar);
+		tv_toolbar= (TextView) toolbar_center.findViewById(R.id.toolbar_tv);
 		layout_nearby= (LinearLayout) findViewById(R.id.main_bottom_nearby);
 		layout_news= (LinearLayout) findViewById(R.id.main_bottom_news);
 		layout_BB= (LinearLayout) findViewById(R.id.main_bottom_BB);

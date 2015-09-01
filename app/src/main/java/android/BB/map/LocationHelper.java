@@ -24,6 +24,7 @@ public class LocationHelper {
         option=new LocationClientOption();
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
         option.setCoorType("bd09ll");
+        option.setIsNeedAddress(true);
         option.setIsNeedLocationDescribe(true);
         option.setIsNeedLocationPoiList(true);
         client.setLocOption(option);
@@ -31,6 +32,9 @@ public class LocationHelper {
     }
     public void start(){
         client.start();
+    }
+    public void stop(){
+        client.stop();
     }
     class MyLocationListener implements BDLocationListener{
         @Override

@@ -15,19 +15,25 @@ public class DialogFactory {
         dialog.setContentView(R.layout.dialog_wait);
         DisplayMetrics dm=context.getResources().getDisplayMetrics();
         dialog.getWindow().setLayout(dm.widthPixels/2, (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,80,dm));
-        TextView t_msg= (TextView) dialog.findViewById(R.id.tv_dialog_wait);
+        TextView tv_msg= (TextView) dialog.findViewById(R.id.tv_dialog_wait);
         if(msg==null||msg.length()==0){
-            t_msg.setText("");
+            tv_msg.setText("");
         }else{
-            t_msg.setText(msg);
+            tv_msg.setText(msg);
         }
         return dialog;
     }
-    public static Dialog createEditDialog(Context context){
+    public static Dialog createEditDialog(Context context,String msg){
         Dialog dialog=new Dialog(context,R.style.EditDialog);
         dialog.setContentView(R.layout.dialog_edit);
         DisplayMetrics dm=context.getResources().getDisplayMetrics();
-        dialog.getWindow().setLayout(dm.widthPixels-200,dm.heightPixels/5);
+        dialog.getWindow().setLayout(dm.widthPixels-200,dm.heightPixels/6);
+        TextView tv_msg= (TextView) dialog.findViewById(R.id.tv_dialog_edit);
+        if(msg==null||msg.length()==0){
+            tv_msg.setText("");
+        }else{
+            tv_msg.setText(msg);
+        }
         return dialog;
     }
 }

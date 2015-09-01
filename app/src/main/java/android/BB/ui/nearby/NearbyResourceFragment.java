@@ -3,6 +3,7 @@ package android.BB.ui.nearby;
 import android.BB.bean.nearby.Comment;
 import android.BB.bean.nearby.HostInfo;
 import android.BB.finals.MyConstants;
+import android.BB.util.AbsRecyclerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -71,21 +72,26 @@ public class NearbyResourceFragment extends Fragment {
         adapter.setClickListener(new BBListAdapter.ItemClickListener() {
             @Override
             public void click(int info_id, int pos) {
-                Intent intent=new Intent(getActivity(),BBDetailActivity.class);
-                ArrayList<String> imgs=new ArrayList<>();
-                String img= Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH+"/qop.png";
-                List<Comment> commentList=new ArrayList<Comment>();
-                Comment comment=new Comment(2,"大骚逼一枚",img ,"3分钟前","我今天没吃药，感觉自己萌萌哒！");
-                for(int i=0;i<10;i++){
+                Intent intent = new Intent(getActivity(), BBDetailActivity.class);
+                ArrayList<String> imgs = new ArrayList<>();
+                String img = Environment.getExternalStorageDirectory().getAbsolutePath() + MyConstants.IMAGE_PATH + "/qop.png";
+                List<Comment> commentList = new ArrayList<Comment>();
+                Comment comment = new Comment(2, "大骚逼一枚", img, "3分钟前", "我今天没吃药，感觉自己萌萌哒！");
+                for (int i = 0; i < 10; i++) {
                     commentList.add(comment);
-                    if(i>=3)
+                    if (i >= 3)
                         imgs.add(img);
                 }
-                HostInfo hostInfo=new HostInfo(1,imgs,"1个小时前","我在二教2217教室上课的时候忘拿雨伞了，有顺路的同学能帮我带到11栋吗？",img,"我是一个大帅逼",5,11,3,6);
-                intent.putExtra(MyConstants.KEY_HOSTINFO,hostInfo);
+                HostInfo hostInfo = new HostInfo(1, imgs, "1个小时前", "我在二教2217教室上课的时候忘拿雨伞了，有顺路的同学能帮我带到11栋吗？", img, "我是一个大帅逼", 5, 11, 3, 6);
+                intent.putExtra(MyConstants.KEY_HOSTINFO, hostInfo);
                 intent.putExtra(MyConstants.KEY_COMMENT_LIST, (Serializable) commentList);
-                intent.putExtra(MyConstants.KEY_BB_TYPE,true);
+                intent.putExtra(MyConstants.KEY_BB_TYPE, true);
                 startActivity(intent);
+            }
+        }, new AbsRecyclerAdapter.BtnClickListener() {
+            @Override
+            public void click(int id, int pos) {
+
             }
         });
         isLoad=false;

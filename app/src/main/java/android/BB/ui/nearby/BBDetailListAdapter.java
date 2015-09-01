@@ -6,6 +6,7 @@ import android.BB.finals.MyConstants;
 import android.BB.util.AbsRecyclerAdapter;
 import android.BB.util.DialogFactory;
 import android.BB.widget.NoScrollGridView;
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.os.Environment;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -108,6 +110,8 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
         private TextView tv_praise;
         private TextView tv_comment;
         private TextView tv_forward;
+        private EditText et_forward;
+        private Button btn_forward;
         private Button btn;
         private NoScrollGridView gridView;
         private ImageGridAdapter imageGridAdapter;
@@ -150,7 +154,6 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
                 img_comment.setColorFilter(mContext.getResources().getColor(R.color.orange_press), PorterDuff.Mode.MULTIPLY);
                 isComment=true;
             }
-            scaleAnimation(img_comment);
             hostInfo.setComment(hostInfo.getComment() + 1);
             tv_comment.setText(String.valueOf(hostInfo.getComment()));
         }
@@ -175,7 +178,23 @@ public class BBDetailListAdapter extends AbsRecyclerAdapter{
                         ((BBDetailActivity)mContext).getEt_comment().requestFocus();
                         break;
                     case R.id.img_bbdetail_host_forward:
-                        DialogFactory.createEditDialog(mContext).show();
+                        if(isForward){
+                            Toast.makeText(mContext.getApplicationContext(),"你已经转发过这个BB",Toast.LENGTH_SHORT).show();
+                        }else{
+                            final Dialog dialog=DialogFactory.createEditDialog(mContext,MyConstants.KEY_DIALOG_FORWARD);
+                            et_forward= (EditText) dialog.findViewById(R.id.et_dialog_edit);
+                            btn_forward= (Button) dialog.findViewById(R.id.btn_dialog_edit);
+                            btn_forward.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    img_forward.setColorFilter(mContext.getResources().getColor(R.color.orange_press), PorterDuff.Mode.MULTIPLY);
+                                    hostInfo.setForward(hostInfo.getForward() + 1);
+                                    tv_forward.setText(String.valueOf(hostInfo.getForward()));
+                                    dialog.dismiss();
+                                }
+                            });
+                            dialog.show();
+                        }
                         break;
                     case R.id.btn_bbdetail_host:
                         btn.setText("已经BB");
