@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     android:background="#45788a">
 
+    <include
+        android:id="@+id/toolbar_bb_history"
+        layout="@layout/toolbar_center_text" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
