@@ -84,7 +84,7 @@
             android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/userinfo_detail_user_gender"
                 style="@style/UserInfoDetail_left_tv"/>
             <TextView
@@ -104,7 +104,7 @@
             android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/userinfo_detail_user_district"
                 style="@style/UserInfoDetail_left_tv"/>
             <TextView
@@ -124,14 +124,19 @@
             android:layout_height="60dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/userinfo_detail_personality_signature"
                 style="@style/UserInfoDetail_left_tv"/>
             <TextView
                 android:id="@+id/tv_userInfo_detail_psignature"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:gravity="right"
                 android:text="@string/user_psignature_default"
+                android:ellipsize="marquee"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:singleLine="true"
                 style="@style/UserInfoDetail_right_tv"/>
         </RelativeLayout>
         <TextView

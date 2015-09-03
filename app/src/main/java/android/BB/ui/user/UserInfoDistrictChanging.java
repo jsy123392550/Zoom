@@ -16,12 +16,14 @@ import android.widget.TextView;
  * Created by KalinaRain on 2015/8/27.
  * 用于修改用户地区
  * 目前只支持中国境内的各省市
+ * TODO 定位功能 地区列表
  */
 public class UserInfoDistrictChanging extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TextView modify_info;
     private TextView save;
+    private String district;
     private TextView location;
     private ListView listView;
     private DistrictAdapter adapter;
@@ -79,5 +81,10 @@ public class UserInfoDistrictChanging extends AppCompatActivity {
             return null;
         }
 
+    }
+
+    private void setDistrict() {
+        setResult(RESULT_OK, this.getIntent().putExtra("district", district));
+        UserInfoDistrictChanging.this.finish();
     }
 }

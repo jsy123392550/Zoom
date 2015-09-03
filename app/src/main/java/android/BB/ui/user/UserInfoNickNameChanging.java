@@ -1,7 +1,7 @@
 package android.BB.ui.user;
 
 import android.BB.finals.MyConstants;
-import android.content.Intent;
+import android.BB.util.ToastUtils;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -9,14 +9,12 @@ import android.BB.R;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by KalinaRain on 2015/8/27.
  */
-public class UserInfoNickNameChanging extends AppCompatActivity implements View.OnClickListener{
+public class UserInfoNickNameChanging extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TextView modify_info;
@@ -50,27 +48,25 @@ public class UserInfoNickNameChanging extends AppCompatActivity implements View.
             @Override
             public void onClick(View v) {
                 nickname = edt_nickname.getText().toString();
-                if (nickname == null||"".equals(nickname)) {
-                    Toast.makeText(UserInfoNickNameChanging.this, "内容不能为空！", Toast.LENGTH_LONG).show();
+                if (nickname == null || "".equals(nickname)) {
+                    ToastUtils.showShort(UserInfoNickNameChanging.this, "内容不能为空！");
                 } else {
+                    if (nickname.length() > 12) {
+                        ToastUtils.showShort(UserInfoNickNameChanging.this, "昵称长度不得超过12");
+                        return;
+                    }
                     //向服务器发送
 
                     //返回界面后昵称
-                    Intent intent = new Intent();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("nickname", nickname);
+                    setNickName();
 
                 }
             }
         });
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_toolbar_save:
-
-                break;
-        }
+    private void setNickName() {
+        setResult(RESULT_OK, this.getIntent().putExtra("nickname", nickname));
+        UserInfoNickNameChanging.this.finish();
     }
 }

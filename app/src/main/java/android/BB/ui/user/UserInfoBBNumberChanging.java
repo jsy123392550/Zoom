@@ -1,6 +1,7 @@
 package android.BB.ui.user;
 
 import android.BB.finals.MyConstants;
+import android.BB.util.ToastUtils;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -17,12 +18,13 @@ import android.widget.Toast;
  * BB号只能够改一次
  * BB号唯一，所以必须访问网络确保唯一
  */
-public class UserInfoBBNumberChanging extends AppCompatActivity implements View.OnClickListener{
+public class UserInfoBBNumberChanging extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TextView modify_info;
     private TextView save;
     private EditText edt_bbnumber;
+    private String bbnumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,22 +57,44 @@ public class UserInfoBBNumberChanging extends AppCompatActivity implements View.
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String content_bb_number = edt_bbnumber.getText().toString();
-                if (content_bb_number == null||"".equals(content_bb_number)) {
-                    Toast.makeText(UserInfoBBNumberChanging.this, "内容不能为空！", Toast.LENGTH_LONG).show();
+                bbnumber = edt_bbnumber.getText().toString();
+                if (bbnumber == null||"".equals(bbnumber)) {
+                    ToastUtils.showShort(UserInfoBBNumberChanging.this,"内容不能为空！");
                 } else {
+                    if (bbnumber.length() < 3) {
+                        ToastUtils.showShort(UserInfoBBNumberChanging.this,"BB号太短！");
+                        return;
+                    }else if (bbnumber.length() > 16) {
+                        ToastUtils.showShort(UserInfoBBNumberChanging.this,"BB号太长！");
+                    }
                     //确认符合规则
-                    //向服务器发送，确认唯一
+                    if (checkFormat(bbnumber)) {
+                        //向服务器发送，确认唯一
+                        setBBNumber();
 
+                    } else {
+                        ToastUtils.showShort(UserInfoBBNumberChanging.this, "格式错误！");
+                    }
                 }
             }
         });
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    private void setBBNumber() {
+        setResult(RESULT_OK, this.getIntent().putExtra("bbnumber", bbnumber));
+        UserInfoBBNumberChanging.this.finish();
+    }
 
+    /**
+     * 检查格式是否正确
+     * 要求：只能是字母、数字、“_”、“-”
+     * @return
+     */
+    private boolean checkFormat(String src) {
+        String pat = "^[a-zA-Z0-9_-]{3,16}$" ;    // 指定好正则表达式
+        if (src.matches(pat)) {
+            return true;
         }
+        return false;
     }
 }

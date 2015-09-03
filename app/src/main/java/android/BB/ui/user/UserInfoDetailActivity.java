@@ -1,6 +1,7 @@
 package android.BB.ui.user;
 
 import android.BB.finals.MyConstants;
+import android.BB.util.ToastUtils;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,9 +18,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import android.BB.R;
+import android.widget.Toast;
 
 /**
  * Created by KalinaRain on 2015/8/25.
+ * TODO 进入该activity之前，先获取已经存储的值 用户设置完自己的信息之后，还要存储起来
  */
 public class UserInfoDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -33,7 +36,7 @@ public class UserInfoDetailActivity extends AppCompatActivity implements View.On
     private RelativeLayout rl_personality_signature;
     private ImageView img_user_portrait;
     private RatingBar ratingBar_credit;//信用等级
-    private int gender = 1;//0代表女，1代表男，默认为1——男
+    private int gender_tag = 1;//0代表女，1代表男，默认为1——男
     private ImageView img_man_confirm;
     private ImageView img_woman_confirm;
     private Dialog genderDialog;
@@ -42,12 +45,23 @@ public class UserInfoDetailActivity extends AppCompatActivity implements View.On
     private TextView tv_gender;
     private TextView tv_district;
     private TextView tv_psignature;
+    private String nickname;
+    private String bbnumber;
+    private String gender;
+    private String district;
+    private String psignature;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userinfo_detailinfo);
         init();
+        initData();
+    }
+
+    //获取已经存储的值，并设置
+    private void initData() {
+        //
     }
 
     private void init() {
@@ -101,11 +115,15 @@ public class UserInfoDetailActivity extends AppCompatActivity implements View.On
                 break;
             case R.id.rl_nickname:
                 intent = new Intent(UserInfoDetailActivity.this, UserInfoNickNameChanging.class);
-                startActivity(intent);
+                startActivityForResult(intent, 11);
                 break;
             case R.id.rl_bbnumber:
-                intent = new Intent(UserInfoDetailActivity.this, UserInfoBBNumberChanging.class);
-                startActivity(intent);
+                if (!MyConstants.HAS_CHANGE_BBNUMBER) {
+                    intent = new Intent(UserInfoDetailActivity.this, UserInfoBBNumberChanging.class);
+                    startActivityForResult(intent, 12);
+                } else {
+                    ToastUtils.showShort(UserInfoDetailActivity.this, "您已经设置过BB号了");
+                }
                 break;
             case R.id.rl_gender:
                 /*开启一个对话框*/
@@ -113,11 +131,11 @@ public class UserInfoDetailActivity extends AppCompatActivity implements View.On
                 break;
             case R.id.rl_district:
                 intent = new Intent(UserInfoDetailActivity.this, UserInfoDistrictChanging.class);
-                startActivity(intent);
+                startActivityForResult(intent, 13);
                 break;
             case R.id.rl_personality_signature:
                 intent = new Intent(UserInfoDetailActivity.this, UserInfoPersonalSignatureChanging.class);
-                startActivity(intent);
+                startActivityForResult(intent, 14);
                 break;
             default:
                 Log.d("UserInfo", "未知跳转方向");
@@ -135,10 +153,10 @@ public class UserInfoDetailActivity extends AppCompatActivity implements View.On
         img_woman_confirm=((ImageView) dialog_gender.findViewById(R.id.img_confirm_woman));
         AlertDialog.Builder builder = new AlertDialog.Builder(this).setView(dialog_gender);
         genderDialog = builder.create();
-        if (gender == 1) {
+        if (gender_tag == 1) {
             img_woman_confirm.setVisibility(View.INVISIBLE);
             img_man_confirm.setVisibility(View.VISIBLE);
-        } else if (gender == 0) {
+        } else if (gender_tag == 0) {
             img_man_confirm.setVisibility(View.INVISIBLE);
             img_woman_confirm.setVisibility(View.VISIBLE);
         }
@@ -150,7 +168,7 @@ public class UserInfoDetailActivity extends AppCompatActivity implements View.On
             public void onClick(View v) {
                 img_woman_confirm.setVisibility(View.INVISIBLE);
                 img_man_confirm.setVisibility(View.VISIBLE);
-                gender=1;
+                gender_tag =1;
                 genderTextChange();
             }
         });
@@ -159,7 +177,7 @@ public class UserInfoDetailActivity extends AppCompatActivity implements View.On
             public void onClick(View v) {
                 img_man_confirm.setVisibility(View.INVISIBLE);
                 img_woman_confirm.setVisibility(View.VISIBLE);
-                gender=0;
+                gender_tag =0;
                 genderTextChange();
             }
         });
@@ -169,13 +187,42 @@ public class UserInfoDetailActivity extends AppCompatActivity implements View.On
 
     private void genderTextChange() {
         genderDialog.dismiss();
-        if (gender == 1) {
+        if (gender_tag == 1) {
             tv_gender.setText("男");
         } else {
             tv_gender.setText("女");
         }
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case 11:
+                    nickname = data.getExtras().getString("nickname");
+                    tv_nickname.setText(nickname);
+                    break;
+                case 12:
+                    bbnumber = data.getExtras().getString("bbnumber");
+                    tv_bbnumber.setText(bbnumber);
+                    MyConstants.HAS_CHANGE_BBNUMBER = true;//已经设置了BB号，不可以进行第二次设置
+                    break;
+                case 13:
+                    district = data.getExtras().getString("district");
+                    tv_district.setText(district);
+                    break;
+                case 14:
+                    psignature = data.getExtras().getString("psignature");
+                    tv_psignature.setText(psignature);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

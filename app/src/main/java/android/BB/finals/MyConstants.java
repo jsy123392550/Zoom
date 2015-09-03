@@ -78,5 +78,7 @@ public class MyConstants {
 	/*以下为dialog中用到的字段名*/
 	public static final String KEY_DIALOG_FORWARD="转发：";
 	public static final String KEY_DIALOG_ADD_FRIEND="请求内容：";
+	//是否已经设置过BB号
+	public static boolean HAS_CHANGE_BBNUMBER = false;
 
 }

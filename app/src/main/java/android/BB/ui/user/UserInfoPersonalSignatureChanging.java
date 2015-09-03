@@ -1,12 +1,14 @@
 package android.BB.ui.user;
 
 import android.BB.finals.MyConstants;
+import android.BB.util.ToastUtils;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import android.BB.R;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,13 +17,15 @@ import android.widget.Toast;
 /**
  * Created by KalinaRain on 2015/8/27.
  */
-public class UserInfoPersonalSignatureChanging extends AppCompatActivity implements View.OnClickListener{
+public class UserInfoPersonalSignatureChanging extends AppCompatActivity{
 
     private Toolbar toolbar;
     private TextView modify_info;
     private TextView save;
     private EditText edt_psignature;
     private String psignature;
+    private Intent intent;
+//    private Bundle bundle = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,7 @@ public class UserInfoPersonalSignatureChanging extends AppCompatActivity impleme
     }
 
     private void init() {
-
+        intent = getIntent();
         toolbar = (Toolbar) findViewById(R.id.toolbar_userinfo_detail_psignature);
         toolbar.setTitle(MyConstants.TEXT_NULL);
         setSupportActionBar(toolbar);
@@ -46,29 +50,29 @@ public class UserInfoPersonalSignatureChanging extends AppCompatActivity impleme
             }
         });
         edt_psignature = (EditText) findViewById(R.id.ed_psignature);
+
+        //保存按钮
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 psignature = edt_psignature.getText().toString();
-                if (psignature == null||"".equals(psignature)) {
-                    Toast.makeText(UserInfoPersonalSignatureChanging.this, "内容不能为空！", Toast.LENGTH_LONG).show();
+                if (psignature == null || "".equals(psignature)) {
+                    ToastUtils.showShort(UserInfoPersonalSignatureChanging.this, "内容不能为空！");
                 } else {
                     //向服务器发送
 
-                    //返回界面后昵称
-                    Intent intent = new Intent();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("psignature", psignature);
+                    //判断是否符合要求——长度
+                    setSignature();
 
                 }
             }
         });
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-
-        }
+    //返回界面后设置个性签名
+    private void setSignature() {
+        setResult(RESULT_OK, intent.putExtra("psignature", psignature));
+        UserInfoPersonalSignatureChanging.this.finish();
     }
+
 }

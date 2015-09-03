@@ -72,13 +72,15 @@
     <string name="user_gender_man">男</string>
     <string name="user_gender_woman">女</string>
     <string name="user_nickname_default">未填写</string>
-    <string name="user_bbnumber_default">1234567</string>
+    <string name="user_bbnumber_default">未设置</string>
     <string name="user_gender">性别</string>
     <string name="user_district_default">重庆</string>
     <string name="user_psignature_default">未填写</string>
     <string name="tv_save">保存</string>
     <string name="tv_set_nickname">修改昵称</string>
     <string name="tv_set_bbnumber">设置BB号</string>
+    <string name="tv_set_bbnumber_hint1">BB号只能输入一次，且不能更改</string>
+    <string name="tv_set_bbnumber_hint2">格式：只能由字母、数字及“_”、“-”组成</string>
     <string name="tv_set_district">修改地区</string>
     <string name="tv_set_psignature">设置个性签名</string>
     <string name="sure">确定</string>
