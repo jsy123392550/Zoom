@@ -6,7 +6,7 @@
     <!-- 完成按钮 在 上面 -->
     <include
         android:id="@+id/toolbar_pic"
-        layout="@layout/toolbar_update"/>
+        layout="@layout/toolbar_center_text"/>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

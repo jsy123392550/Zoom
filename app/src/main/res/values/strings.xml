@@ -89,4 +89,8 @@
     <string name="user_feedback">用户反馈</string>
     <string name="about_us">关于我们</string>
     <string name="btn_portrait_save">保存</string>
+
+    <!-- 模块——联系人 -->
+    <string name="btn_linkman_detailinfo_send_msg">发消息</string>
+
 </resources>

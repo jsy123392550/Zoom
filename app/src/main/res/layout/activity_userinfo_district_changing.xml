@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#f7f7f7">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -40,4 +41,36 @@
             style="@style/top_toolbar_tv"/>
     </RelativeLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"
+        android:textSize="14sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="3dp"
+        android:text="当前位置"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/tv_user_now_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:text="中国 重庆"/>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listview_district"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#999999">
+
+    </ListView>
 </LinearLayout>

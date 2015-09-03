@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="40dp">
+
+    <ImageView
+        android:id="@+id/img_linkman_portrait"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@mipmap/linkman_portrait_default"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:scaleType="centerCrop"/>
+    <TextView
+        android:id="@+id/tv_linkman_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_toRightOf="@id/img_linkman_portrait"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:text="adg"/>
+</RelativeLayout>
