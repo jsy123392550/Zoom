@@ -207,13 +207,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 //				img_BB.setImageResource(R.mipmap.main_bottom_bb_press);
 				curFragment=bbFragment;
 				break;
-			case LINKMAN_INDEX:
+			case LINKMAN_INDEX://联系人
 				tv_toolbar.setText(MyConstants.MODULE_LINKMAN);
 				tv_linkman.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
 				img_linkman.setImageResource(R.mipmap.main_bottom_linkman_clicked);
 				curFragment=linkmanFragment;
 				break;
-			case USER_INDEX:
+			case USER_INDEX://第五模块——我
 				tv_toolbar.setText(MyConstants.MODULE_ME);
 				tv_user.setTextColor(getResources().getColor(R.color.main_bottom_module_text_press));
 				img_user.setImageResource(R.mipmap.main_bottom_userinfo_clicked);

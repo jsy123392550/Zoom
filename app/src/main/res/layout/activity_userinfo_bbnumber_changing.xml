@@ -3,43 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:paddingRight="16dp"
-        android:paddingLeft="16dp"
-        android:background="?attr/colorPrimary">
-        <ImageView
-            android:id="@+id/img_back_setbbnumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/back_arrow"/>
-
-        <include
-            android:id="@+id/aoxian"
-            layout="@layout/tv2ao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/img_back_setbbnumber"
-            android:layout_marginLeft="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_set_bbnumber"
-            android:layout_toRightOf="@id/aoxian"
-            android:layout_marginLeft="10dp"
-            style="@style/top_toolbar_tv"/>
-        <TextView
-            android:id="@+id/tv_save_bbnumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_save"
-            android:layout_alignParentRight="true"
-            style="@style/top_toolbar_tv"/>
-    </RelativeLayout>
+    <include
+        android:id="@+id/toolbar_userinfo_detail_bbnumber"
+        layout="@layout/toolbar_usesrinfo_modify" />
     <EditText
         android:id="@+id/ed_bbnumber"
         android:layout_width="match_parent"

@@ -2,5 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <include
+        android:id="@+id/toolbar_userinfo_detail_psignature"
+        layout="@layout/toolbar_usesrinfo_modify" />
+    <EditText
+        android:id="@+id/ed_psignature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
 </LinearLayout>

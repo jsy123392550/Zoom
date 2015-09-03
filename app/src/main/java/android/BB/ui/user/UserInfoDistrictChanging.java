@@ -1,9 +1,11 @@
 package android.BB.ui.user;
 
+import android.BB.finals.MyConstants;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import android.BB.R;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -17,6 +19,9 @@ import android.widget.TextView;
  */
 public class UserInfoDistrictChanging extends AppCompatActivity {
 
+    private Toolbar toolbar;
+    private TextView modify_info;
+    private TextView save;
     private TextView location;
     private ListView listView;
     private DistrictAdapter adapter;
@@ -29,8 +34,28 @@ public class UserInfoDistrictChanging extends AppCompatActivity {
     }
 
     private void init() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar_userinfo_detail_district);
+        toolbar.setTitle(MyConstants.TEXT_NULL);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.back_arrow);
+        modify_info = (TextView) toolbar.findViewById(R.id.tv_toolbar_modify_info);
+        save = (TextView) toolbar.findViewById(R.id.tv_toolbar_save);
+        modify_info.setText(getResources().getText(R.string.tv_set_district));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         location = (TextView) findViewById(R.id.tv_user_now_location);
         listView = (ListView) findViewById(R.id.listview_district);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     private class DistrictAdapter extends BaseAdapter {

@@ -77,8 +77,16 @@ public class UserInfoDetailActivity extends AppCompatActivity implements View.On
 
         toolbar.setTitle(MyConstants.TEXT_NULL);
         tv_toolbar_center.setText(MyConstants.KEY_TOOLBAR_USERINFODETAIL);
-        setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.back_arrow);
+        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);//设置是否显示返回键
+        //设置返回键
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 //        ratingBar_credit.setRating(new UserInfo().getCredit());
         ratingBar_credit.setRating(3.0f);//设置信用指数为3——测试
     }

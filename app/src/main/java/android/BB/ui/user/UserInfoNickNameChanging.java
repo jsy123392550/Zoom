@@ -1,10 +1,12 @@
 package android.BB.ui.user;
 
+import android.BB.finals.MyConstants;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import android.BB.R;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,9 +18,10 @@ import android.widget.Toast;
  */
 public class UserInfoNickNameChanging extends AppCompatActivity implements View.OnClickListener{
 
-    private ImageView img_back;
-    private EditText edt_nickname;
+    private Toolbar toolbar;
+    private TextView modify_info;
     private TextView save;
+    private EditText edt_nickname;
     private String nickname;
 
     @Override
@@ -29,21 +32,23 @@ public class UserInfoNickNameChanging extends AppCompatActivity implements View.
     }
 
     private void init() {
-        img_back = (ImageView) findViewById(R.id.img_back_setnickname);
-        edt_nickname = (EditText) findViewById(R.id.ed_nickname);
-        save = (TextView) findViewById(R.id.tv_save_nickname);
-        img_back.setOnClickListener(this);
-        save.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.img_back_setnickname:
-                //返回
+        toolbar = (Toolbar) findViewById(R.id.toolbar_userinfo_detail_nickname);
+        toolbar.setTitle(MyConstants.TEXT_NULL);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.back_arrow);
+        modify_info = (TextView) toolbar.findViewById(R.id.tv_toolbar_modify_info);
+        save = (TextView) toolbar.findViewById(R.id.tv_toolbar_save);
+        modify_info.setText(getResources().getText(R.string.tv_set_nickname));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 finish();
-                break;
-            case R.id.tv_save_nickname:
+            }
+        });
+        edt_nickname = (EditText) findViewById(R.id.ed_nickname);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 nickname = edt_nickname.getText().toString();
                 if (nickname == null||"".equals(nickname)) {
                     Toast.makeText(UserInfoNickNameChanging.this, "内容不能为空！", Toast.LENGTH_LONG).show();
@@ -56,6 +61,15 @@ public class UserInfoNickNameChanging extends AppCompatActivity implements View.
                     bundle.putString("nickname", nickname);
 
                 }
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_toolbar_save:
+
                 break;
         }
     }

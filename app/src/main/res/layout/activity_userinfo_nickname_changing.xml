@@ -2,43 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:paddingRight="16dp"
-        android:paddingLeft="16dp"
-        android:background="?attr/colorPrimary">
-        <ImageView
-            android:id="@+id/img_back_setnickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/back_arrow"/>
 
-        <include
-            android:id="@+id/aoxian_nickname"
-            layout="@layout/tv2ao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/img_back_setnickname"
-            android:layout_marginLeft="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_set_nickname"
-            android:layout_toRightOf="@id/aoxian_nickname"
-            android:layout_marginLeft="10dp"
-            style="@style/top_toolbar_tv"/>
-        <TextView
-            android:id="@+id/tv_save_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_save"
-            android:layout_alignParentRight="true"
-            style="@style/top_toolbar_tv"/>
-    </RelativeLayout>
+    <include
+        android:id="@+id/toolbar_userinfo_detail_nickname"
+        layout="@layout/toolbar_usesrinfo_modify" />
     <EditText
         android:id="@+id/ed_nickname"
         android:layout_width="match_parent"
