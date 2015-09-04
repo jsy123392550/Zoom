@@ -151,9 +151,7 @@ public class ImagesChosenOrTakePhotos extends AppCompatActivity{
         imageAll.setDir("/所有图片");
         currentImageFolder = imageAll;
         mDirPaths.add(imageAll);
-        btn_ok = (Button) findViewById(R.id.btn_ok);
         btn_select = (Button) findViewById(R.id.btn_select);
-        btn_ok.setText("完成0/" + max_num);
 
         gridView = (GridView) findViewById(R.id.gridView_pics);
         picAdapter = new PictureAdapter();

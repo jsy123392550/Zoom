@@ -3,11 +3,13 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include android:id="@+id/toolbar_user_feedback"
+        layout="@layout/toolbar_center_text"/>
     <EditText
         android:id="@+id/ed_feedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="不超过100"/>
+        android:hint="不超过100字"/>
     <Button
         android:id="@+id/bt_submit"
         android:layout_width="wrap_content"

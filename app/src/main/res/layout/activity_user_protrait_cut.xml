@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <include android:id="@+id/toolbar_cut"
+        layout="@layout/toolbar_usesrinfo_modify"/>
 
     <ImageView
         android:id="@+id/src_pic"
@@ -9,18 +12,4 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"/>
 
-    <Button
-        android:id="@+id/bt_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:text="@string/btn_portrait_save"/>
-    <!--<SurfaceView-->
-        <!--android:layout_width="300dp"-->
-        <!--android:layout_height="300dp" />-->
-    <!--<android.BB.ui.user.ClipView-->
-        <!--android:layout_width="300dp"-->
-        <!--android:layout_height="300dp" />-->
-</RelativeLayout>
+</LinearLayout>

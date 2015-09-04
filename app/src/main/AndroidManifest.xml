@@ -72,6 +72,8 @@
         <activity android:name=".ui.user.PortraitCut" />
         <!--模块——联系人-->
         <activity android:name=".ui.linkman.AddContacts" />
+
+        <!--模块——BB-->
         <activity android:name=".ui.BB.SetLocationActivity"/>
     </application>
 

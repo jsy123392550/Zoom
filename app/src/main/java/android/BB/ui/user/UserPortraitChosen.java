@@ -1,6 +1,7 @@
 package android.BB.ui.user;
 
 import android.BB.R;
+import android.BB.finals.MyConstants;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,12 +50,9 @@ import java.util.List;
 public class UserPortraitChosen extends AppCompatActivity{
 
     private ContentResolver contentResolver;
-
-    private void init() {
-//        imageView = (ImageView) findViewById(R.id.cam);
-//        bt = (Button) findViewById(R.id.pic);
-
-    }
+    private Toolbar toolbar;
+    private TextView tv_modify_info;
+    private TextView tv_btn;
 
     /**
      * 最多选择图片的个数
@@ -73,10 +72,9 @@ public class UserPortraitChosen extends AppCompatActivity{
      */
     private HashMap<String, Integer> tmpDir = new HashMap<String, Integer>();
     private ArrayList<ImageFloder> mDirPaths = new ArrayList<ImageFloder>();
-
+    private Button btn_select;
     private ImageLoader loader;
     private DisplayImageOptions options;
-    private Button btn_select, btn_ok;
     private ListView listview;//用于显示图片的文件夹
     private FolderAdapter folderAdapter;
     private ImageFloder imageAll, currentImageFolder;
@@ -91,9 +89,7 @@ public class UserPortraitChosen extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portrait_chosen);
-        MAX_NUM = getIntent().getIntExtra(INTENT_MAX_NUM, 6);
-        context = this;
-        contentResolver = getContentResolver();
+
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
                 .threadPriority(Thread.NORM_PRIORITY - 2).denyCacheImageMultipleSizesInMemory()
                 .diskCacheFileNameGenerator(new Md5FileNameGenerator()).diskCacheSize(100 * 1024 * 1024)
@@ -105,7 +101,28 @@ public class UserPortraitChosen extends AppCompatActivity{
                 .showImageForEmptyUri(R.mipmap.ic_launcher).showImageOnFail(R.mipmap.ic_launcher)
                 .cacheInMemory(true).cacheOnDisk(true).considerExifParams(true)
                 .imageScaleType(ImageScaleType.EXACTLY).bitmapConfig(Bitmap.Config.RGB_565).build();
+        init();
         initView();
+    }
+
+    private void init() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar_pic);
+        tv_modify_info = (TextView) toolbar.findViewById(R.id.tv_toolbar_modify_info);
+        tv_btn = (TextView) toolbar.findViewById(R.id.tv_toolbar_save);
+        toolbar.setTitle(MyConstants.TEXT_NULL);
+        tv_modify_info.setText("选择头像");
+        tv_btn.setVisibility(View.GONE);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.back_arrow);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        MAX_NUM = getIntent().getIntExtra(INTENT_MAX_NUM, 6);
+        context = this;
+        contentResolver = getContentResolver();
     }
 
     public void back(View v) {
@@ -164,9 +181,6 @@ public class UserPortraitChosen extends AppCompatActivity{
         imageAll.setDir("/所有图片");
         currentImageFolder = imageAll;
         mDirPaths.add(imageAll);
-        btn_ok = (Button) findViewById(R.id.btn_ok);
-        btn_select = (Button) findViewById(R.id.btn_select);
-        btn_ok.setText("完成0/" + MAX_NUM);
 
         gridView = (GridView) findViewById(R.id.gridView_pics);
         picAdapter = new PictureAdapter();

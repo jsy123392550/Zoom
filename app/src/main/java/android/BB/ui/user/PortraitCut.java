@@ -1,6 +1,7 @@
 package android.BB.ui.user;
 
 import android.BB.R;
+import android.BB.finals.MyConstants;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,12 +12,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -32,9 +35,11 @@ import java.io.IOException;
  */
 public class PortraitCut extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
 
+    private Toolbar toolbar;
+    private TextView tv_info;
+    private TextView save;
     private boolean uploaded;
     private ImageView srcPic;
-    private Button sure;
     private ClipView clipview;
 
     private Matrix matrix = new Matrix();
@@ -67,6 +72,20 @@ public class PortraitCut extends AppCompatActivity implements View.OnTouchListen
 
     private void init() {
         intent = getIntent();
+        toolbar = (Toolbar) findViewById(R.id.toolbar_cut);
+        tv_info = (TextView) toolbar.findViewById(R.id.tv_toolbar_modify_info);
+        save = (TextView) toolbar.findViewById(R.id.tv_toolbar_save);
+        toolbar.setTitle(MyConstants.TEXT_NULL);
+        tv_info.setText("剪切头像");
+        save.setText("确定");
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.back_arrow);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         srcPic = (ImageView) this.findViewById(R.id.src_pic);
         srcPic.setOnTouchListener(this);
 
@@ -80,8 +99,12 @@ public class PortraitCut extends AppCompatActivity implements View.OnTouchListen
             }
         });
 
-        sure = (Button) this.findViewById(R.id.bt_save);
-        sure.setOnClickListener(this);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 
