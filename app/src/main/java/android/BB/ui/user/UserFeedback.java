@@ -61,11 +61,7 @@ public class UserFeedback extends AppCompatActivity {
                 if ("".equals(content) || content == null) {
                     ToastUtils.showShort(UserFeedback.this, "内容为空！");
                 } else {
-                    progressDialog = new ProgressDialog(UserFeedback.this);
-                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);//转圈风格
-                    progressDialog.setMessage("正在提交......");
-                    progressDialog.setCancelable(false);//不可被返回键取消对话框
-                    progressDialog.show();
+                    showProgressDialog();
                     submitFedback(content);
                     ToastUtils.showShort(UserFeedback.this, "提交成功！");
 
@@ -108,12 +104,33 @@ public class UserFeedback extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                progressDialog.dismiss();
+                closeProgressDialog();
                 doToast();
             }
         }).start();
-//        pd2=ProgressDialog.show(Main.this,"PD2标题","PD2信息");
 
+    }
+
+    /**
+     * 显示进度对话框
+     */
+    private void showProgressDialog() {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(this);
+//            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);//转圈风格
+            progressDialog.setMessage("正在提交...");
+            progressDialog.setCanceledOnTouchOutside(false);
+        }
+        progressDialog.show();
+    }
+
+    /**
+     * 关闭进度对话框
+     */
+    private void closeProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
     }
 
     private void doToast() {

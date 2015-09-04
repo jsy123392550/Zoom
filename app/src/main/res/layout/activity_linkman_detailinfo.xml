@@ -4,8 +4,9 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/personal_info"
+        android:id="@+id/toolbar_personal_info"
         layout="@layout/toolbar_center_text"/>
+
 
     <Button
         android:id="@+id/btn_send_msg"

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.BB.R;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class LinkmanFragment extends Fragment {
@@ -40,6 +41,12 @@ public class LinkmanFragment extends Fragment {
             }
         });
         listView = (ListView) view.findViewById(R.id.listview_linkman);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //跳转到相应联系人界面
 
+            }
+        });
     }
 }

@@ -15,10 +15,10 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="3dp"
-        android:text="当前位置"/>
+        android:text="@string/user_district_now_location"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:background="#ffffff">
 
         <TextView
@@ -32,11 +32,25 @@
             android:text="中国 重庆"/>
     </RelativeLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"
+        android:textSize="14sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="3dp"
+        android:text="@string/user_district_please_choose"/>
     <ListView
         android:id="@+id/listview_district"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#999999">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+        android:divider="#f2f2f2"
+        android:dividerHeight="1dp">
 
     </ListView>
 </LinearLayout>
