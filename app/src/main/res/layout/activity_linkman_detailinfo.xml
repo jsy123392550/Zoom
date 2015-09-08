@@ -8,6 +8,11 @@
         layout="@layout/toolbar_center_text"/>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
     <Button
         android:id="@+id/btn_send_msg"
         android:layout_width="wrap_content"

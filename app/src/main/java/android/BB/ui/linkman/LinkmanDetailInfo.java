@@ -2,6 +2,7 @@ package android.BB.ui.linkman;
 
 import android.BB.R;
 import android.BB.finals.MyConstants;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,11 +11,13 @@ import android.widget.TextView;
 
 /**
  * Created by KalinaRain on 2015/9/2.
+ * 联系人的具体界面
  */
 public class LinkmanDetailInfo extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TextView tv_detail_info;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,5 +39,28 @@ public class LinkmanDetailInfo extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+
+
+    /**
+     * 显示进度对话框
+     */
+    private void showProgressDialog() {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("正在加载...");
+            progressDialog.setCanceledOnTouchOutside(false);
+        }
+        progressDialog.show();
+    }
+
+    /**
+     * 关闭进度对话框
+     */
+    private void closeProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
     }
 }
