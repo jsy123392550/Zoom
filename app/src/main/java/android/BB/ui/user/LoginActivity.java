@@ -1,10 +1,14 @@
 package android.BB.ui.user;
 
+import android.BB.finals.MyConstants;
+import android.BB.http.HttpConnect;
 import android.BB.ui.main.MainActivity;
+import android.BB.util.DialogFactory;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -36,19 +40,19 @@ public class LoginActivity extends Activity implements OnClickListener {
 		btn_login = (Button) findViewById(R.id.login_btn_login);
 		btn_regist = (Button) findViewById(R.id.login_btn_regist);
 		btn_login.setOnClickListener(this);
-		btn_regist.setOnClickListener(this);
+		btn_regist.setOnClickListener(this);//https://github.com/shadowsocks/shadowsocks-windows/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip
 	}
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();
 		switch (id) {
 		case R.id.login_btn_login:
-			/*http.login(et_username.getText().toString(), et_pwd.getText().toString(), new Callback() {
+			http.login(et_username.getText().toString(), et_pwd.getText().toString(), new HttpConnect.Callback() {
 				
 				@Override
 				public void onSuccess() {
 //					waitDialog.dismiss();
-					Log.i(MyConstants.APP_TAG,"login success");
+					Log.d(MyConstants.APP_TAG, "login success");
 				}
 				
 				@Override
@@ -61,9 +65,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 				
 				@Override
 				public void onFailure(String errorMsg) {
-					Log.i(MyConstants.APP_TAG,errorMsg);
+					Log.d(MyConstants.APP_TAG,errorMsg);
 				}
-			});*/
+			});
 			startActivity(new Intent(this, MainActivity.class));
 			finish();
 			break;
