@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/base_comment_emo_bar"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="50dp"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <Button
+            android:id="@+id/btn_chat_add"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/chat_add_selector"
+            android:gravity="center"
+            android:onClick="toAction" />
+
+        <Button
+            android:id="@+id/btn_chat_emo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="6dp"
+            android:background="@mipmap/chat_emo_selector"
+            android:gravity="center"
+            android:onClick="toAction" />
+
+        <!-- 输入框 -->
+        <android.BB.view.EmoticonsEditText
+            android:id="@+id/edit_user_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/base_edit_input"
+            android:imeOptions="flagNoExtractUi"
+            android:minHeight="40dp"
+            android:padding="5dp" />
+
+        <!-- 长按说话 和上面的 输入框切换  -->
+        <Button
+            android:id="@+id/btn_speak"
+            android:textColor="#3e3e39"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/btn_chat_record_selector"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="@string/longClick_speak" >
+        </Button>
+
+        <!-- 切换 语音输入和键盘输入 -->
+        <Button
+            android:id="@+id/btn_chat_voice"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/btn_chat_voice_selector"
+            android:gravity="center"
+            android:textColor="#3e3e39" >
+        </Button>
+
+        <!-- 切换 语音输入和键盘输入 -->
+        <Button
+            android:id="@+id/btn_chat_keyboard"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            android:background="@drawable/btn_chat_keyboard_selector"
+            android:gravity="center"
+            android:textColor="#3e3e39" >
+        </Button>
+
+        <!--发送-->
+        <Button
+            android:id="@+id/btn_chat_send"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/btn_chat_send_selector"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textColor="#3e3e39" >
+        </Button>
+
+    </LinearLayout>
+
+    <!--分割线-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background=">#ffa1a1a1"
+        android:focusable="false" />
+
+    <!--弹出来的拍照、选择图片等-->
+    <LinearLayout
+        android:id="@+id/layout_more"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/layout_emo"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager_emo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/layout_add"
+            android:visibility="gone"
+            layout="@layout/include_chat_add" />
+    </LinearLayout>
+
+</LinearLayout>

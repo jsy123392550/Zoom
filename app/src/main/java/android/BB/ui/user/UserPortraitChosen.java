@@ -95,7 +95,7 @@ public class UserPortraitChosen extends AppCompatActivity{
                 .diskCacheFileNameGenerator(new Md5FileNameGenerator()).diskCacheSize(100 * 1024 * 1024)
                 .diskCacheFileCount(300).tasksProcessingOrder(QueueProcessingType.LIFO).build();
         //必备！！
-        ImageLoader.getInstance().init(config);
+        ImageLoader.getInstance().init(config);// 全局初始化此配置
         loader = ImageLoader.getInstance();
         options = new DisplayImageOptions.Builder().showImageOnLoading(R.mipmap.ic_launcher)
                 .showImageForEmptyUri(R.mipmap.ic_launcher).showImageOnFail(R.mipmap.ic_launcher)

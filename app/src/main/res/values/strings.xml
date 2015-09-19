@@ -97,4 +97,10 @@
     <!-- 模块——联系人 -->
     <string name="btn_linkman_detailinfo_send_msg">发消息</string>
 
+    <!--模块——消息-->
+    <string name="longClick_speak">长按说话</string>
+    <string name="news_picture">照片</string>
+    <string name="news_camera">拍照</string>
+    <string name="voice_top_cancel_tips">手指上滑,取消发送</string>
+    <string name="voice_cancel_tips">松开手指，取消发送</string>
 </resources>
