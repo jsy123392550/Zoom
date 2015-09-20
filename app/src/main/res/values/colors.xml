@@ -21,4 +21,5 @@
     <color name="resource_press">#0c8465</color>
     <color name="layout_normal">#fafafa</color>
     <color name="layout_press">#bfe8eaf0</color>
+    <color name="color_bottom_text_normal">#9da0a4</color>
 </resources>

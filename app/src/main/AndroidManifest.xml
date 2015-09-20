@@ -32,6 +32,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
@@ -49,7 +50,7 @@
 
         <activity
             android:name=".ui.user.LoginActivity"
-            android:label="@string/login_label" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -76,7 +77,8 @@
         <activity android:name=".ui.user.PortraitCut" />
         <!--模块——联系人-->
         <activity android:name=".ui.linkman.AddContacts" />
-
+        <activity android:name=".ui.linkman.ContactsHistory"/>
+        <activity android:name=".ui.linkman.LinkmanDetailInfo"/>
         <!--模块——BB-->
         <activity android:name=".ui.BB.SetLocationActivity"/>
 

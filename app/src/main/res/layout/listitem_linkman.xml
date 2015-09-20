@@ -2,23 +2,37 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="#ffffff"
-    android:layout_height="40dp">
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/img_linkman_portrait"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@mipmap/linkman_portrait_default"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:scaleType="centerCrop"/>
     <TextView
-        android:id="@+id/tv_linkman_nickname"
-        android:layout_width="wrap_content"
+        android:id="@+id/alpha"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:layout_toRightOf="@id/img_linkman_portrait"
-        android:layout_marginLeft="10dp"
-        android:layout_centerVertical="true"
-        android:text="adg"/>
+        android:background="#e3e3e3"
+        android:padding="2dp"
+        android:textSize="16sp"
+        android:textColor="#898989"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alpha"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_linkman_portrait"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/linkman_portrait_default"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"/>
+        <TextView
+            android:id="@+id/tv_linkman_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:textSize="18sp"
+            android:text="adg"/>
+    </LinearLayout>
 </RelativeLayout>

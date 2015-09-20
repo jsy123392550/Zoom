@@ -2,6 +2,7 @@ package android.BB.ui.user;
 
 import android.BB.finals.MyConstants;
 import android.BB.http.HttpConnect;
+import android.BB.ui.main.BaseActivity;
 import android.BB.ui.main.MainActivity;
 import android.BB.util.DialogFactory;
 import android.app.Activity;
@@ -19,7 +20,7 @@ import android.BB.http.user.UserHttp;
 import android.BB.R;
 
 
-public class LoginActivity extends Activity implements OnClickListener {
+public class LoginActivity extends BaseActivity implements OnClickListener {
 	private EditText et_username;
 	private EditText et_pwd;
 	private Button btn_login;
@@ -51,16 +52,13 @@ public class LoginActivity extends Activity implements OnClickListener {
 				
 				@Override
 				public void onSuccess() {
-//					waitDialog.dismiss();
+
 					Log.d(MyConstants.APP_TAG, "login success");
 				}
 				
 				@Override
 				public void onPrepare() {
-					if(waitDialog==null) {
-						waitDialog = DialogFactory.createWaitDialog(LoginActivity.this, getString(R.string.login_logining));
-					}
-					waitDialog.show();
+					showProgressDialog("登陆中");
 				}
 				
 				@Override

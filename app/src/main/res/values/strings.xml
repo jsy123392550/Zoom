@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">android_BB</string>
+    <string name="app_name">BBonline</string>
     <string name="login_label">BB</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_regist">RegistActivity</string>
     <string name="login_head_desp">登录界面头像</string>
     <string name="login_username_desp">登录界面用户名图标</string>
@@ -96,6 +95,8 @@
 
     <!-- 模块——联系人 -->
     <string name="btn_linkman_detailinfo_send_msg">发消息</string>
+    <string name="edt_hint_input_bb_number">请输入bb号</string>
+    <string name="tv_new_friends">新朋友</string>
 
     <!--模块——消息-->
     <string name="longClick_speak">长按说话</string>
@@ -103,4 +104,5 @@
     <string name="news_camera">拍照</string>
     <string name="voice_top_cancel_tips">手指上滑,取消发送</string>
     <string name="voice_cancel_tips">松开手指，取消发送</string>
+    <string name="linkman_search_hint">搜索...</string>
 </resources>

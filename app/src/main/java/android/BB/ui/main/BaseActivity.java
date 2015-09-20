@@ -76,10 +76,10 @@ public class BaseActivity extends AppCompatActivity {
      * 显示进度对话框
      * TODO 传入string
      */
-    private void showProgressDialog() {
+    public void showProgressDialog(String content) {
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(this);
-            progressDialog.setMessage("正在加载...");
+            progressDialog.setMessage(content);
             progressDialog.setCanceledOnTouchOutside(false);
         }
         progressDialog.show();
@@ -88,7 +88,7 @@ public class BaseActivity extends AppCompatActivity {
     /**
      * 关闭进度对话框
      */
-    private void closeProgressDialog() {
+    public void closeProgressDialog() {
         if (progressDialog != null) {
             progressDialog.dismiss();
         }
