@@ -127,7 +127,7 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_below="@id/login_btn"
-	    android:layout_marginTop="20dip"
+	    android:layout_marginTop="23dip"
 	    android:layout_marginLeft="97dip"
 	    android:layout_marginStart="97dip"
 	    android:text="@string/login_forgetpwd"

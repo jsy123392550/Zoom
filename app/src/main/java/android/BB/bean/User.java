@@ -1,4 +1,4 @@
-package android.BB.bean.user;
+package android.BB.bean;
 
 import android.BB.bean.BaseBean;
 import android.BB.finals.MyConstants;

@@ -1,8 +1,9 @@
 package android.BB.ui.main;
 
-import android.BB.bean.user.User;
+import android.BB.bean.User;
 import android.BB.util.CollectionUtils;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -16,9 +17,10 @@ import cn.bmob.im.BmobUserManager;
 import cn.bmob.im.bean.BmobChatUser;
 import cn.bmob.im.config.BmobConfig;
 import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.UpdateListener;
 
 /**
+ * 基类
+ * 用于SplashActivity、LoginActivity、RegisterActivity
  * TODO 右滑退出当前activity
  */
 public class BaseActivity extends AppCompatActivity {
@@ -32,7 +34,8 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        userManager = BmobUserManager.getInstance(this);
+        manager = BmobChatManager.getInstance(this);
 
     }
 
@@ -94,6 +97,29 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * TODO 添加动画
+     * @param cla 即将进入的类
+     */
+    public void startAnimSkip(Class<?> cla) {
+        this.startActivity(new Intent(this, cla));
+    }
+
+    /**
+     * TODO 添加动画
+     * @param intent
+     */
+    public void startAnimSkip(Intent intent) {
+        this.startActivity(intent);
+    }
+
+    /**
+     * TODO 右滑退出当前Activity
+     */
+    public void finishAnimActivity() {
+        this.finish();
+    }
+
     /** 打Log
      * ShowLog
      * @return void
@@ -106,14 +132,12 @@ public class BaseActivity extends AppCompatActivity {
     /** 用于登陆或者自动登陆情况下的用户资料及好友资料的检测更新
      * @Title: updateUserInfos
      * @Description: TODO
-     * @param
-     * @return void
-     * @throws
      */
     public void updateUserInfos(){
         //更新地理位置信息
         updateUserLocation();
-        //查询该用户的好友列表(这个好友列表是去除黑名单用户的哦),目前支持的查询好友个数为100，如需修改请在调用这个方法前设置BmobConfig.LIMIT_CONTACTS即可。
+        //查询该用户的好友列表(这个好友列表是去除黑名单用户的哦),目前支持的查询好友个数为100，
+        // 如需修改请在调用这个方法前设置BmobConfig.LIMIT_CONTACTS即可。
         //这里默认采取的是登陆成功之后即将好于列表存储到数据库中，并更新到当前内存中,
         userManager.queryCurrentContactList(new FindListener<BmobChatUser>() {
 
@@ -149,12 +173,12 @@ public class BaseActivity extends AppCompatActivity {
             String saveLongtitude = mApplication.getLongtitude();
             String newLat = String.valueOf(CustomApplication.lastPoint.getLatitude());
             String newLong = String.valueOf(CustomApplication.lastPoint.getLongitude());
-//			ShowLog("saveLatitude ="+saveLatitude+",saveLongtitude = "+saveLongtitude);
+//			ShowLog("save纬度 = "+saveLatitude+",save经度 = "+saveLongtitude);
 //			ShowLog("newLat ="+newLat+",newLong = "+newLong);
             if(!saveLatitude.equals(newLat)|| !saveLongtitude.equals(newLong)){//只有位置有变化就更新当前位置，达到实时更新的目的
                 User u = (User) userManager.getCurrentUser(User.class);
                 final User user = new User();
-//                user.setLocation(CustomApplication.lastPoint);
+//                user.setLocation(CustomApplication.lastPoint);//由该类推导出实际位置
 //                user.setObjectId(u.getObjectId());
 //                user.update(this,new UpdateListener() {
 //                    @Override

@@ -1,6 +1,6 @@
 package android.BB.util;
 
-import android.BB.bean.user.User;
+import android.BB.bean.User;
 
 import java.util.Comparator;
 

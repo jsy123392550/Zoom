@@ -32,9 +32,11 @@ public class MyConstants {
 	public static final int RESPONSE_CODE_SUCCESS=666;
     //服务器响应请求操作失败的状态码
 	public static final int RESPONSE_CODE_FAILURE=667;
-    //服务器响应请求操作未知错误的状态码
-	public static final int RESPONSE_CODE_UNKNOWN=668;
-    //以下为全局使用的字段名
+	//服务器响应请求操作未知错误的状态码
+	public static final int RESPONSE_CODE_UNKNOWN = 668;
+	//这是Bmob的ApplicationId,用于初始化操作
+	public static final String applicationId = "2081f5caa5ae23a472682e23cf1e91b6";
+	//以下为全局使用的字段名
 	public static final String KEY_STATE="state";
 	public static final String KEY_DATA="data";
 	/*以下为模块名*/

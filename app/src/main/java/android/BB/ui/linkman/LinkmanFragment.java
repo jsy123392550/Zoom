@@ -1,6 +1,6 @@
 package android.BB.ui.linkman;
 
-import android.BB.bean.user.User;
+import android.BB.bean.User;
 import android.BB.ui.main.BaseFragment;
 import android.BB.ui.main.CustomApplication;
 import android.BB.util.CharacterParser;
@@ -8,21 +8,16 @@ import android.BB.util.CollectionUtils;
 import android.BB.util.PinyinComparator;
 import android.BB.view.ClearEditText;
 import android.BB.view.MyLetterView;
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,17 +26,12 @@ import android.view.ViewGroup;
 import android.BB.R;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

@@ -1,8 +1,11 @@
 package android.BB.ui.user;
 
+import android.BB.ui.main.BaseActivity;
+import android.BB.util.CountDownButtonHelper;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -12,20 +15,25 @@ import android.widget.TextView;
 
 import android.BB.R;
 
-public class RegistActivity extends Activity implements OnClickListener {
+/**
+ * 注册类
+ */
+public class RegistActivity extends BaseActivity implements OnClickListener {
     private Button btn_regist;
     private Button btn_getnum;
     private TextView t_validate;
-    private TextView t_confirm;
+    private Button btn_count_down;
     private EditText et_validate;
     private CheckBox check_regist;
     private boolean flag;
+    private CountDownButtonHelper countDownButtonHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regist);
         initView();
+
     }
 
     private void initView() {
@@ -35,8 +43,9 @@ public class RegistActivity extends Activity implements OnClickListener {
         btn_getnum = (Button) findViewById(R.id.regist_getnum_btn);
         btn_getnum.setOnClickListener(this);
         t_validate= (TextView) findViewById(R.id.regist_validate_t);
-        t_confirm= (TextView) findViewById(R.id.regist_validate_confirm);
-        t_confirm.setOnClickListener(this);
+        btn_count_down= (Button) findViewById(R.id.regist_count_down);
+        countDownButtonHelper = new CountDownButtonHelper(btn_count_down, "已发送","发送验证码", 45, 1);//设置倒计时时间为45秒，间隔为1秒
+        btn_count_down.setOnClickListener(this);
         et_validate= (EditText) findViewById(R.id.regist_validate_et);
         check_regist= (CheckBox) findViewById(R.id.regist_checkbox);
     }
@@ -55,19 +64,27 @@ public class RegistActivity extends Activity implements OnClickListener {
 //                }
                 break;
             case R.id.regist_getnum_btn:
-                /*获取验证码操作*/
-                /**/
+                /*获取验证码操作——获取验证码后，改变改行布局*/
+                /*开始倒计时*/
                 btn_getnum.setVisibility(View.INVISIBLE);
                 t_validate.setVisibility(View.VISIBLE);
                 et_validate.setVisibility(View.VISIBLE);
-                t_confirm.setVisibility(View.VISIBLE);
+                btn_count_down.setVisibility(View.VISIBLE);
+                countDownButtonHelper.start();
                 break;
-            case R.id.regist_validate_confirm:
-                /*对验证码进行验证*/
-                /**/
+            case R.id.regist_count_down:
+                /*重新发送验证码*/
                 btn_regist.setEnabled(true);
+                ShowToast("验证码已发送，请注意查收~~");
+                countDownButtonHelper.start();
                 flag=true;
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        //销毁该activity，使验证码无效
+        super.onDestroy();
     }
 }

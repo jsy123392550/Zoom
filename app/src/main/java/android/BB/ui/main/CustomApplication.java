@@ -30,6 +30,7 @@ import cn.bmob.im.BmobChat;
 import cn.bmob.im.BmobUserManager;
 import cn.bmob.im.bean.BmobChatUser;
 import cn.bmob.im.db.BmobDB;
+import cn.bmob.im.util.BmobLog;
 import cn.bmob.v3.datatype.BmobGeoPoint;
 
 /**
@@ -101,10 +102,11 @@ public class CustomApplication extends Application{
             // Receive Location
             double latitude = bdLocation.getLatitude();
             double longtitude = bdLocation.getLongitude();
+//            bdLocation.getCity()
             if (lastPoint != null) {
                 if (lastPoint.getLatitude() == bdLocation.getLatitude()
                         && lastPoint.getLongitude() == bdLocation.getLongitude()) {
-//					BmobLog.i("两次获取坐标相同");// 若两次请求获取到的地理位置坐标是相同的，则不再定位
+					BmobLog.i("两次获取坐标相同");// 若两次请求获取到的地理位置坐标是相同的，则不再定位
                     mLocationClient.stop();
                     return;
                 }
@@ -172,36 +174,30 @@ public class CustomApplication extends Application{
 
     /**
      * 获取经度
-     *
      * @return
      */
     public String getLongtitude() {
-        SharedPreferences preferences = PreferenceManager
-                .getDefaultSharedPreferences(this);
-        longtitude = preferences.getString(PREF_LONGTITUDE, "");
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        longtitude = preferences.getString(PREF_LONGTITUDE, "");//如果取不到，则默认为“”
         return longtitude;
     }
 
     /**
      * 设置经度
-     *
-     * @param pwd
      */
     public void setLongtitude(String lon) {
-        SharedPreferences preferences = PreferenceManager
-                .getDefaultSharedPreferences(this);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = preferences.edit();
         if (editor.putString(PREF_LONGTITUDE, lon).commit()) {
             longtitude = lon;
         }
     }
 
-    public final String PREF_LATITUDE = "latitude";// 经度
+    public final String PREF_LATITUDE = "latitude";// 纬度
     private String latitude = "";
 
     /**
      * 获取纬度
-     *
      * @return
      */
     public String getLatitude() {
@@ -211,9 +207,7 @@ public class CustomApplication extends Application{
     }
 
     /**
-     * 设置维度
-     *
-     * @param pwd
+     * 设置纬度
      */
     public void setLatitude(String lat) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -223,7 +217,7 @@ public class CustomApplication extends Application{
         }
     }
 
-    private Map<String, BmobChatUser> contactList = new HashMap<String, BmobChatUser>();
+    private Map<String, BmobChatUser> contactList = new HashMap<String, BmobChatUser>();//联系人列表
 
     /**
      * 获取内存中好友user list
