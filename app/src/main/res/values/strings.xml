@@ -28,6 +28,8 @@
 	<string name="regist_info_sex">性别</string>
 	<string name="regist_info_area">地区</string>
 	<string name="regist_info_signature">个性签名</string>
+	<string name="retrieve_cellphone">手机号：</string>
+
     <string name="module_near">附近</string>
     <string name="module_linkman">联系人</string>
     <string name="module_message">消息</string>
@@ -91,6 +93,7 @@
     <string name="check_update">检查更新</string>
     <string name="user_feedback">用户反馈</string>
     <string name="about_us">关于我们</string>
+    <string name="logout">退出登录</string>
     <string name="btn_portrait_save">保存</string>
 
     <!-- 模块——联系人 -->
@@ -104,5 +107,15 @@
     <string name="news_camera">拍照</string>
     <string name="voice_top_cancel_tips">手指上滑,取消发送</string>
     <string name="voice_cancel_tips">松开手指，取消发送</string>
+    <string name="voice_short_tips">录音时间太短</string>
     <string name="linkman_search_hint">搜索...</string>
+    <string name="xlistview_footer_hint_ready">松开加载更多</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载&#8230;</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="add_avator">头像</string>
+    <string name="network_tips">当前网络不可用,请检查您的网络!</string>
+
 </resources>

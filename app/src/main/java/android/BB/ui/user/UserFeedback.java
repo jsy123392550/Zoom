@@ -2,33 +2,30 @@ package android.BB.ui.user;
 
 import android.BB.R;
 import android.BB.finals.MyConstants;
+import android.BB.ui.main.BaseActivity;
 import android.BB.util.ToastUtils;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by KalinaRain on 2015/8/29.
  * TODO 联网提交反馈内容
  */
-public class UserFeedback extends AppCompatActivity {
+public class UserFeedback extends BaseActivity {
 
     private Toolbar toolbar;
     private TextView tv_text;
     private EditText ed_feedback;
     private Button submit;
     private String content;
-    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,22 +33,22 @@ public class UserFeedback extends AppCompatActivity {
         setContentView(R.layout.activity_user_feedback);
 
         init();
-
+        initToolBarCenterTitle(toolbar, tv_text, "反馈");
     }
 
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.toolbar_user_feedback);
         tv_text = (TextView) toolbar.findViewById(R.id.toolbar_tv);
-        toolbar.setTitle(MyConstants.TEXT_NULL);
-        tv_text.setText("反馈");
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.mipmap.back_arrow);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+//        toolbar.setTitle(MyConstants.TEXT_NULL);
+//        tv_text.setText("反馈");
+//        setSupportActionBar(toolbar);
+//        toolbar.setNavigationIcon(R.mipmap.back_arrow);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
         ed_feedback = (EditText) findViewById(R.id.ed_feedback);
         submit = (Button) findViewById(R.id.bt_submit);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -61,9 +58,9 @@ public class UserFeedback extends AppCompatActivity {
                 if ("".equals(content) || content == null) {
                     ToastUtils.showShort(UserFeedback.this, "内容为空！");
                 } else {
-                    showProgressDialog();
+                    showProgressDialog("正在提交~~");
                     submitFedback(content);
-                    ToastUtils.showShort(UserFeedback.this, "提交成功！");
+                    ShowToast("提交成功！");
 
 //                        finish();
                 }
@@ -111,27 +108,6 @@ public class UserFeedback extends AppCompatActivity {
 
     }
 
-    /**
-     * 显示进度对话框
-     */
-    private void showProgressDialog() {
-        if (progressDialog == null) {
-            progressDialog = new ProgressDialog(this);
-//            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);//转圈风格
-            progressDialog.setMessage("正在提交...");
-            progressDialog.setCanceledOnTouchOutside(false);
-        }
-        progressDialog.show();
-    }
-
-    /**
-     * 关闭进度对话框
-     */
-    private void closeProgressDialog() {
-        if (progressDialog != null) {
-            progressDialog.dismiss();
-        }
-    }
 
     private void doToast() {
     }

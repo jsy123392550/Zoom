@@ -106,6 +106,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.user.RetrievePass"/>
         <activity android:name=".ui.user.RegistActivity" />
         <activity android:name=".ui.user.RegistInfoActivity" />
         <activity android:name=".ui.nearby.BBDetailActivity" />

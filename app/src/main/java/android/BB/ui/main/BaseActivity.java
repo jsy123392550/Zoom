@@ -1,13 +1,23 @@
 package android.BB.ui.main;
 
+import android.BB.R;
 import android.BB.bean.User;
+import android.BB.finals.MyConstants;
+import android.BB.ui.user.LoginActivity;
 import android.BB.util.CollectionUtils;
+import android.BB.view.DialogTips;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -28,8 +38,9 @@ public class BaseActivity extends AppCompatActivity {
     Toast mToast;
     ProgressDialog progressDialog;
     CustomApplication mApplication;
-    BmobUserManager userManager;
-    BmobChatManager manager;
+    public BmobUserManager userManager;
+    public BmobChatManager manager;
+    onRightViewClickListener onRightViewClickListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +109,39 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     /**
+     * 只有左边的返回按钮和居中的标题
+     */
+    public void initToolBarCenterTitle(Toolbar toolbar, TextView tv_R_Id, String title) {
+        toolbar.setTitle(MyConstants.TEXT_NULL);
+        tv_R_Id.setText(title);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.back_arrow);//设置返回按钮
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    /**
+     * 标题和右边的按钮（文字或图片）
+     * 暂时不可用
+     */
+    public void initToolBarTitleAndRight(Toolbar toolbar, String title, ImageView right, onRightViewClickListener listener) {
+
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.back_arrow);//设置返回按钮
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+//        TextView.setOnR
+    }
+
+    /**
      * TODO 添加动画
      * @param cla 即将进入的类
      */
@@ -129,6 +173,27 @@ public class BaseActivity extends AppCompatActivity {
         Log.d("BB", msg);
     }
 
+    /** 显示下线的对话框
+     * showOfflineDialog
+     * @return void
+     * @throws
+     */
+    public void showOfflineDialog(final Context context) {
+        DialogTips dialog = new DialogTips(this,"您的账号已在其他设备上登录!", "重新登录");
+        // 设置成功事件
+        dialog.SetOnSuccessListener(new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int userId) {
+                CustomApplication.getInstance().logout();
+                startActivity(new Intent(context, LoginActivity.class));
+                finish();
+                dialogInterface.dismiss();
+            }
+        });
+        // 显示确认对话框
+        dialog.show();
+        dialog = null;
+    }
+
     /** 用于登陆或者自动登陆情况下的用户资料及好友资料的检测更新
      * @Title: updateUserInfos
      * @Description: TODO
@@ -144,10 +209,10 @@ public class BaseActivity extends AppCompatActivity {
             @Override
             public void onError(int arg0, String arg1) {
                 // TODO Auto-generated method stub
-                if(arg0== BmobConfig.CODE_COMMON_NONE){
+                if (arg0 == BmobConfig.CODE_COMMON_NONE) {
                     ShowLog(arg1);
-                }else{
-                    ShowLog("查询好友列表失败："+arg1);
+                } else {
+                    ShowLog("查询好友列表失败：" + arg1);
                 }
             }
 
@@ -198,5 +263,17 @@ public class BaseActivity extends AppCompatActivity {
 //				ShowLog("用户位置未发生过变化");
             }
         }
+    }
+
+    public void setOnRightViewClickListener(onRightViewClickListener listener) {
+        this.onRightViewClickListener = listener;
+    }
+
+    public interface onRightViewClickListener {
+        void onClick();
+    }
+
+    public interface onBackViewClickListener {
+        void onClick();
     }
 }
